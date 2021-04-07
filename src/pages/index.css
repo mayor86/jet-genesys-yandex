@@ -1,0 +1,9 @@
+/* Импорт блоков */
+@import url(../blocks/root/root.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/content/content.css);
+@import url(../blocks/navigation-panel/navigation-panel.css);
+@import url(../blocks/information-panel/information-panel.css);
+
+@import url(../blocks/navigation-panel/__button/navigation-panel__button.css);
+@import url(../blocks/footer/__button/footer__button.css);

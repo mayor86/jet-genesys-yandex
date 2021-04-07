@@ -1,0 +1,7 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  min-height: 720px;
+  width: 1280px;
+  background:#fff;
+}
