@@ -1,4 +1,7 @@
 .information-panel {
-  outline: 2px solid black;
   width: 80%;
+  text-align: center;
+  margin: auto;
+  font-size: 28px;
+  font: bold;
 }

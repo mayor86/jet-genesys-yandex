@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="IS_Attr_CampaignId">
+  <meta name="IS_Attr_campaignname">
+
   <title>Карточка скрипта</title>
   <link rel="stylesheet" type="text/css" href="./pages/index.css" />
 </head>
@@ -12,12 +16,13 @@
   <div class="page">
     <main class="content">
       <section class="navigation-panel">
-        <button class="navigation-panel__button" type="button">Стартовая страница</button>
-        <button class="navigation-panel__button" type="button">Связь с представителем</button>
+        <!--
+        <button id="npb-01" class="navigation-panel__button navigation-panel__button_active" type="button" disabled="true">Стартовая страница</button>
+        <button id="npb-02" class="navigation-panel__button" type="button">Связь с представителем</button>
+        -->
       </section>
       <section class="information-panel">
-        <input type="text" />
-        <input type="date" />
+        <p>Стартовая страница</p>
       </section>
     </main>
     <footer class="footer">
@@ -26,11 +31,13 @@
     </footer>
   </div>
 
-
+  <template id="navigation-panel-button">
+    <button id="" class="navigation-panel__button" type="button" />
+  </template>
 
   <script type="module" src="./components/Form.js"></script>
   <script type="module" src="./components/Section.js"></script>
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="scripts/index.js"></script>
 </body>
 
 </html>

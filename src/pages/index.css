@@ -7,3 +7,6 @@
 
 @import url(../blocks/navigation-panel/__button/navigation-panel__button.css);
 @import url(../blocks/footer/__button/footer__button.css);
+
+
+@import url(../blocks/navigation-panel/__button/_active/navigation-panel__button_active.css);

@@ -1,26 +1,22 @@
 export default class Form {
-  constructor (data, formSelector) {
+  constructor (formSelector) {
     this._formSelector = formSelector;
-    console.log(data)
-    this._text = data.quote;
   }
 
   _getTemplate() {
     const formElement = document
       .querySelector(this._formSelector)
       .content
-      .querySelector('.form')
+      .querySelector('.navigation-panel__button')
       .cloneNode(true);
-      
+    
     return formElement;
   }
 
-  generateForm() {
+  generateForm(item) {
     this._element = this._getTemplate();
-    this._formTitle = this._element.querySelector('.form__title');
-    this._formInput = this._element.querySelector('.form__input-el');
-    this._formTitle.textContent = this._text; 
-    this._formInput.value = this._text;
+    this._element.textContent = item.buttonCaption;
+    this._element.setAttribute('id', item.buttonId);
     
     return this._element;
   }
