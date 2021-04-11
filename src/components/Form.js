@@ -3,7 +3,7 @@ export default class Form {
     this._formSelector = formSelector;
   }
 
-  _getTemplate() {
+  _getBtnTemplate() {
     const formElement = document
       .querySelector(this._formSelector)
       .content
@@ -13,8 +13,8 @@ export default class Form {
     return formElement;
   }
 
-  generateForm(item) {
-    this._element = this._getTemplate();
+  generateBtnForm(item) {
+    this._element = this._getBtnTemplate();
     this._element.textContent = item.buttonCaption;
     this._element.setAttribute('id', item.buttonId);
     

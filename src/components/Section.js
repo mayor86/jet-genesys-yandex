@@ -12,6 +12,10 @@ export default class Section {
     this._container.append(element);
   }
 
+  addHTMLItem(html) {
+    this._container.insertAdjacentHTML('afterbegin', html)
+  }
+
   removeItem() {
     this._container.innerHTML = '';
   }
