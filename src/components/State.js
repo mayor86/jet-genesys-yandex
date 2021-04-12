@@ -10,4 +10,8 @@ export default class State {
   getState(name) {
     return this._state[name];
   }
+
+  getFullState() {
+    return this._state;
+  }
 }

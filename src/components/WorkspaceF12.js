@@ -23,7 +23,5 @@ export default class WorkspaceF12 extends Workspace {
                     </form>`;
   }
 
-  generateForm() {
-    return this._element;
-  }
+
 }

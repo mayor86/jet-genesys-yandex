@@ -125,10 +125,12 @@ document.querySelectorAll(navigationPanelBtnSelector).forEach(btn => {
 
 const state = new State({
   activeButton: document.querySelector('#npb-01'),
-  activeWorkspace: document.querySelector('#w-01')
+  activeWorkspace: document.querySelector('#w-01'),
+  company: "Алые Фиалки",
+  lpr: 'Александр'
 });
 
-const workspaceF01 = new WorkspaceF01('');
+const workspaceF01 = new WorkspaceF01(state.getFullState());
 workspaceSection.addHTMLItem(workspaceF01.generateForm());
 const workspaceF02 = new WorkspaceF02('');
 const workspaceF03 = new WorkspaceF03('');
@@ -143,3 +145,18 @@ const workspaceF11 = new WorkspaceF11('');
 const workspaceF12 = new WorkspaceF12('');
 const workspaceF13 = new WorkspaceF13('');
 const workspaceF14 = new WorkspaceF14('');
+
+/*
+state['company'] = 'Голубые Фиалки';
+workspaceF01.update(state);
+workspaceSection.removeItem();
+workspaceSection.addHTMLItem(workspaceF01.generateForm());
+*/
+console.log(state);
+document.querySelector('#f1-company-input').addEventListener('change', (evt) => {
+  state.setState('company', evt.target.value);
+  console.log(state);
+  workspaceF01.update(state.getFullState());
+  workspaceSection.removeItem();
+  workspaceSection.addHTMLItem(workspaceF01.generateForm());
+})

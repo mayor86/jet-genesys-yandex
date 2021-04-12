@@ -1,6 +1,10 @@
 export default class Workspace {
-  constructor(scripterData) {
-    this._scripterData = scripterData;
+  constructor(state) {
+    this._state = state;
+  }
+
+  generateForm() {
+    return this._element;
   }
   
 }
