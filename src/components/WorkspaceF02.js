@@ -1,3 +1,4 @@
+// СВЯЗЬ С ПРЕДСТАВИТЕЛЕМ
 import Workspace from './Workspace.js'
 export default class WorkspaceF02 extends Workspace {
   constructor(scripterData) {

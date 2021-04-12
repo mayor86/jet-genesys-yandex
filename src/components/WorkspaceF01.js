@@ -1,3 +1,4 @@
+// СТАРТОВАЯ СТРАНИЦА
 import Workspace from './Workspace.js'
 export default class WorkspaceF01 extends Workspace {
   constructor(scripterData) {
