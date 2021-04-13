@@ -85,8 +85,8 @@ function handleNavigationPanelButtonClick(button) {
   button.setAttribute('disabled', 'true');
 
   // Обработка предыдущей активной кнопки
-  state.getState('activeButton').removeAttribute('disabled');
-  state.getState('activeButton').classList.remove('navigation-panel__button_active');
+  state.getItem('activeButton').removeAttribute('disabled');
+  state.getItem('activeButton').classList.remove('navigation-panel__button_active');
 
   // Удаление контента предыдущей страницы
   workspaceSection.removeItem();
@@ -178,7 +178,6 @@ function handleNavigationPanelButtonClick(button) {
   // Внесение изменений в state
   state.setItem('activeButton', button);
 
-
   //  console.log('IS_Attr_CampaignId: ' + document.head.getElementsByTagName('meta')[2].value);
 }
 
@@ -205,6 +204,7 @@ const workspaceF12 = new WorkspaceF12(state.getFullState());
 const workspaceF13 = new WorkspaceF13(state.getFullState());
 const workspaceF14 = new WorkspaceF14(state.getFullState());
 
+state.setItem('activeButton', document.querySelector('#NPB-01'));
 /*
 state['company'] = 'Голубые Фиалки';
 workspaceF01.update(state);
