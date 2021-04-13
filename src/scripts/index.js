@@ -11,7 +11,7 @@ import footerPanelButtons03 from '../utils/metadata/pages/page03/footerPanelButt
 
 import Section from '../components/Section.js';
 import Button from '../components/Button.js';
-import State from '../components/State.js';
+import state from '../components/State.js';
 import WorkspaceF01 from '../components/WorkspaceF01.js';
 import WorkspaceF02 from '../components/WorkspaceF02.js';
 import WorkspaceF03 from '../components/WorkspaceF03.js';
@@ -26,6 +26,8 @@ import WorkspaceF11 from '../components/WorkspaceF11.js';
 import WorkspaceF12 from '../components/WorkspaceF12.js';
 import WorkspaceF13 from '../components/WorkspaceF13.js';
 import WorkspaceF14 from '../components/WorkspaceF14.js';
+
+
 
 const navigationPanelSelector = '.navigation-panel';
 const callResultSelector = '.call-result-panel'
@@ -44,7 +46,7 @@ function createNavigationPanelButton(item) {
     buttonClickHandler: handleNavigationPanelButtonClick
   });
 
-  return button.generate(item);
+;  return button.generate(item);
 }
 
 function createCallResultButton(item) {
@@ -174,7 +176,7 @@ function handleNavigationPanelButtonClick(button) {
     workspaceSection.addHTMLItem(workspaceF14.generateForm());
   }
   // Внесение изменений в state
-  state.setState('activeButton', button);
+  state.setItem('activeButton', button);
 
 
   //  console.log('IS_Attr_CampaignId: ' + document.head.getElementsByTagName('meta')[2].value);
@@ -186,31 +188,6 @@ document.querySelectorAll(navigationPanelBtnSelector).forEach(btn => {
   btn.addEventListener('click', handlePanelBtnClick);
 })
 */
-
-const state = new State({
-  activeButton: document.querySelector('#NPB-01'),
-  //  activeWorkspace: document.querySelector('#w-01'),
-  company: "Алые Фиалки",
-  lpr: 'Александр',
-  status: 'Активный',
-  branch: 'Рестораны',
-  comment: 'Какой-то комментарий',
-  address: 'Москва, Тверская д.1',
-  lkLink: 'https://lk.drive.ru/125689',
-  phone: '+79169851250000',
-  jobTitle: 'Ген.директор',
-  email: 'alex@vk.com',
-  kpDate: '2021-03-25',
-  firstCallDate: '2021-03-22',
-  price: '15000',
-  period: '04.2021',
-  login: 'login-125689',
-  order: '1-TDYH0000',
-  expectedPayDate: '2021-03-29',
-  trxSMVP: 'T1235YTYI125000YYTY',
-  payDate: '2021-03-30',
-  flaytId: 'flayt-14785225'
-});
 
 const workspaceF01 = new WorkspaceF01(state.getFullState());
 workspaceSection.addHTMLItem(workspaceF01.generateForm());
@@ -236,7 +213,7 @@ workspaceSection.addHTMLItem(workspaceF01.generateForm());
 */
 console.log(state);
 document.querySelector('#f1-company-input').addEventListener('change', (evt) => {
-  state.setState('company', evt.target.value);
+  state.setItem('company', evt.target.value);
   console.log(state);
   workspaceF01.update(state.getFullState());
   workspaceSection.removeItem();
