@@ -1,8 +1,8 @@
 // ОТРАБОТКА ВОЗРАЖЕНИЙ
 import Workspace from './Workspace.js'
 export default class WorkspaceF07 extends Workspace {
-  constructor(scripterData) {
-    super(scripterData);
+  constructor(state) {
+    super(state);
     this._element = `<form class="workspace__container" name="f7" novalidate>
 
                       <label class="workspace__label" for="f7-too-much-input">
@@ -32,7 +32,7 @@ export default class WorkspaceF07 extends Workspace {
 
                       <label class="workspace__label" for="f7-lk-link-input">
                         Ссылка на личный кабинет
-                        <input id="f7-lk-link-input" type="link" class="workspace__input-el" name="lk-link"  disabled>
+                        <input id="f7-lk-link-input" type="link" class="workspace__input-el" name="lk-link"  value="${this._state.lkLink}" disabled>
                       </label>
 
                     </form>`;

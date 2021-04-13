@@ -1,8 +1,8 @@
 // ВЫЯВЛЕНИЕ ПОТРЕБНОСТИ
 import Workspace from './Workspace.js'
 export default class WorkspaceF04 extends Workspace {
-  constructor(scripterData) {
-    super(scripterData);
+  constructor(state) {
+    super(state);
     this._element = `<form class="workspace__container" name="f4" novalidate>
                       <input id="f4-questions-input" type="text" class="workspace__input-el" name="questions" disabled>
                       <input id="f4-answer1-input" type="text" class="workspace__input-el" name="answer1" placeholder="Ответ 1:">
@@ -16,7 +16,7 @@ export default class WorkspaceF04 extends Workspace {
                       </label>
                       <label class="workspace__label" for="f4-lk-link-input">
                         Ссылка на личный кабинет
-                        <input id="f4-lk-link-input" type="link" class="workspace__input-el" name="lk-link"  disabled>
+                        <input id="f4-lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled>
                       </label>
                     </form>`;
   }

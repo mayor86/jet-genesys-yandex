@@ -4,6 +4,7 @@
 @import url(../blocks/content/content.css);
 @import url(../blocks/navigation-panel/navigation-panel.css);
 @import url(../blocks/workspace/workspace.css);
+@import url(../blocks/call-result-panel/call-result-panel.css);
 
 @import url(../blocks/navigation-panel/__button/navigation-panel__button.css);
 @import url(../blocks/workspace/__container/workspace__container.css);

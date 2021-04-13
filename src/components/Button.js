@@ -1,4 +1,4 @@
-export default class NavigationButton {
+export default class Button {
   constructor(buttonSelector, handler) {
     this._buttonSelector = buttonSelector;
     this._buttonClickHandler = handler.buttonClickHandler;
@@ -8,16 +8,16 @@ export default class NavigationButton {
     const buttonElement = document
       .querySelector(this._buttonSelector)
       .content
-      .querySelector('.navigation-panel__button')
+      .querySelector('.button')
       .cloneNode(true);
 
     return buttonElement;
   }
 
-  generateButton(item) {
+  generate(item) {
     this._button = this._getTemplate();
-    this._button.textContent = item.buttonCaption;
-    this._button.setAttribute('id', item.buttonId);
+    this._button.textContent = item.caption;
+    this._button.setAttribute('id', item.id);
     this._setEventListeners();
 
     return this._button;

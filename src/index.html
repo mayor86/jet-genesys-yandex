@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="IS_Attr_CampaignId">
   <meta name="IS_Attr_campaignname">
 
@@ -16,30 +15,28 @@
   <div class="page">
     <main class="content">
       <section class="navigation-panel">
-        <!--
-        <button id="npb-01" class="navigation-panel__button navigation-panel__button_active" type="button" disabled="true">Стартовая страница</button>
-        <button id="npb-02" class="navigation-panel__button" type="button">Связь с представителем</button>
-        -->
       </section>
       <section class="workspace">
       </section>
       <section class="call-result-panel">
-        <button class="footer__button" type="button">Перезвонить</button>
-        <button class="footer__button" type="button">Занято</button>
       </section>
     </main>
-    <footer class="footer">
-      <button class="footer__button" type="button">Назад</button>
-      <button class="footer__button" type="button">Подумаю</button>
+    <footer class="footer-panel">
     </footer>
   </div>
 
   <template id="navigation-panel-button">
-    <button id="" class="navigation-panel__button" type="button" />
+    <button id="" class="button navigation-panel__button" type="button" />
   </template>
 
-  <script type="module" src="./components/Form.js"></script>
-  <script type="module" src="./components/Section.js"></script>
+  <template id="call-result-panel-button">
+    <button id="" class="button call-result-panel__button" type="button" />
+  </template>
+
+  <template id="footer-panel-button">
+    <button id="" class="button footer-panel__button" type="button" />
+  </template>
+
   <script type="module" src="scripts/index.js"></script>
 </body>
 

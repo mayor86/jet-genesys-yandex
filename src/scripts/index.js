@@ -1,7 +1,16 @@
-import initialData from '../utils/initialData.js';
+'use strict';
+
+
+import navigationPanelButtons from '../utils/metadata/navigationPanelButtons.js'
+import callResultButtons01 from '../utils/metadata/pages/page01/callResultButtons.js'
+import footerPanelButtons01 from '../utils/metadata/pages/page01/footerPanelButtons.js'
+import callResultButtons02 from '../utils/metadata/pages/page02/callResultButtons.js'
+import footerPanelButtons02 from '../utils/metadata/pages/page02/footerPanelButtons.js'
+import callResultButtons03 from '../utils/metadata/pages/page03/callResultButtons.js'
+import footerPanelButtons03 from '../utils/metadata/pages/page03/footerPanelButtons.js'
+
 import Section from '../components/Section.js';
-import Form from '../components/Form.js';
-import NavigationButton from '../components/NavigationButton.js';
+import Button from '../components/Button.js';
 import State from '../components/State.js';
 import WorkspaceF01 from '../components/WorkspaceF01.js';
 import WorkspaceF02 from '../components/WorkspaceF02.js';
@@ -18,52 +27,107 @@ import WorkspaceF12 from '../components/WorkspaceF12.js';
 import WorkspaceF13 from '../components/WorkspaceF13.js';
 import WorkspaceF14 from '../components/WorkspaceF14.js';
 
-const navigationPanelButtonSelector = '.navigation-panel__button'
 const navigationPanelSelector = '.navigation-panel';
+const callResultSelector = '.call-result-panel'
 const workspaceSelector = '.workspace';
-
-function createNewNavigationButton(item) {
-  const navigationButton = new NavigationButton('#navigation-panel-button', {
-    buttonClickHandler: handlePanelButtonClick
-  });
-
-  return navigationButton.generateButton(item);
-}
+const footerPanelSelector = '.footer-panel';
 
 const navigaionPanelSection = new Section({
-  items: initialData,
+  items: navigationPanelButtons,
   renderer: (item) => {
-    navigaionPanelSection.addItem(createNewNavigationButton(item))
+    navigaionPanelSection.addItem(createNavigationPanelButton(item))
   }
 }, navigationPanelSelector);
 
-const workspaceSection = new Section({
-  items: '',
-  renderer: ''
-}, workspaceSelector);
+function createNavigationPanelButton(item) {
+  const button = new Button('#navigation-panel-button', {
+    buttonClickHandler: handleNavigationPanelButtonClick
+  });
+
+  return button.generate(item);
+}
+
+function createCallResultButton(item) {
+  const button = new Button('#call-result-panel-button', {
+    buttonClickHandler: handleCallResultButtonClick
+  });
+
+  return button.generate(item);
+}
+
+function createFooterPanelButton(item) {
+  const button = new Button('#footer-panel-button', {
+    buttonClickHandler: handleFooterPanelButtonClick
+  });
+
+  return button.generate(item);
+}
+
+const workspaceSection = new Section({}, workspaceSelector);
+const callResultSection = new Section({}, callResultSelector);
+const footerPanelSection = new Section({}, footerPanelSelector);
 
 navigaionPanelSection.renderItems();
 
-function handlePanelButtonClick(button) {
+function handleCallResultButtonClick(button) {
+  console.log(button);
+}
+
+function handleFooterPanelButtonClick(button) {
+  console.log(button);
+}
+
+function handleNavigationPanelButtonClick(button) {
   // Обработка текущей кнопки
   button.classList.add('navigation-panel__button_active');
   button.setAttribute('disabled', 'true');
+
   // Обработка предыдущей активной кнопки
   state.getState('activeButton').removeAttribute('disabled');
   state.getState('activeButton').classList.remove('navigation-panel__button_active');
-  // Создание контента рабочей области
-  workspaceSection.removeItem();
 
+  // Удаление контента предыдущей страницы
+  workspaceSection.removeItem();
+  callResultSection.removeItem();
+  footerPanelSection.removeItem();
+
+  // Создание новой страницы
   if (button.getAttribute('Id').split('-')[1] === '01') {
+    // 
     workspaceSection.addHTMLItem(workspaceF01.generateForm());
-  } 
-  
+
+    callResultButtons01.forEach(item => {
+      callResultSection.addItem(createCallResultButton(item))
+    });
+
+    footerPanelButtons01.forEach(item => {
+      footerPanelSection.addItem(createFooterPanelButton(item))
+    });
+
+  }
+
   if (button.getAttribute('Id').split('-')[1] === '02') {
     workspaceSection.addHTMLItem(workspaceF02.generateForm());
+
+    callResultButtons02.forEach(item => {
+      callResultSection.addItem(createCallResultButton(item))
+    });
+
+    footerPanelButtons02.forEach(item => {
+      footerPanelSection.addItem(createFooterPanelButton(item))
+    });
   }
 
   if (button.getAttribute('Id').split('-')[1] === '03') {
     workspaceSection.addHTMLItem(workspaceF03.generateForm());
+
+    callResultButtons03.forEach(item => {
+      callResultSection.addItem(createCallResultButton(item))
+    });
+
+    footerPanelButtons03.forEach(item => {
+      footerPanelSection.addItem(createFooterPanelButton(item))
+    });
   }
 
   if (button.getAttribute('Id').split('-')[1] === '04') {
@@ -124,27 +188,45 @@ document.querySelectorAll(navigationPanelBtnSelector).forEach(btn => {
 */
 
 const state = new State({
-  activeButton: document.querySelector('#npb-01'),
-  activeWorkspace: document.querySelector('#w-01'),
+  activeButton: document.querySelector('#NPB-01'),
+  //  activeWorkspace: document.querySelector('#w-01'),
   company: "Алые Фиалки",
-  lpr: 'Александр'
+  lpr: 'Александр',
+  status: 'Активный',
+  branch: 'Рестораны',
+  comment: 'Какой-то комментарий',
+  address: 'Москва, Тверская д.1',
+  lkLink: 'https://lk.drive.ru/125689',
+  phone: '+79169851250000',
+  jobTitle: 'Ген.директор',
+  email: 'alex@vk.com',
+  kpDate: '2021-03-25',
+  firstCallDate: '2021-03-22',
+  price: '15000',
+  period: '04.2021',
+  login: 'login-125689',
+  order: '1-TDYH0000',
+  expectedPayDate: '2021-03-29',
+  trxSMVP: 'T1235YTYI125000YYTY',
+  payDate: '2021-03-30',
+  flaytId: 'flayt-14785225'
 });
 
 const workspaceF01 = new WorkspaceF01(state.getFullState());
 workspaceSection.addHTMLItem(workspaceF01.generateForm());
-const workspaceF02 = new WorkspaceF02('');
-const workspaceF03 = new WorkspaceF03('');
-const workspaceF04 = new WorkspaceF04('');
-const workspaceF05 = new WorkspaceF05('');
-const workspaceF06 = new WorkspaceF06('');
-const workspaceF07 = new WorkspaceF07('');
-const workspaceF08 = new WorkspaceF08('');
-const workspaceF09 = new WorkspaceF09('');
-const workspaceF10 = new WorkspaceF10('');
-const workspaceF11 = new WorkspaceF11('');
-const workspaceF12 = new WorkspaceF12('');
-const workspaceF13 = new WorkspaceF13('');
-const workspaceF14 = new WorkspaceF14('');
+const workspaceF02 = new WorkspaceF02(state.getFullState());
+const workspaceF03 = new WorkspaceF03(state.getFullState());
+const workspaceF04 = new WorkspaceF04(state.getFullState());
+const workspaceF05 = new WorkspaceF05(state.getFullState());
+const workspaceF06 = new WorkspaceF06(state.getFullState());
+const workspaceF07 = new WorkspaceF07(state.getFullState());
+const workspaceF08 = new WorkspaceF08(state.getFullState());
+const workspaceF09 = new WorkspaceF09(state.getFullState());
+const workspaceF10 = new WorkspaceF10(state.getFullState());
+const workspaceF11 = new WorkspaceF11(state.getFullState());
+const workspaceF12 = new WorkspaceF12(state.getFullState());
+const workspaceF13 = new WorkspaceF13(state.getFullState());
+const workspaceF14 = new WorkspaceF14(state.getFullState());
 
 /*
 state['company'] = 'Голубые Фиалки';
