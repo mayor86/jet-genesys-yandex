@@ -27,7 +27,8 @@ import WorkspaceF12 from '../components/WorkspaceF12.js';
 import WorkspaceF13 from '../components/WorkspaceF13.js';
 import WorkspaceF14 from '../components/WorkspaceF14.js';
 
-
+import View01 from '../components/View01.js';
+import View02 from '../components/View02.js';
 
 const navigationPanelSelector = '.navigation-panel';
 const callResultSelector = '.call-result-panel'
@@ -46,7 +47,8 @@ function createNavigationPanelButton(item) {
     buttonClickHandler: handleNavigationPanelButtonClick
   });
 
-;  return button.generate(item);
+  ;
+  return button.generate(item);
 }
 
 function createCallResultButton(item) {
@@ -96,28 +98,29 @@ function handleNavigationPanelButtonClick(button) {
   // Создание новой страницы
   if (button.getAttribute('Id').split('-')[1] === '01') {
     // 
-    workspaceSection.addHTMLItem(workspaceF01.generateForm());
+  //  workspaceSection.addHTMLItem(workspaceF01.generateForm());
 
-    callResultButtons01.forEach(item => {
-      callResultSection.addItem(createCallResultButton(item))
-    });
+  //  callResultButtons01.forEach(item => {
+  //    callResultSection.addItem(createCallResultButton(item))
+  //  });
 
-    footerPanelButtons01.forEach(item => {
-      footerPanelSection.addItem(createFooterPanelButton(item))
-    });
-
+  //  footerPanelButtons01.forEach(item => {
+  //    footerPanelSection.addItem(createFooterPanelButton(item))
+  //  });
+  generateView(view01);
   }
 
   if (button.getAttribute('Id').split('-')[1] === '02') {
-    workspaceSection.addHTMLItem(workspaceF02.generateForm());
+  //  workspaceSection.addHTMLItem(workspaceF02.generateForm());
 
-    callResultButtons02.forEach(item => {
-      callResultSection.addItem(createCallResultButton(item))
-    });
+  //  callResultButtons02.forEach(item => {
+  //    callResultSection.addItem(createCallResultButton(item))
+  //  });
 
-    footerPanelButtons02.forEach(item => {
-      footerPanelSection.addItem(createFooterPanelButton(item))
-    });
+  //  footerPanelButtons02.forEach(item => {
+  //    footerPanelSection.addItem(createFooterPanelButton(item))
+  //  });
+  generateView(view02);
   }
 
   if (button.getAttribute('Id').split('-')[1] === '03') {
@@ -188,23 +191,41 @@ document.querySelectorAll(navigationPanelBtnSelector).forEach(btn => {
 })
 */
 
-const workspaceF01 = new WorkspaceF01(state.getFullState());
-workspaceSection.addHTMLItem(workspaceF01.generateForm());
-const workspaceF02 = new WorkspaceF02(state.getFullState());
-const workspaceF03 = new WorkspaceF03(state.getFullState());
-const workspaceF04 = new WorkspaceF04(state.getFullState());
-const workspaceF05 = new WorkspaceF05(state.getFullState());
-const workspaceF06 = new WorkspaceF06(state.getFullState());
-const workspaceF07 = new WorkspaceF07(state.getFullState());
-const workspaceF08 = new WorkspaceF08(state.getFullState());
-const workspaceF09 = new WorkspaceF09(state.getFullState());
-const workspaceF10 = new WorkspaceF10(state.getFullState());
-const workspaceF11 = new WorkspaceF11(state.getFullState());
-const workspaceF12 = new WorkspaceF12(state.getFullState());
-const workspaceF13 = new WorkspaceF13(state.getFullState());
-const workspaceF14 = new WorkspaceF14(state.getFullState());
+//const workspaceF01 = new WorkspaceF01(state.getFullState());
+//workspaceSection.addHTMLItem(workspaceF01.generateForm());
+//const workspaceF02 = new WorkspaceF02(state.getFullState());
+//const workspaceF03 = new WorkspaceF03(state.getFullState());
+//const workspaceF04 = new WorkspaceF04(state.getFullState());
+//const workspaceF05 = new WorkspaceF05(state.getFullState());
+//const workspaceF06 = new WorkspaceF06(state.getFullState());
+//const workspaceF07 = new WorkspaceF07(state.getFullState());
+//const workspaceF08 = new WorkspaceF08(state.getFullState());
+//const workspaceF09 = new WorkspaceF09(state.getFullState());
+//const workspaceF10 = new WorkspaceF10(state.getFullState());
+//const workspaceF11 = new WorkspaceF11(state.getFullState());
+//const workspaceF12 = new WorkspaceF12(state.getFullState());
+//const workspaceF13 = new WorkspaceF13(state.getFullState());
+//const workspaceF14 = new WorkspaceF14(state.getFullState());
 
 state.setItem('activeButton', document.querySelector('#NPB-01'));
+
+const view01 = new View01(state.getFullState());
+generateView(view01);
+const view02 = new View02(state.getFullState());
+//generateView(view02);
+
+function generateView(view) {
+  workspaceSection.removeItem();
+  footerPanelSection.removeItem();
+  callResultSection.removeItem();
+  workspaceSection.addHTMLItem(view.generateWorkspace());
+  footerPanelSection.addHTMLItem(view.generateFooterPanel());
+  callResultSection.addHTMLItem(view.generateCallResultPanel());
+}
+
+
+
+
 /*
 state['company'] = 'Голубые Фиалки';
 workspaceF01.update(state);

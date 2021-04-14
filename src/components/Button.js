@@ -18,6 +18,9 @@ export default class Button {
     this._button = this._getTemplate();
     this._button.textContent = item.caption;
     this._button.setAttribute('id', item.id);
+    if(typeof item.class !== 'undefined') {
+      this._button.setAttribute('class', item.class);
+    }
     this._setEventListeners();
 
     return this._button;
