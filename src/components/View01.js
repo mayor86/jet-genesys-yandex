@@ -1,56 +1,62 @@
 import View from './View.js';
 
 export default class View01 extends View {
-  constructor(state) {
-    super();
+  constructor(handler, state) {
+    super(handler);
 
-    
     this._state = state;
+    this._status = this._state.status;
+    this._answers = 
+      `${this._state.q1}
+      ${this._state.q2}
+      ${this._state.q3}
+      ${this._state.q4}
+      ${this._state.q5}`;
     this._workspaceElement =
       `<form class="workspace__container" name="f1" novalidate>
-      <label class="workspace__label" for="f1-phone-input">
+      <label class="workspace__label" for="phone-input">
         Номер для набора
-        <input id="f1-phone-input" type="text" class="workspace__input-el" name="phone" value="${this._state.phone}" disabled >
+        <input id="phone-input" type="text" class="workspace__input-el" name="phone" value="${this._state.numberToDial}" >
       </label>
-      <label class="workspace__label" for="f1-company-input">
+      <label class="workspace__label" for="company-input">
         Название компании
-        <input id="f1-company-input" type="text" class="workspace__input-el" name="company" value="${this._state.company}" >
+        <input id="company-input" type="text" class="workspace__input-el" name="company" value="${this._state.company}" disabled >
       </label>
-      <label class="workspace__label" for="f1-lpr-input">
+      <label class="workspace__label" for="lpr-input">
         Имя ЛПР
-        <input id="f1-lpr-input" type="text" class="workspace__input-el" name="lpr" value="${this._state.lpr}" >
+        <input id="lpr-input" type="text" class="workspace__input-el" name="lpr" value="${this._state.lpr}" disabled >
       </label>
-      <label class="workspace__label" for="f1-status-input">
+      <label class="workspace__label" for="status-input">
         Статус
-        <input id="f1-status-input" type="text" class="workspace__input-el" name="status" value="${this._state.status}" >
+        <input id="status-input" type="text" class="workspace__input-el" name="status" value="${this._status}" disabled>
       </label>
-      <label class="workspace__label" for="f1-branch-input">
+      <label class="workspace__label" for="branch-input">
         Отрасль
-        <input id="f1-branch-input" type="text" class="workspace__input-el" name="branch" value="${this._state.branch}" >
+        <input id="branch-input" type="text" class="workspace__input-el" name="branch" value="${this._state.branch}" disabled>
       </label>
-      <label class="workspace__label" for="f1-comment-input">
+      <label class="workspace__label" for="comment-input">
         Комментарий
-        <input id="f1-comment-input" type="text" class="workspace__input-el" name="comment" value="${this._state.comment}" >
+        <input id="comment-input" type="text" class="workspace__input-el" name="comment" value="${this._state.comment}" disabled>
       </label>
-      <label class="workspace__label" for="f1-address-input">
+      <label class="workspace__label" for="address-input">
         Адрес
-        <input id="f1-address-input" type="text" class="workspace__input-el" name="address" value="${this._state.address}" >
+        <input id="address-input" type="text" class="workspace__input-el" name="address" value="${this._state.address}" disabled>
       </label>
-      <label class="workspace__label" for="f1-answers-input" >
+      <label class="workspace__label" for="answers-input" >
         Ответы на вопросы
-        <input id="f1-answers-input" type="text" class="workspace__input-el" name="answers" >
+        <input id="answers-input" type="text" class="workspace__input-el" name="answers" value="${this._answers}" >
       </label>
-      <label class="workspace__label" for="f1-lk-link-input">
+      <label class="workspace__label" for="lk-link-input">
         Ссылка на личный кабинет
-        <input id="f1-lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
+        <input id="lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
       </label>
     </form>`;
 
     this._footerPanelElement =
-      `<section class="footer-panel__container" name="view01">
-        <button id="FPB-01" class="button footer-panel__button" type="button" onclick="console.log('Нажали скрипт!')">Скрипт</button>
-        <button id="FPB-02" class="button footer-panel__button" type="button">Закрыто и не реализовано</button>
-        <button id="FPB-03" class="button footer-panel__button" type="button">Успешно реализовано</button>
+      `<section class="footer-panel__container">
+        <button id="FPB-01" class="button footer-panel__button" type="button" onclick="${this._getNavigationPanelButtonForFPB01()}.click()">Скрипт</button>
+        <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Закрыто и не реализовано</button>
+        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Успешно реализовано</button>
        </section>`;
 
     this._callResultPanelElement =
@@ -60,15 +66,16 @@ export default class View01 extends View {
       <button id="CRPB-04" class="button call-result-panel__button" type="button">Перезвонить</button>`;
   }
 
-  // generateView() {
-  //    this._removeItem(this._workspace);
-  //    this._removeItem(this._footerPanel);
-  //    this._removeItem(this._callResultPanel);
-  //    this._addHTMLItem(this._workspace, this._generateWorkspace());
-  //    this._addHTMLItem(this._footerPanel, this._generateFooterPanel());
-  //    this._addHTMLItem(this._callResultPanel, this._generateCallResultPanel());
-  //    this._setEventListeners();
-  //  }
+  _getNavigationPanelButtonForFPB01() {
+    if (this._status === 'Отправить счет') {
+      //  if ('ПРИЗНАК ОЖИДАЕМ РЕКВИЗИТ' === 'Y') {
+      //    return `document.querySelector('#NPB-08')`
+      //  }
+      return `document.querySelector('#NPB-03')`
+    }
+
+    return `document.querySelector('#NPB-02')`;
+  }
 
   generateWorkspace() {
     return this._workspaceElement;
@@ -82,15 +89,9 @@ export default class View01 extends View {
     return this._callResultPanelElement;
   }
 
-  _setEventListeners() {
-
-  }
-
-  _addHTMLItem(container, html) {
-    container.insertAdjacentHTML('afterbegin', html);
-  }
-
-  _removeItem(container) {
-    container.innerHTML = '';
+  setEventListeners() {
+    this._callResultHandler('#CRPB-01', 'Busy');
+    this._callResultHandler('#CRPB-02', 'No Answer');
+    this._callResultHandler('#CRPB-03', 'Wrong Party');
   }
 }

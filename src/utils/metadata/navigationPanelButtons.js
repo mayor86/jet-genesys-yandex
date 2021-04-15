@@ -1,7 +1,8 @@
 const navigationPanelButtons = [{
     caption: 'Стартовая страница',
     id: 'NPB-01',
-    class: 'button navigation-panel__button navigation-panel__button_active'
+    class: 'button navigation-panel__button navigation-panel__button_active',
+    disabled: true,
   },
   {
     caption: 'Связь с представителем',

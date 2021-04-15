@@ -21,6 +21,9 @@ export default class Button {
     if(typeof item.class !== 'undefined') {
       this._button.setAttribute('class', item.class);
     }
+    if(typeof item.disabled !== 'undefined') {
+      this._button.setAttribute('disabled', item.disabled);
+    }
     this._setEventListeners();
 
     return this._button;
