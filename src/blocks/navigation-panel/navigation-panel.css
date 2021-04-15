@@ -1,4 +1,4 @@
 .navigation-panel {
-  outline: 2px solid green;
+  border-right: 1px solid black;
   width: 20%;
 }

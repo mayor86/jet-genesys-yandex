@@ -1,6 +1,6 @@
 .call-result-panel {
   width: 10%;
-  outline: 2px solid black;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid black;
 }

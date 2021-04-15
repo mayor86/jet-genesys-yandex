@@ -1,0 +1,4 @@
+.footer-panel__container {
+  display: flex;
+  justify-content: flex-end;
+}

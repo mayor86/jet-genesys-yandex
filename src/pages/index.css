@@ -4,11 +4,13 @@
 @import url(../blocks/navigation-panel/navigation-panel.css);
 @import url(../blocks/workspace/workspace.css);
 @import url(../blocks/call-result-panel/call-result-panel.css);
+@import url(../blocks/footer-panel/footer-panel.css);
 @import url(../blocks/button/button.css);
 
 @import url(../blocks/navigation-panel/__button/navigation-panel__button.css);
 @import url(../blocks/workspace/__container/workspace__container.css);
 @import url(../blocks/workspace/__client-info/workspace__client-info.css);
+@import url(../blocks/footer-panel/__container/footer-panel__container.css);
 @import url(../blocks/footer/__button/footer__button.css);
 
 @import url(../blocks/navigation-panel/__button/_active/navigation-panel__button_active.css);
