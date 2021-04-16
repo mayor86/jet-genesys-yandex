@@ -1,4 +1,4 @@
-export default class Section {
+class Section {
   constructor({
     items,
     renderer

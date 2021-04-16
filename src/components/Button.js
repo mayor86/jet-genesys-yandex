@@ -1,4 +1,4 @@
-export default class Button {
+class Button {
   constructor(buttonSelector, handler) {
     this._buttonSelector = buttonSelector;
     this._buttonClickHandler = handler.buttonClickHandler;

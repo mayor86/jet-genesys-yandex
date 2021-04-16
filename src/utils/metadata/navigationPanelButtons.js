@@ -57,5 +57,3 @@ const navigationPanelButtons = [{
     id: 'NPB-14'
   },
 ];
-
-export default navigationPanelButtons;

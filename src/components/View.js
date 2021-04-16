@@ -1,4 +1,4 @@
-export default class View {
+class View {
   constructor(handler) {
     this._workspace = document.querySelector('.workspace');
     this._footerPanel = document.querySelector('.footer-panel');

@@ -1,5 +1,10 @@
-export default class Api {
+class Api {
+  constructor(handler){
+    this._destroyApp = handler.destroyApp;
+  }
   sendDisposition(disposition) {
+    console.log('sendDisposition >>');
+    this._destroyApp();
     // Disconnect the call.
     IS_Action_Disconnect.click();
     IS_Action_CallComplete.wrapupcode = disposition;
@@ -18,5 +23,7 @@ export default class Api {
     }
     // Execute the action.
     IS_Action_CallComplete.click();
+
+    this._destroyApp;
   }
 }

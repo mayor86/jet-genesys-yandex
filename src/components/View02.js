@@ -1,6 +1,4 @@
-import View from './View.js';
-
-export default class View02 extends View {
+class View02 extends View {
   constructor(handler, state) {
     super(handler);
 

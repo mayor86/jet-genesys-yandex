@@ -1,4 +1,4 @@
-export default class State {
+class State {
   constructor() {
 
     this._state = typeof IS_Attr_CampaignId === 'undefined' ? {
@@ -31,7 +31,7 @@ export default class State {
     } : {
       activeButton: document.querySelector('#NPB-01'),
       numberToDial: IS_Attr_numbertodial.value,
-      company: IS_Attr_COMPANYNAME.value,
+      company: IS_Attr_COMPANY_NAME.value,
       lpr: IS_Attr_contactname.value,
       status: IS_Attr_contactstate.value,
       branch: IS_Attr_Heading.value,
