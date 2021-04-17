@@ -1,3 +1,4 @@
+// View: Стартовая страница
 class View01 extends View {
   constructor(handler, state) {
     super(handler);
@@ -73,18 +74,6 @@ class View01 extends View {
     }
 
     return `document.querySelector('#NPB-02')`;
-  }
-
-  generateWorkspace() {
-    return this._workspaceElement;
-  }
-
-  generateFooterPanel() {
-    return this._footerPanelElement;
-  }
-
-  generateCallResultPanel() {
-    return this._callResultPanelElement;
   }
 
   setEventListeners() {

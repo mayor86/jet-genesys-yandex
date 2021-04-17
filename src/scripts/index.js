@@ -1,35 +1,143 @@
 'use strict';
 
-function createApp() {
+const navigationPanelSelector = '.navigation-panel';
+const workspaceSelector = '.workspace';
+const footerPanelSelector = '.footer-panel';
+const callResultPanelSelector = '.call-result-panel'
+const navigationPanelSection = new Section({}, navigationPanelSelector);
+const workspaceSection = new Section({}, workspaceSelector);
+const callResultSection = new Section({}, callResultPanelSelector);
+const footerPanelSection = new Section({}, footerPanelSelector);
 
-  const navigationPanelSelector = '.navigation-panel';
-  const callResultSelector = '.call-result-panel'
-  const workspaceSelector = '.workspace';
-  const footerPanelSelector = '.footer-panel';
-
+function createCallCard() {
   const api = new Api({
-    destroyApp: destroyApp
+    removeCallCardHandler: removeCallCard
   });
+
   const state = new State();
+  /*************************************************************************
+   * Вспомогательные функции. Предназначены для передачи в классы ViewNN
+   * sendDisposition - фиксация результата звонка (передача данных в бэкенд);
+   * openClientInfo - открытие/закрытие секции Информация о клиенте;
+   * goToPreviousView - реализация кнопки Назад (переход на предыдущее представление)
+   * ***********************************************************************/
+  function sendDisposition(selector, disposition) {
+    document.querySelector(selector).addEventListener('click', () => {
+      api.sendDisposition(disposition);
+    });
+  }
+
+  function openClientInfo(selector) {
+    document.querySelector(selector).addEventListener('click', () => {
+      document.querySelector('.workspace__client-info').classList.toggle('workspace__client-info_opened');
+    });
+  }
+
+  function goToPreviousView(selector) {
+    document.querySelector(selector).addEventListener('click', () => {
+      state.getItem('previousButton').click();
+    })
+  }
+
+
+
+
+
   const view01 = new View01({
-      callResultButtonClickHandler: sendDisposition
+      sendDispositionHandler: sendDisposition
     },
     state.getFullState());
   const view02 = new View02({
-      callResultButtonClickHandler: sendDisposition,
-      clientInfoButtonClickHandler: openClientInfo
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
     },
     state.getFullState());
 
-  const workspaceSection = new Section({}, workspaceSelector);
-  const callResultSection = new Section({}, callResultSelector);
-  const footerPanelSection = new Section({}, footerPanelSelector);
+  const view03 = new View03({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
 
-  generateView({
-    workspaceSection,
-    callResultSection,
-    footerPanelSection
-  }, view01);
+  const view04 = new View04({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view05 = new View05({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view06 = new View06({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view07 = new View07({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view08 = new View08({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view09 = new View09({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view10 = new View10({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view11 = new View11({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view12 = new View12({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view13 = new View13({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
+  const view14 = new View14({
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: openClientInfo,
+      goToPreviousViewHandler: goToPreviousView
+    },
+    state.getFullState());
+
 
   const navigaionPanelSection = new Section({
     items: navigationPanelButtons,
@@ -49,19 +157,8 @@ function createApp() {
 
 
 
-  navigaionPanelSection.renderItems();
 
-  function sendDisposition(selector, disposition) {
-    document.querySelector(selector).addEventListener('click', () => {
-      api.sendDisposition(disposition);
-    });
-  }
 
-  function openClientInfo(selector) {
-    document.querySelector(selector).addEventListener('click', () => {
-      document.querySelector('.workspace__client-info').classList.toggle('workspace__client-info_opened');
-    });
-  }
 
 
   function handleNavigationPanelButtonClick(button) {
@@ -72,12 +169,7 @@ function createApp() {
     // Обработка предыдущей активной кнопки
     state.getItem('activeButton').removeAttribute('disabled');
     state.getItem('activeButton').classList.remove('navigation-panel__button_active');
-    /*
-    // Удаление контента предыдущей страницы
-    workspaceSection.removeItem();
-    callResultSection.removeItem();
-    footerPanelSection.removeItem();
-    */
+
     // Создание новой страницы
     switch (button.getAttribute('Id')) {
       case 'NPB-01':
@@ -94,16 +186,100 @@ function createApp() {
           footerPanelSection
         }, view02);
         break;
+      case 'NPB-03':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view03);
+        break;
+      case 'NPB-04':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view04);
+        break;
+      case 'NPB-05':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view05);
+        break;
+      case 'NPB-06':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view06);
+        break;
+      case 'NPB-07':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view07);
+        break;
+      case 'NPB-08':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view08);
+        break;
+      case 'NPB-09':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view09);
+        break;
+      case 'NPB-10':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view10);
+        break;
+      case 'NPB-11':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view11);
+        break;
+      case 'NPB-12':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view12);
+        break;
+      case 'NPB-13':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view13);
+        break;
+      case 'NPB-14':
+        generateView({
+          workspaceSection,
+          callResultSection,
+          footerPanelSection
+        }, view14);
+        break;
       default:
         console.log('Кнопка не найдена.');
     }
     // Внесение изменений в state
+    state.setItem('previousButton', state.getItem('activeButton'));
     state.setItem('activeButton', button);
-    console.log(state);
   }
 
-  state.setItem('activeButton', document.querySelector('#NPB-01'));
-  console.log(state);
+
+  
 
   function generateView(sections, view) {
     // Удаление контента предыдущей страницы
@@ -118,7 +294,18 @@ function createApp() {
     view.setEventListeners();
   }
 
-  /*
+  /*************************************************************************
+   * Инициализация Стартовой страницы
+   * ***********************************************************************/
+  navigaionPanelSection.renderItems(); // инициализация кнопок навигационной панели
+  state.setItem('activeButton', document.querySelector('#NPB-01')); // установка активной страницы = Стартовая страница в state
+  generateView({
+    workspaceSection,
+    callResultSection,
+    footerPanelSection
+  }, view01);  // Генерация стартовой страницы
+
+/*
   state['company'] = 'Голубые Фиалки';
   workspaceF01.update(state);
   workspaceSection.removeItem();
@@ -139,15 +326,10 @@ function IS_Event_PreviewCallSkipped() {
   IS_Action_ClientStatus.statuskey = "Available";
   IS_Action_ClientStatus.click();
 
-  destroyApp();
+  removeCallCard();
 }
 
-function destroyApp() {
-  console.log('destroyApp >>');
-  const workspaceSection = new Section({}, '.workspace');
-  const callResultSection = new Section({}, '.call-result-panel');
-  const footerPanelSection = new Section({}, '.footer-panel');
-  const navigationPanelSection = new Section({}, '.navigation-panel');
+function removeCallCard() {
   navigationPanelSection.removeItem();
   workspaceSection.removeItem();
   callResultSection.removeItem();
@@ -155,5 +337,4 @@ function destroyApp() {
 
   workspaceSection.removeItem();
   workspaceSection.addHTMLItem('<h1>Ожидание следующей карточки звонка...</h1>');
-
 }

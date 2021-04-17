@@ -1,5 +1,5 @@
-// View: Связь с представителем
-class View02 extends View {
+// View: Клиент подумает/Отправить счет
+class View09 extends View {
   constructor(handler, state) {
     super(handler);
 
@@ -36,20 +36,22 @@ class View02 extends View {
           <input id="lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
         </label>
         
+        
     </form>`;
 
     this._footerPanelElement =
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button" type="button">Назад</button>
-        <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-03').click()">Связь с ЛПР</button>
        </section>`;
 
-    this._callResultPanelElement = `<button id="CRPB-01" class="button call-result-panel__button" type="button">Перезвонить</button>`;
+    this._callResultPanelElement = 
+      `<button id="CRPB-01" class="button call-result-panel__button" type="button">Отправить счет</button>`;
   }
 
   setEventListeners() {
     this._clientInfoHandler('#client-info-button');
     this._backButtonHandler('#FPB-01');
   }
+
 
 }
