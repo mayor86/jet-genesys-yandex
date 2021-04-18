@@ -6,7 +6,7 @@ const footerPanelSelector = '.footer-panel';
 const callResultPanelSelector = '.call-result-panel'
 const navigationPanelSection = new Section({}, navigationPanelSelector);
 const workspaceSection = new Section({}, workspaceSelector);
-const callResultSection = new Section({}, callResultPanelSelector);
+const callResultPanelSection = new Section({}, callResultPanelSelector);
 const footerPanelSection = new Section({}, footerPanelSelector);
 
 function createCallCard() {
@@ -39,12 +39,20 @@ function createCallCard() {
     })
   }
 
+  function generateView(view) {
+    workspaceSection.addHTMLItem(view.generateWorkspace());
+    footerPanelSection.addHTMLItem(view.generateFooterPanel());
+    callResultPanelSection.addHTMLItem(view.generateCallResultPanel());
 
-
-
-
+    view.setEventListeners();
+  }
+  /*************************************************************************
+   * 
+   * ***********************************************************************/
   const view01 = new View01({
-      sendDispositionHandler: sendDisposition
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: '',
+      goToPreviousViewHandler: ''
     },
     state.getFullState());
   const view02 = new View02({
@@ -155,12 +163,6 @@ function createCallCard() {
     return button.generate(item);
   }
 
-
-
-
-
-
-
   function handleNavigationPanelButtonClick(button) {
     // Обработка текущей кнопки
     button.classList.add('navigation-panel__button_active');
@@ -170,105 +172,53 @@ function createCallCard() {
     state.getItem('activeButton').removeAttribute('disabled');
     state.getItem('activeButton').classList.remove('navigation-panel__button_active');
 
+    // Удаление контента предыдущей страницы
+    workspaceSection.removeItem();
+    footerPanelSection.removeItem();
+    callResultPanelSection.removeItem();
     // Создание новой страницы
     switch (button.getAttribute('Id')) {
       case 'NPB-01':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view01);
+        generateView(view01);
         break;
       case 'NPB-02':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view02);
+        generateView(view02);
         break;
       case 'NPB-03':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view03);
+        generateView(view03);
         break;
       case 'NPB-04':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view04);
+        generateView(view04);
         break;
       case 'NPB-05':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view05);
+        generateView(view05);
         break;
       case 'NPB-06':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view06);
+        generateView(view06);
         break;
       case 'NPB-07':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view07);
+        generateView(view07);
         break;
       case 'NPB-08':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view08);
+        generateView(view08);
         break;
       case 'NPB-09':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view09);
+        generateView(view09);
         break;
       case 'NPB-10':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view10);
+        generateView(view10);
         break;
       case 'NPB-11':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view11);
+        generateView(view11);
         break;
       case 'NPB-12':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view12);
+        generateView(view12);
         break;
       case 'NPB-13':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view13);
+        generateView(view13);
         break;
       case 'NPB-14':
-        generateView({
-          workspaceSection,
-          callResultSection,
-          footerPanelSection
-        }, view14);
+        generateView(view14);
         break;
       default:
         console.log('Кнопка не найдена.');
@@ -278,48 +228,28 @@ function createCallCard() {
     state.setItem('activeButton', button);
   }
 
-
-  
-
-  function generateView(sections, view) {
-    // Удаление контента предыдущей страницы
-    workspaceSection.removeItem();
-    callResultSection.removeItem();
-    footerPanelSection.removeItem();
-
-    sections.workspaceSection.addHTMLItem(view.generateWorkspace());
-    sections.footerPanelSection.addHTMLItem(view.generateFooterPanel());
-    sections.callResultSection.addHTMLItem(view.generateCallResultPanel());
-
-    view.setEventListeners();
-  }
-
   /*************************************************************************
    * Инициализация Стартовой страницы
    * ***********************************************************************/
   navigaionPanelSection.renderItems(); // инициализация кнопок навигационной панели
   state.setItem('activeButton', document.querySelector('#NPB-01')); // установка активной страницы = Стартовая страница в state
-  generateView({
-    workspaceSection,
-    callResultSection,
-    footerPanelSection
-  }, view01);  // Генерация стартовой страницы
+  generateView(view01); // Генерация стартовой страницы
 
-/*
-  state['company'] = 'Голубые Фиалки';
-  workspaceF01.update(state);
-  workspaceSection.removeItem();
-  workspaceSection.addHTMLItem(workspaceF01.generateForm());
-
-
-  document.querySelector('#f1-company-input').addEventListener('change', (evt) => {
-    state.setItem('company', evt.target.value);
-    console.log(state);
-    workspaceF01.update(state.getFullState());
+  /*
+    state['company'] = 'Голубые Фиалки';
+    workspaceF01.update(state);
     workspaceSection.removeItem();
     workspaceSection.addHTMLItem(workspaceF01.generateForm());
-  })
-  */
+
+
+    document.querySelector('#f1-company-input').addEventListener('change', (evt) => {
+      state.setItem('company', evt.target.value);
+      console.log(state);
+      workspaceF01.update(state.getFullState());
+      workspaceSection.removeItem();
+      workspaceSection.addHTMLItem(workspaceF01.generateForm());
+    })
+    */
 }
 
 function IS_Event_PreviewCallSkipped() {
