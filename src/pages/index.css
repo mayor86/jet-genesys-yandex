@@ -6,6 +6,7 @@
 @import url(../blocks/call-result-panel/call-result-panel.css);
 @import url(../blocks/footer-panel/footer-panel.css);
 @import url(../blocks/button/button.css);
+@import url(../blocks/popup/popup.css);
 
 @import url(../blocks/navigation-panel/__button/navigation-panel__button.css);
 @import url(../blocks/workspace/__container/workspace__container.css);

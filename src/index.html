@@ -28,6 +28,7 @@
   <meta name="IS_Attr_Q3">
   <meta name="IS_Attr_Q4">
   <meta name="IS_Attr_Q5">
+  <meta name="IS_ATTR_SchedPhone">
 
   <title>Карточка скрипта</title>
   <link rel="stylesheet" type="text/css" href="./pages/index.css" />
@@ -47,6 +48,28 @@
     <footer class="footer-panel">
     </footer>
   </div>
+
+  <div class="popup">
+    <form class="popup__container" name="popup">
+      <h3 class="popup__title">Запланировать обратный вызов</h3>
+      <div class="popup__date-area">
+        <input id="planned-date-input" type="date" class="popup__input-el" name="planned-date" required>
+        <input id="planned-hours-input" type="number" class="popup__input-el" name="planned-hours" min="0" max="12"
+          value="0" required>
+        <input id="planned-minutes-input" type="number" class="popup__input-el" name="planned-minutes" min="0" max="60"
+          value="0" required>
+      </div>
+      <input id="use-alt-flg-input" type="checkbox" class="popup__input-el" name="use-alt-flg">
+      <label class="popup__label" for="use-alt-flg-input">Использовать альтернативный номер</label>
+      <div class="popup__alt-area">
+        <button type="button" class="popup__cancel-button">Отмена</button>
+        <button type="submit" class="popup__submit-button">Запланировать</button>
+      </div>
+      <button type="button" class="popup__close-button"></button>
+    </form>
+  </div>
+
+
 
   <template id="navigation-panel-button">
     <button id="" class="button navigation-panel__button" type="button" />
