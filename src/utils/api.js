@@ -30,61 +30,46 @@ class Api {
   }
 
   schedule(data) {
+    console.log(data);
+    const useAltPhoneFlg = data.useAltPhoneFlg;
+    const altPhone = data.altPhone;
+    const month = data.month;
+    const day = data.day;
+    const year = data.year;
+    const hour = data.hour;
+    const minute = data.minute;
     
     // Set up the Scheduled Phone attribute, if selected
     // This sends the scheduled call to a custom phone number, rather than what's in the contact list
-    if (useCustomNumber.checked) {
-        if (customNumber.value == "") {
-            document.getElementById("Error").innerText = "Pleaser enter a value phone number.";
-            return;
-        }
-
-        IS_ATTR_SchedPhone.value = customNumber.value.toString();
-    }
-    else {
-        IS_ATTR_SchedPhone.value = "";
+    if (useAltPhoneFlg && altPhone) {
+      IS_ATTR_SchedPhone.value = altPhone;
+    } else {
+      IS_ATTR_SchedPhone.value = "";
     }
 
-    if (agentowned.checked) {
-        IS_Action_CallComplete.AgentId = IS_System_AgentID.value;
-    }
-    else {
-        IS_Action_CallComplete.AgentId = "";
-    }
-    
-    // Grab the scheduled date/time and set the values in the CallComplete action
-    var month = document.getElementById("tagMonth");
-    var day = document.getElementById("tagDay");
-    var hour = document.getElementById("tagHour");
-    var ampm = document.getElementById("AMPMSelect");
-
-    hour = hour.options[hour.selectedIndex].value;
-    month = month.options[month.selectedIndex].value;
-    day = day.options[day.selectedIndex].value;
-    
-    IS_Action_CallComplete.ampm = ampm.options[ampm.selectedIndex].value;
+    IS_Action_CallComplete.AgentId = IS_System_AgentID.value;
 
     IS_Action_CallComplete.Month = month.toString();
     IS_Action_CallComplete.Day = day.toString();
-    IS_Action_CallComplete.Year = Year.value.toString();
+    IS_Action_CallComplete.Year = year.value.toString();
     IS_Action_CallComplete.Hour = hour.toString();
-    IS_Action_CallComplete.Minute = Minute.value.toString();
-    
+    IS_Action_CallComplete.Minute = minute.value.toString();
+
     // Set the wrapup code to "Scheduled"
     IS_Action_CallComplete.WrapupCode = "Scheduled";
     IS_Action_CallComplete.abandoned = false;
 
     // After the CallComplete action completes, go to Available and load index.html
-    IS_Action_CallComplete.callback = function(error) {
-        if (!error) {
-            IS_Action_ClientStatus.statuskey = "Available";
-            IS_Action_ClientStatus.click();
-            ChangePage("index.html");
-        } else {
-            IS_Action_Trace.level = 0;
-            IS_Action_Trace.message = "Error disposing call. " + error;
-            IS_Action_Trace.click();
-        }
+    IS_Action_CallComplete.callback = function (error) {
+      if (!error) {
+        IS_Action_ClientStatus.statuskey = "Available";
+        IS_Action_ClientStatus.click();
+        ChangePage("index.html");
+      } else {
+        IS_Action_Trace.level = 0;
+        IS_Action_Trace.message = "Error disposing call. " + error;
+        IS_Action_Trace.click();
+      }
     }
   }
 }

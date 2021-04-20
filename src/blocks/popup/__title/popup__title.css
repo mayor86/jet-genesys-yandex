@@ -1,0 +1,12 @@
+.popup__title {
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.88;
+  align-items: center;
+  color: #2E2F36;
+  border-bottom: 1px solid #F1F1F1;
+  padding-left: 39px;
+  height: 81px;
+  display: flex;
+}

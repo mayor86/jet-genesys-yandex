@@ -1,0 +1,13 @@
+.workspace__input-el {
+  height: 50px;
+  background: #EEF3F7;
+  border-radius: 4px;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 2.29;
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0 0 0 21px;
+  color: rgba(90, 93, 102, 1);
+}

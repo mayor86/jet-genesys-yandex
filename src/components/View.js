@@ -7,6 +7,7 @@ class View {
     this._callResultHandler = handler.sendDispositionHandler;
     this._clientInfoHandler = handler.openClientInfoHandler;
     this._backButtonHandler = handler.goToPreviousViewHandler;
+    this._callBackButtonHandler = handler.openPopupHandler;
   }
 
   generateWorkspace() {

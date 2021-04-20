@@ -50,23 +50,30 @@
   </div>
 
   <div class="popup">
-    <form class="popup__container" name="popup">
+    <div class="popup__cover">
       <h3 class="popup__title">Запланировать обратный вызов</h3>
-      <div class="popup__date-area">
-        <input id="planned-date-input" type="date" class="popup__input-el" name="planned-date" required>
-        <input id="planned-hours-input" type="number" class="popup__input-el" name="planned-hours" min="0" max="12"
-          value="0" required>
-        <input id="planned-minutes-input" type="number" class="popup__input-el" name="planned-minutes" min="0" max="60"
-          value="0" required>
-      </div>
-      <input id="use-alt-flg-input" type="checkbox" class="popup__input-el" name="use-alt-flg">
-      <label class="popup__label" for="use-alt-flg-input">Использовать альтернативный номер</label>
-      <div class="popup__alt-area">
-        <button type="button" class="popup__cancel-button">Отмена</button>
-        <button type="submit" class="popup__submit-button">Запланировать</button>
-      </div>
-      <button type="button" class="popup__close-button"></button>
-    </form>
+      <form class="popup__container" name="popup">
+        <div class="popup__date-area">
+          <input id="planned-date-input" type="date" class="popup__input-el popup__input-el_date" name="planned-date"
+            required>
+          <input id="planned-hours-input" type="number" class="popup__input-el popup__input-el_time"
+            name="planned-hours" min="0" max="23" value="0" required>
+          <input id="planned-minutes-input" type="number" class="popup__input-el popup__input-el_time"
+            name="planned-minutes" min="0" max="60" value="0" required>
+        </div>
+        <div class="popup__alt-phone-area">
+          <input id="use-alt-phone-flg-input" type="checkbox" class="popup__input-el" name="use-alt-phone-flg">
+          <label class="popup__label" for="use-alt-phone-flg-input">Использовать альтернативный номер</label>
+          <input id="alt-phone-input" type="phone" class="popup__input-el popup__input-el_alt-phone" name="alt-phone">
+        </div>
+        <div class="popup__error"></div>
+        <div class="popup__button-area">
+          <button type="button" class="button button_s button popup__cancel-button">Отмена</button>
+          <button type="submit" class="button button_m popup__submit-button">Запланировать</button>
+          <button type="button" class="popup__close-button"></button>
+        </div>
+      </form>
+    </div>
   </div>
 
 
@@ -87,6 +94,7 @@
   <script src="./components/Section.js"></script>
   <script src="./components/Button.js"></script>
   <script src="./components/State.js"></script>
+  <script src="./components/Popup.js"></script>
   <script src="./utils/api.js"></script>
   <script src="./components/View.js"></script>
   <script src="./components/View01.js"></script>

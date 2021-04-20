@@ -80,5 +80,6 @@ class View01 extends View {
     this._callResultHandler('#CRPB-01', 'Busy');
     this._callResultHandler('#CRPB-02', 'No Answer');
     this._callResultHandler('#CRPB-03', 'Wrong Party');
+    this._callBackButtonHandler('#CRPB-04');
   }
 }

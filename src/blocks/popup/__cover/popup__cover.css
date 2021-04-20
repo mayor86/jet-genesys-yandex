@@ -1,0 +1,11 @@
+.popup__cover {
+  width: 649px;
+  height: 359px;
+  background: #FFFFFF;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+}

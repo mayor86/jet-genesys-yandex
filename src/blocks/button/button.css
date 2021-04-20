@@ -1,11 +1,17 @@
 .button {
   height: 50px;
-  width: 100px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  border-radius: 5px;
+  text-align: center;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.9375rem;
+  line-height: 2.13;
+  border-radius: 10px;
+  background: #20D489;
+  outline: none;
+  border: none;
 }
 
 .button:hover {
-  background: #fff;
+  background: #1BB876;
 }

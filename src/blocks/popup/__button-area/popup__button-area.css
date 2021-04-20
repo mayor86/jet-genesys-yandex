@@ -1,0 +1,6 @@
+.popup__button-area {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 37px 0 0;
+  position: relative;
+}

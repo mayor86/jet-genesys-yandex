@@ -4,6 +4,7 @@ const navigationPanelSelector = '.navigation-panel';
 const workspaceSelector = '.workspace';
 const footerPanelSelector = '.footer-panel';
 const callResultPanelSelector = '.call-result-panel'
+const popupSelector = '.popup';
 const navigationPanelSection = new Section({}, navigationPanelSelector);
 const workspaceSection = new Section({}, workspaceSelector);
 const callResultPanelSection = new Section({}, callResultPanelSelector);
@@ -14,12 +15,17 @@ function createCallCard() {
     removeCallCardHandler: removeCallCard
   });
 
+  const popup = new Popup({
+    scheduleHandler: schedule
+  }, popupSelector);
+  popup.setEventListeners();
   const state = new State();
   /*************************************************************************
    * Вспомогательные функции. Предназначены для передачи в классы ViewNN
    * sendDisposition - фиксация результата звонка (передача данных в бэкенд);
    * openClientInfo - открытие/закрытие секции Информация о клиенте;
-   * goToPreviousView - реализация кнопки Назад (переход на предыдущее представление)
+   * goToPreviousView - реализация кнопки Назад (переход на предыдущее представление);
+   * openPopup - открытие popup Перезвонить
    * ***********************************************************************/
   function sendDisposition(selector, disposition) {
     document.querySelector(selector).addEventListener('click', () => {
@@ -39,6 +45,17 @@ function createCallCard() {
     })
   }
 
+  function openPopup(selector) {
+    document.querySelector(selector).addEventListener('click', () => {
+      popup.open();
+    })
+  }
+
+  function schedule(data) {
+    api.schedule(data);
+  }
+
+
   function generateView(view) {
     workspaceSection.addHTMLItem(view.generateWorkspace());
     footerPanelSection.addHTMLItem(view.generateFooterPanel());
@@ -52,7 +69,8 @@ function createCallCard() {
   const view01 = new View01({
       sendDispositionHandler: sendDisposition,
       openClientInfoHandler: '',
-      goToPreviousViewHandler: ''
+      goToPreviousViewHandler: '',
+      openPopupHandler: openPopup
     },
     state.getFullState());
   const view02 = new View02({
