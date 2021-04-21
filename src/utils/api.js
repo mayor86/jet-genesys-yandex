@@ -49,11 +49,11 @@ class Api {
 
     IS_Action_CallComplete.AgentId = IS_System_AgentID.value;
 
-    IS_Action_CallComplete.Month = month.toString();
-    IS_Action_CallComplete.Day = day.toString();
-    IS_Action_CallComplete.Year = year.value.toString();
-    IS_Action_CallComplete.Hour = hour.toString();
-    IS_Action_CallComplete.Minute = minute.value.toString();
+    IS_Action_CallComplete.Month = month;
+    IS_Action_CallComplete.Day = day;
+    IS_Action_CallComplete.Year = year;
+    IS_Action_CallComplete.Hour = hour;
+    IS_Action_CallComplete.Minute = minute;
 
     // Set the wrapup code to "Scheduled"
     IS_Action_CallComplete.WrapupCode = "Scheduled";
@@ -71,5 +71,9 @@ class Api {
         IS_Action_Trace.click();
       }
     }
+    // Execute the action.
+    IS_Action_CallComplete.click();
+    // Удаление карточки звонка
+    this._removeCallCard();
   }
 }

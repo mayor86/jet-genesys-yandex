@@ -1,4 +1,4 @@
 .navigation-panel {
-  border-right: 1px solid black;
-  width: 20%;
+  outline: 1px solid black;
+  width: 334px;
 }

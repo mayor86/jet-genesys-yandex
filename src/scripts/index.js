@@ -20,13 +20,13 @@ function createCallCard() {
   }, popupSelector);
   popup.setEventListeners();
   const state = new State();
-  /*************************************************************************
+  /**
    * Вспомогательные функции. Предназначены для передачи в классы ViewNN
    * sendDisposition - фиксация результата звонка (передача данных в бэкенд);
    * openClientInfo - открытие/закрытие секции Информация о клиенте;
    * goToPreviousView - реализация кнопки Назад (переход на предыдущее представление);
    * openPopup - открытие popup Перезвонить
-   * ***********************************************************************/
+   */
   function sendDisposition(selector, disposition) {
     document.querySelector(selector).addEventListener('click', () => {
       api.sendDisposition(disposition);
@@ -280,9 +280,11 @@ function IS_Event_PreviewCallSkipped() {
 function removeCallCard() {
   navigationPanelSection.removeItem();
   workspaceSection.removeItem();
-  callResultSection.removeItem();
+  callResultPanelSection.removeItem();
   footerPanelSection.removeItem();
 
   workspaceSection.removeItem();
   workspaceSection.addHTMLItem('<h1>Ожидание следующей карточки звонка...</h1>');
 }
+
+createCallCard();
