@@ -54,15 +54,15 @@ class View01 extends View {
     this._footerPanelElement =
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button" type="button" onclick="${this._getNavigationPanelButtonForFPB01()}.click()">Скрипт</button>
-        <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Закрыто и не реализовано</button>
+        <button id="FPB-02" class="button button_red footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Закрыто и не реализовано</button>
         <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Успешно реализовано</button>
        </section>`;
 
     this._callResultPanelElement =
-      `<button id="CRPB-01" class="button call-result-panel__button" type="button">Занято</button>
-      <button id="CRPB-02" class="button call-result-panel__button" type="button">Не отвечает</button>
-      <button id="CRPB-03" class="button call-result-panel__button" type="button">Неправильный номер</button>
-      <button id="CRPB-04" class="button call-result-panel__button" type="button">Перезвонить</button>`;
+      `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-busy.png" />Занято</button>
+      <button id="CRPB-02" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-no-answer.png" />Не отвечает</button>
+      <button id="CRPB-03" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-wrong-number.png" />Неправильный номер</button>
+      <button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
   }
 
   _getNavigationPanelButtonForFPB01() {

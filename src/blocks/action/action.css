@@ -1,6 +1,6 @@
 .actions {
   width: 293px;
-  outline: 1px solid black;
+  padding-top: 52px;
   display: flex;
   flex-direction: column;
 }

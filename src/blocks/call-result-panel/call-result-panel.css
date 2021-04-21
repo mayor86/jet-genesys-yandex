@@ -2,4 +2,5 @@
   min-height: 406px;
   display: flex;
   flex-direction: column;
+  padding: 0 14px 0 26px;
 }

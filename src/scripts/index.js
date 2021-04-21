@@ -1,11 +1,13 @@
 'use strict';
 
 const navigationPanelSelector = '.navigation-panel';
+const navigationSmallPanelSelector = '.navigation-panel-small';
 const workspaceSelector = '.workspace';
 const footerPanelSelector = '.footer-panel';
 const callResultPanelSelector = '.call-result-panel'
 const popupSelector = '.popup';
 const navigationPanelSection = new Section({}, navigationPanelSelector);
+const navigationSmallPanelSection = new Section({}, navigationSmallPanelSelector);
 const workspaceSection = new Section({}, workspaceSelector);
 const callResultPanelSection = new Section({}, callResultPanelSelector);
 const footerPanelSection = new Section({}, footerPanelSelector);
@@ -164,6 +166,12 @@ function createCallCard() {
     },
     state.getFullState());
 
+  const navigaionSmallPanelSection = new Section({
+    items: navigationSmallPanelButtons,
+    renderer: (item) => {
+      navigaionSmallPanelSection.addItem(createNavigationSmallPanelButton(item))
+    }
+  }, navigationSmallPanelSelector);
 
   const navigaionPanelSection = new Section({
     items: navigationPanelButtons,
@@ -174,6 +182,15 @@ function createCallCard() {
 
   function createNavigationPanelButton(item) {
     const button = new Button('#navigation-panel-button', {
+      buttonClickHandler: handleNavigationPanelButtonClick
+    });
+
+    ;
+    return button.generate(item);
+  }
+
+  function createNavigationSmallPanelButton(item) {
+    const button = new Button('#navigation-panel-small-button', {
       buttonClickHandler: handleNavigationPanelButtonClick
     });
 
@@ -246,9 +263,10 @@ function createCallCard() {
     state.setItem('activeButton', button);
   }
 
-  /*************************************************************************
+  /**
    * Инициализация Стартовой страницы
-   * ***********************************************************************/
+   */
+  navigaionSmallPanelSection.renderItems(); // инициализация кнопок навигационной панели
   navigaionPanelSection.renderItems(); // инициализация кнопок навигационной панели
   state.setItem('activeButton', document.querySelector('#NPB-01')); // установка активной страницы = Стартовая страница в state
   generateView(view01); // Генерация стартовой страницы

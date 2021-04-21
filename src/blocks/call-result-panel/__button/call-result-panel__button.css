@@ -1,0 +1,15 @@
+.call-result-panel__button {
+  width: 253px;
+  height: 63px;
+  background-color: #FFFFFF;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #DCDCDC;
+  text-align: left;
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 2.0;
+  cursor: pointer;
+}

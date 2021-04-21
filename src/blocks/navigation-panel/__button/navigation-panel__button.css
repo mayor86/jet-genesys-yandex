@@ -1,8 +1,16 @@
 .navigation-panel__button {
-  width: 98%;
-  height: 40px;
-  border-radius: 2px;
+  height: 32px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 2.0;
+  background: #1B1F34;
+  border-radius: 6px 0px 0px 6px;
+  color: #DADADA;
   border: none;
-  margin: 4px auto 4px auto;
-  background-color: lightgrey;
+  outline: none;
+  text-align: left;
+  margin: 0;
+  padding: 0 0 0 20px;
+  cursor: pointer;
 }
