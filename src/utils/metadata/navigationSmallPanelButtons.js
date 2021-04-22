@@ -7,51 +7,51 @@ const navigationSmallPanelButtons = [{
     src: './images/page2.png'
   },
   {
-    caption: 'Выход на ЛПР',
-    id: 'NPSB-03'
+    id: 'NPSB-03',
+    src: './images/page3.png'
   },
   {
-    caption: 'Выявление потребности',
-    id: 'NPSB-04'
+    id: 'NPSB-04',
+    src: './images/page4.png'
   },
   {
-    caption: 'Презентация подписки',
-    id: 'NPSB-05'
+    id: 'NPSB-05',
+    src: './images/page5.png'
   },
   {
-    caption: 'Презентация Рекламы в Яндекс картах',
-    id: 'NPSB-06'
+    id: 'NPSB-06',
+    src: './images/page6.png'
   },
   {
-    caption: 'Отработка возражений',
-    id: 'NPSB-07'
+    id: 'NPSB-07',
+    src: './images/page7.png'
   },
   {
-    caption: 'Категоричный отказ/Закрыть сделку',
-    id: 'NPSB-08'
+    id: 'NPSB-08',
+    src: './images/page8.png'
   },
   {
-    caption: 'Клиент подумает/Отправить счёт',
-    id: 'NPSB-09'
+    id: 'NPSB-09',
+    src: './images/page9.png'
   },
   {
-    caption: 'Выбрать вид оплаты',
-    id: 'NPSB-10'
+    id: 'NPSB-10',
+    src: './images/page10.png'
   },
   {
-    caption: 'Оплата как физ. лицо',
-    id: 'NPSB-11'
+    id: 'NPSB-11',
+    src: './images/page11.png'
   },
   {
-    caption: 'Оплата как юр. Лицо (не предоставил реквизиты)',
-    id: 'NPSB-12'
+    id: 'NPSB-12',
+    src: './images/page12.png'
   },
   {
-    caption: 'Оплата как юр. Лицо (предоставил реквизиты)',
-    id: 'NPSB-13'
+    id: 'NPSB-13',
+    src: './images/page13.png'
   },
   {
-    caption: 'Успешно реализовано',
-    id: 'NPSB-14'
+    id: 'NPSB-14',
+    src: './images/page14.png'
   },
 ];

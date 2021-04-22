@@ -1,0 +1,11 @@
+.navigation-panel-small__close-button {
+  background: #1B1F34;
+  width: 32px;
+  height: 53px;
+  margin: 0;
+  display: flex;
+  border: none;
+  cursor: pointer;
+  background-image: url('../../../images/close-navigation-panel.png');
+  background-repeat: no-repeat;
+}

@@ -1,9 +1,9 @@
 .navigation-panel__button {
-  height: 32px;
+  height: 44px;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
-  line-height: 2.0;
+  line-height: 1.37;
   background: #1B1F34;
   border-radius: 6px 0px 0px 6px;
   color: #DADADA;
@@ -11,6 +11,6 @@
   outline: none;
   text-align: left;
   margin: 0;
-  padding: 0 0 0 20px;
   cursor: pointer;
+  margin: 0 2px 0 0;
 }

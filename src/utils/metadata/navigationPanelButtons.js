@@ -1,4 +1,5 @@
-const navigationPanelButtons = [{
+const navigationPanelButtons = [
+  {
     caption: 'Стартовая страница',
     id: 'NPB-01',
     class: 'navigation-panel__button navigation-panel__button_active',

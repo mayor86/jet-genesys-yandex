@@ -191,11 +191,30 @@ function createCallCard() {
 
   function createNavigationSmallPanelButton(item) {
     const button = new Button('#navigation-panel-small-button', {
-      buttonClickHandler: handleNavigationPanelButtonClick
+      buttonClickHandler: handleNavigationPanelSmallButtonClick
     });
 
     ;
     return button.generate(item);
+  }
+
+  function handleNavigationPanelSmallButtonClick(button) {
+    // Обработка текущей кнопки
+    button.classList.add('navigation-panel-small__button_active');
+    button.setAttribute('disabled', 'true');
+
+    const smallButtonId = button.getAttribute('id');
+    const largeButtonId = '#NPB-' + smallButtonId.split('-')[1];
+    const largeButton = document.querySelector(largeButtonId);
+
+    const previousActiveSmallButtonId = '#NPSB-'+ state.getItem('activeButton').getAttribute('Id').split('-')[1];
+    const previousActiveSmallButton = document.querySelector(previousActiveSmallButtonId);
+
+    // Обработка предыдущей активной кнопки
+    previousActiveSmallButton.removeAttribute('disabled');
+    previousActiveSmallButton.classList.remove('navigation-panel-small__button_active');
+
+    largeButton.click();
   }
 
   function handleNavigationPanelButtonClick(button) {
@@ -203,9 +222,18 @@ function createCallCard() {
     button.classList.add('navigation-panel__button_active');
     button.setAttribute('disabled', 'true');
 
+    const smallButtonId = '#NPSB-' + button.getAttribute('id').split('-')[1];
+    const smallButton = document.querySelector(smallButtonId);
+    smallButton.classList.add('navigation-panel-small__button_active');
+    smallButton.setAttribute('disabled', 'true');
+
     // Обработка предыдущей активной кнопки
     state.getItem('activeButton').removeAttribute('disabled');
     state.getItem('activeButton').classList.remove('navigation-panel__button_active');
+    const previousActiveSmallButtonId = '#NPSB-'+ state.getItem('activeButton').getAttribute('Id').split('-')[1];
+    const previousActiveSmallButton = document.querySelector(previousActiveSmallButtonId);
+    previousActiveSmallButton.removeAttribute('disabled');
+    previousActiveSmallButton.classList.remove('navigation-panel-small__button_active');
 
     // Удаление контента предыдущей страницы
     workspaceSection.removeItem();
@@ -266,10 +294,20 @@ function createCallCard() {
   /**
    * Инициализация Стартовой страницы
    */
-  navigaionSmallPanelSection.renderItems(); // инициализация кнопок навигационной панели
-  navigaionPanelSection.renderItems(); // инициализация кнопок навигационной панели
-  state.setItem('activeButton', document.querySelector('#NPB-01')); // установка активной страницы = Стартовая страница в state
-  generateView(view01); // Генерация стартовой страницы
+  // инициализация кнопок навигационной панели
+  navigaionSmallPanelSection.renderItems(); 
+  navigaionPanelSection.renderItems();
+  navigaionSmallPanelSection.addHTMLItem('<button class="navigation-panel-small__close-button" type="button"></button>');
+  document.querySelector('.navigation-panel-small__close-button').addEventListener('click', () => {
+    document.querySelector('.navigation-panel-small__close-button').classList.toggle('navigation-panel-small__close-button_closed');
+    document.querySelector(navigationPanelSelector).classList.toggle('navigation-panel_closed');
+  })
+
+  // установка активной страницы = Стартовая страница в state
+  state.setItem('activeButton', document.querySelector('#NPB-01'));
+
+  // Генерация стартовой страницы
+  generateView(view01); 
 
   /*
     state['company'] = 'Голубые Фиалки';

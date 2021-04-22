@@ -1,0 +1,7 @@
+.navigation-panel-small__button_active {
+  background-image: url('../../../../images/active-page.png');
+  width: 32px;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
