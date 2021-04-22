@@ -41,14 +41,13 @@ class View10 extends View {
 
     this._footerPanelElement =
       `<section class="footer-panel__container">
-        <button id="FPB-01" class="button footer-panel__button" type="button">Назад</button>
+        <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
         <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-11').click()">Как Физ. лицо</button>
         <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-12').click()">Как Юр. лицо</button>
         <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-13').click()">Как Юр. лицо (не предоставил реквизиты)</button>
        </section>`;
 
-    this._callResultPanelElement = 
-      `<button id="CRPB-01" class="button call-result-panel__button" type="button">Перезвонить</button>`;
+    this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
   }
 
   setEventListeners() {

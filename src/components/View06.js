@@ -41,16 +41,14 @@ class View06 extends View {
 
     this._footerPanelElement =
       `<section class="footer-panel__container">
-        <button id="FPB-01" class="button footer-panel__button" type="button">Назад</button>
+        <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
         <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Категоричный отказ</button>
         <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-06').click()">Возражение</button>
         <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Подумаю</button>
         <button id="FPB-05" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-07').click()">Согласен</button>
        </section>`;
 
-    this._callResultPanelElement = 
-      `
-       <button id="CRPB-01" class="button call-result-panel__button" type="button">Перезвонить</button>`;
+    this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
   }
 
 

@@ -41,18 +41,16 @@ class View08 extends View {
 
     this._footerPanelElement =
       `<section class="footer-panel__container">
-        <button id="FPB-01" class="button footer-panel__button" type="button">Назад</button>
+        <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
         <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Категоричный отказ</button>
        </section>`;
 
-    this._callResultPanelElement = 
-      `<button id="CRPB-01" class="button call-result-panel__button" type="button">Закрыто и не реализовано</button>`;
+    this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="" />Закрыто и не реализовано</button>`;
   }
 
   setEventListeners() {
     this._clientInfoHandler('#client-info-button');
     this._backButtonHandler('#FPB-01');
   }
-
 
 }

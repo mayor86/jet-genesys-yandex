@@ -1,8 +1,9 @@
 .workspace {
-  width: 80%;
   text-align: center;
-  margin: auto;
   font-size: 28px;
   font: bold;
-  
+  padding: 62px 0 0 20px;
+  max-width: 1483px;
+  min-width: 1149px;
+  width: 79%;
 }

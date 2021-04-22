@@ -1,0 +1,9 @@
+.button_yellow {
+  color: #FBB64F;
+  background: #FEF1DE;
+}
+
+.button_yellow:hover {
+  background: #FBB64F;
+  color: #FFFFFF;
+}

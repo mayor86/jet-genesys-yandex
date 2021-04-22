@@ -21,8 +21,10 @@
 @import url(../blocks/navigation-panel-small/__close-button/navigation-panel-small__close-button.css);
 @import url(../blocks/workspace/__container/workspace__container.css);
 @import url(../blocks/workspace/__client-info/workspace__client-info.css);
+@import url(../blocks/workspace/__client-profile/workspace__client-profile.css);
 @import url(../blocks/workspace/__input-el/workspace__input-el.css);
 @import url(../blocks/workspace/__label/workspace__label.css);
+@import url(../blocks/workspace/__section/workspace__section.css);
 @import url(../blocks/call-result-panel/__button/call-result-panel__button.css);
 @import url(../blocks/call-result-panel/__image/call-result-panel__image.css);
 @import url(../blocks/footer-panel/__container/footer-panel__container.css);
@@ -39,16 +41,18 @@
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__error/popup__error.css);
 
-
 @import url(../blocks/navigation-panel/__button/_active/navigation-panel__button_active.css);
 @import url(../blocks/navigation-panel/_closed/navigation-panel_closed.css);
 @import url(../blocks/navigation-panel-small/__close-button/_closed/navigation-panel-small__close-button_closed.css);
 @import url(../blocks/navigation-panel-small/__button/_active/navigation-panel-small__button_active.css);
 @import url(../blocks/workspace/__client-info/_opened/workspace__client-info_opened.css);
+@import url(../blocks/workspace/__input-el/_s/workspace__input-el_s.css);
+@import url(../blocks/workspace/__input-el/_m/workspace__input-el_m.css);
 @import url(../blocks/popup/__input-el/_date/popup_input-el_date.css);
 @import url(../blocks/popup/__input-el/_time/popup__input-el_time.css);
 @import url(../blocks/popup/__input-el/_alt-phone/popup__input-el_alt-phone.css);
 @import url(../blocks/button/_s/button_s.css);
 @import url(../blocks/button/_m/button_m.css);
 @import url(../blocks/button/_red/button_red.css);
+@import url(../blocks/button/_yellow/button_yellow.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

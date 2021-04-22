@@ -1,5 +1,5 @@
 .actions {
-  width: 293px;
+  max-width: 293px;
   padding-top: 52px;
   display: flex;
   flex-direction: column;

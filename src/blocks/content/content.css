@@ -3,4 +3,6 @@
   flex-direction: row;
   background:#fff;
   min-height: 960px;
+  justify-content: space-between;
+  width: 1850px;
 }
