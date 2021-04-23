@@ -7,29 +7,46 @@ class View02 extends View {
     this._state = state;
     this._workspaceElement = 
       `<form class="workspace__container" name="f2" novalidate>
-        <button id="client-info-button" class="button" type="button">Информация о компании</button>
         <div class="workspace__client-info">
-          <label class="workspace__label" for="lpr-input">
-        Имя ЛПР
-        <input id="lpr-input" type="text" class="workspace__input-el" name="lpr" value="${this._state.lpr}" disabled >
-      </label>
-      <label class="workspace__label" for="status-input">
-        Статус
-        <input id="status-input" type="text" class="workspace__input-el" name="status" value="${this._status}" disabled>
-      </label>
-      <label class="workspace__label" for="branch-input">
-        Отрасль
-        <input id="branch-input" type="text" class="workspace__input-el" name="branch" value="${this._state.branch}" disabled>
-      </label>
-      <label class="workspace__label" for="comment-input">
-        Комментарий
-        <input id="comment-input" type="text" class="workspace__input-el" name="comment" value="${this._state.comment}" disabled>
-      </label>
-      <label class="workspace__label" for="address-input">
-        Адрес
-        <input id="address-input" type="text" class="workspace__input-el" name="address" value="${this._state.address}" disabled>
-      </label>
-
+          <div>
+            <img src="./images/info.png" />
+            Информация о компании
+          </div>
+          <button type="button" class="workspace__client-info-button">
+            <img class="workspace__client-info-image" />
+          </button>
+        </div>
+        <div class="workspace__client-profile">
+          <div class="workspace__section">
+            <label class="workspace__label" for="phone-input">
+              Номер для набора
+              <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" name="phone" value="${this._state.numberToDial}" >
+            </label>
+            <label class="workspace__label" for="company-input">
+              Название компании
+              <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s" name="company" value="${this._state.company}" disabled >
+            </label>
+            <label class="workspace__label" for="lpr-input">
+              Имя ЛПР
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" name="lpr" value="${this._state.lpr}" disabled >
+            </label>
+            <label class="workspace__label" for="status-input">
+              Статус
+              <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s" name="status" value="${this._status}" disabled>
+            </label>
+          </div>
+          <div class="workspace__section">
+            <label class="workspace__label" for="branch-input">
+              Отрасль
+              <input id="branch-input" type="text" class="workspace__input-el workspace__input-el_m" name="branch" value="${this._state.branch}" disabled>
+            </label>
+            <label class="workspace__label" for="address-input">
+              Адрес
+              <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m" name="address" value="${this._state.address}" disabled>
+            </label>
+          </div>
+        </div>
+        
       </div>
         <label class="workspace__label" for="lk-link-input">
           Ссылка на личный кабинет
@@ -48,7 +65,7 @@ class View02 extends View {
   }
 
   setEventListeners() {
-    this._clientInfoHandler('#client-info-button');
+    this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
   }
 

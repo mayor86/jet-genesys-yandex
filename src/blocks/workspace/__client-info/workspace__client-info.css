@@ -1,3 +1,28 @@
 .workspace__client-info {
-  display: none;
+  background: #F5F8FA;
+  border-radius: 6px;
+  height: 75px;
+  border: none;
+  outline: none;
+  text-align: left;
+  color: #2E2F36;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.0625rem;
+  line-height: 2.0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
+
+.workspace__client-info div {
+ display: flex;
+ align-items: center;
+}
+
+.workspace__client-info div img {
+  margin: 0 14px 0 14px;
+}
+

@@ -1,0 +1,11 @@
+.workspace__client-info-button {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+  width: 32px;
+  outline: none;
+  border: none;
+  background: #F5F8FA;
+  border-radius: 50%;
+}

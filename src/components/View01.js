@@ -13,7 +13,7 @@ class View01 extends View {
       ${this._state.q5}`;
     this._workspaceElement =
       `<form class="workspace__container" name="f1" novalidate>
-      <div class="workspace__client-profile">
+      <div class="workspace__client-profile workspace__client-profile_opened">
         <div class="workspace__section">
           <label class="workspace__label" for="phone-input">
             Номер для набора

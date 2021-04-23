@@ -37,7 +37,8 @@ function createCallCard() {
 
   function openClientInfo(selector) {
     document.querySelector(selector).addEventListener('click', () => {
-      document.querySelector('.workspace__client-info').classList.toggle('workspace__client-info_opened');
+      document.querySelector('.workspace__client-profile').classList.toggle('workspace__client-profile_opened');
+      document.querySelector('.workspace__client-info-image').classList.toggle('workspace__client-info-image_closed');
     });
   }
 

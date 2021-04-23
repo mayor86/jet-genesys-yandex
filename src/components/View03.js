@@ -47,10 +47,9 @@ class View03 extends View {
        </section>`;
 
     this._callResultPanelElement = 
-      `<button id="CRPB-01" class="call-result-panel__button" type="button">Вышли на ЛПР</button>
+      `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-lpr.png" />Вышли на ЛПР</button>
        <button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
   }
-
 
   setEventListeners() {
     this._clientInfoHandler('#client-info-button');
