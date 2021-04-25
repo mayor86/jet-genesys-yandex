@@ -1,0 +1,16 @@
+.workspace__question {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 2;
+  color: #2E2F36;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  outline: none;
+  border: none;
+  margin: 0 0 5px 0;
+  padding: 0 0 0 20px;
+  width: 100%;
+  margin: 0;
+}

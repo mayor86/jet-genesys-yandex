@@ -6,36 +6,98 @@ class View12 extends View {
     
     this._state = state;
     this._workspaceElement = 
-      `<form class="workspace__container" name="f2" novalidate>
-        <button id="client-info-button" class="button" type="button">Информация о компании</button>
+      `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
-          <label class="workspace__label" for="lpr-input">
-        Имя ЛПР
-        <input id="lpr-input" type="text" class="workspace__input-el" name="lpr" value="${this._state.lpr}" disabled >
-      </label>
-      <label class="workspace__label" for="status-input">
-        Статус
-        <input id="status-input" type="text" class="workspace__input-el" name="status" value="${this._status}" disabled>
-      </label>
-      <label class="workspace__label" for="branch-input">
-        Отрасль
-        <input id="branch-input" type="text" class="workspace__input-el" name="branch" value="${this._state.branch}" disabled>
-      </label>
-      <label class="workspace__label" for="comment-input">
-        Комментарий
-        <input id="comment-input" type="text" class="workspace__input-el" name="comment" value="${this._state.comment}" disabled>
-      </label>
-      <label class="workspace__label" for="address-input">
-        Адрес
-        <input id="address-input" type="text" class="workspace__input-el" name="address" value="${this._state.address}" disabled>
-      </label>
+          <div>
+            <img src="./images/info.png" />
+            Информация о компании
+          </div>
+          <button type="button" class="workspace__client-info-button">
+            <img class="workspace__client-info-image" />
+          </button>
+        </div>
+        <div class="workspace__client-profile">
+          <div class="workspace__section">
+            <label class="workspace__label" for="company-input">
+              Название компании
+              <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s" name="company" value="${this._state.company}" disabled >
+            </label>
+            <label class="workspace__label" for="lpr-input">
+              Имя ЛПР
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" name="lpr" value="${this._state.lpr}" disabled >
+            </label>
+            <label class="workspace__label" for="status-input">
+              Статус
+              <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s" name="status" value="${this._status}" disabled>
+            </label>
+          </div>
+          <div class="workspace__section">
+            <label class="workspace__label" for="branch-input">
+              Отрасль
+              <input id="branch-input" type="text" class="workspace__input-el workspace__input-el_m" name="branch" value="${this._state.branch}" disabled>
+            </label>
+            <label class="workspace__label" for="address-input">
+              Адрес
+              <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m" name="address" value="${this._state.address}" disabled>
+            </label>
+          </div>
+        </div>
 
-      </div>
-        <label class="workspace__label" for="lk-link-input">
-          Ссылка на личный кабинет
-          <input id="lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
-        </label>
+        <textarea class="workspace__info workspace__info_size_200" >В таком случае мне понадобятся..
+Ваша компания ${this._state.company}
+с видом деятельности ${this._state.branch}
+предоставляет услуги по адресу ${this._state.address}
+${this._state.lpr}, когда ждать поступления?</textarea>
+
+        <div class="workspace__section">
+            <label class="workspace__label">
+              Дата первого звонка
+              <input type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.firstCallDate}" >
+            </label>
+
+            <label class="workspace__label">
+              Дата отправки КП
+              <input type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.kpDate}" >
+            </label>
+            
+            <label class="workspace__label">
+              Имя ЛПР
+              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
+            </label>
+
+            
+        </div>
         
+        <div class="workspace__section">
+          <label class="workspace__label">
+            Должность
+            <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.jobTitle}" >
+          </label>
+
+            <label class="workspace__label">
+              Телефон
+              <input type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.phone}" >
+            </label>
+            
+            <label class="workspace__label">
+              E-mail
+              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
+            </label>
+
+        </div>
+
+        <div class="workspace__label">
+          Комментарий
+          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment" name="comment" value="${this._state.comment}" ></textarea>
+        </div>
+          
+
+        
+      </div>
+      <div class="workspace__label workspace__label_lk" >
+        Ссылка на личный кабинет
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+      </div>
         
     </form>`;
 
@@ -48,7 +110,7 @@ class View12 extends View {
   }
 
   setEventListeners() {
-    this._clientInfoHandler('#client-info-button');
+    this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
   }
 

@@ -1,0 +1,9 @@
+.workspace__info_label {
+  width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 2.0;
+  color: #2E2F36;
+  text-align: left;
+}

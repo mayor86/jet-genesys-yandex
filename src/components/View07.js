@@ -5,39 +5,76 @@ class View07 extends View {
 
     
     this._state = state;
+    this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? 'Второй абзац' : 'Первый абзац';
+    this._alreadyUse = this._state.chosenProduct === 'Subscription' ? 'со всего Яндекса' : 'Безусловно..';
+    this._noMoney = this._state.chosenProduct === 'Subscription' ? 'со всего Яндекса' : 'Безусловно..'
     this._workspaceElement = 
-      `<form class="workspace__container" name="f2" novalidate>
-        <button id="client-info-button" class="button" type="button">Информация о компании</button>
-        <div class="workspace__client-info">
-          <label class="workspace__label" for="lpr-input">
-        Имя ЛПР
-        <input id="lpr-input" type="text" class="workspace__input-el" name="lpr" value="${this._state.lpr}" disabled >
-      </label>
-      <label class="workspace__label" for="status-input">
-        Статус
-        <input id="status-input" type="text" class="workspace__input-el" name="status" value="${this._status}" disabled>
-      </label>
-      <label class="workspace__label" for="branch-input">
-        Отрасль
-        <input id="branch-input" type="text" class="workspace__input-el" name="branch" value="${this._state.branch}" disabled>
-      </label>
-      <label class="workspace__label" for="comment-input">
-        Комментарий
-        <input id="comment-input" type="text" class="workspace__input-el" name="comment" value="${this._state.comment}" disabled>
-      </label>
-      <label class="workspace__label" for="address-input">
-        Адрес
-        <input id="address-input" type="text" class="workspace__input-el" name="address" value="${this._state.address}" disabled>
-      </label>
-
+    `<form class="workspace__container" name="f1" novalidate>
+      <div class="workspace__client-info">
+        <div>
+          <img src="./images/info.png" />
+          Информация о компании
+        </div>
+        <button type="button" class="workspace__client-info-button">
+          <img class="workspace__client-info-image" />
+        </button>
       </div>
-        <label class="workspace__label" for="lk-link-input">
-          Ссылка на личный кабинет
-          <input id="lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
-        </label>
-        
-        
-    </form>`;
+      <div class="workspace__client-profile">
+        <div class="workspace__section">
+          <label class="workspace__label" for="company-input">
+            Название компании
+            <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s" name="company" value="${this._state.company}" disabled >
+          </label>
+          <label class="workspace__label" for="lpr-input">
+            Имя ЛПР
+            <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" name="lpr" value="${this._state.lpr}" disabled >
+          </label>
+          <label class="workspace__label" for="status-input">
+            Статус
+            <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s" name="status" value="${this._status}" disabled>
+          </label>
+        </div>
+        <div class="workspace__section">
+          <label class="workspace__label" for="branch-input">
+            Отрасль
+            <input id="branch-input" type="text" class="workspace__input-el workspace__input-el_m" name="branch" value="${this._state.branch}" disabled>
+          </label>
+          <label class="workspace__label" for="address-input">
+            Адрес
+            <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m" name="address" value="${this._state.address}" disabled>
+          </label>
+        </div>
+      </div>
+
+      <div class="workspace__info_label">Дорого
+        <textarea class="workspace__info" >Да, это стоит..</textarea>
+      </div>
+
+      <div class="workspace__info_label">Не сейчас
+        <textarea class="workspace__info" >Да, конечно, важно...</textarea>
+      </div>
+      
+      <div class="workspace__info_label">Уже пользуется другой рекламой и все устраивает
+        <textarea class="workspace__info" >${this._alreadyUse}</textarea>
+      </div>
+
+      <div class="workspace__info_label">Уже пользовались похожей рекламой и не понравилось
+        <textarea class="workspace__info" >Да, конечно, важно...</textarea>
+      </div>
+
+      <div class="workspace__info_label">Нет денег
+        <textarea class="workspace__info" >${this._noMoney}</textarea>
+      </div>
+
+      <textarea class="workspace__info" >${this._adapt_text}</textarea>
+
+    </div>
+    <div class="workspace__label workspace__label_lk" >
+      Ссылка на личный кабинет
+      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+    </div>
+      
+  </form>`;
 
     this._footerPanelElement =
       `<section class="footer-panel__container">
@@ -52,7 +89,7 @@ class View07 extends View {
   }
 
   setEventListeners() {
-    this._clientInfoHandler('#client-info-button');
+    this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
   }
 

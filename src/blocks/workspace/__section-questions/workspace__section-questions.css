@@ -1,0 +1,14 @@
+.workspace__section-questions {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.1875rem;
+  line-height: 2.0;
+  color: #2E2F36;
+  padding: 0 30px 0 0;
+  margin: 10px 0 0 0;
+  text-align: left;
+  background: #FBFBFC;
+  border-radius: 6px;
+}

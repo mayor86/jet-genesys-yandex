@@ -1,12 +1,9 @@
 .workspace__client-info-image {
   margin: 0 34px 0 0;
-  text-align: center;
-  outline: none;
-  border: none;
   display: flex;
-  align-self: center;
-  height: 32px;
-  width: 32px;
+  height: 18px;
+  width: 18px;
   background-image: url('../../../images/info-arrow-down.png');
   background-repeat: no-repeat;
+  background-position: center;
 }

@@ -1,0 +1,15 @@
+.workspace__info {
+  display: flex;
+  border: none;
+  outline: none;
+  resize: none;
+  margin: 0;
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  background-color: white;
+  background: #FBFBFC;
+  border-radius: 6px;
+}

@@ -1,12 +1,11 @@
 // View: Связь с представителем
 class View02 extends View {
   constructor(handler, state) {
-    super(handler);
+    super(handler, state);
 
-    
     this._state = state;
     this._workspaceElement = 
-      `<form class="workspace__container" name="f2" novalidate>
+      `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
           <div>
             <img src="./images/info.png" />
@@ -18,10 +17,6 @@ class View02 extends View {
         </div>
         <div class="workspace__client-profile">
           <div class="workspace__section">
-            <label class="workspace__label" for="phone-input">
-              Номер для набора
-              <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" name="phone" value="${this._state.numberToDial}" >
-            </label>
             <label class="workspace__label" for="company-input">
               Название компании
               <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s" name="company" value="${this._state.company}" disabled >
@@ -46,12 +41,21 @@ class View02 extends View {
             </label>
           </div>
         </div>
+
+        <textarea class="workspace__info workspace__info_size_25" disabled>Здравствуйте. Это [Имя] из компании Яндекс. Соедините, пожалуйста, с директором или маркетологом.</textarea>
+
+        <div class="workspace__info_label">Если спросили про причину
+          <textarea class="workspace__info workspace__info_size_200" disabled>Пример 1. Я звоню..
+
+Пример 2. Я звоню по вопросу...</textarea>
+        </div>
+          
         
       </div>
-        <label class="workspace__label" for="lk-link-input">
-          Ссылка на личный кабинет
-          <input id="lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
-        </label>
+      <div class="workspace__label workspace__label_lk" >
+      Ссылка на личный кабинет
+      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+    </div>
         
     </form>`;
 

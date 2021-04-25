@@ -3,39 +3,83 @@ class View03 extends View {
   constructor(handler, state) {
     super(handler);
 
-    
     this._state = state;
     this._workspaceElement = 
-      `<form class="workspace__container" name="f2" novalidate>
-        <button id="client-info-button" class="button" type="button">Информация о компании</button>
+      `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
-          <label class="workspace__label" for="lpr-input">
-        Имя ЛПР
-        <input id="lpr-input" type="text" class="workspace__input-el" name="lpr" value="${this._state.lpr}" disabled >
-      </label>
-      <label class="workspace__label" for="status-input">
-        Статус
-        <input id="status-input" type="text" class="workspace__input-el" name="status" value="${this._status}" disabled>
-      </label>
-      <label class="workspace__label" for="branch-input">
-        Отрасль
-        <input id="branch-input" type="text" class="workspace__input-el" name="branch" value="${this._state.branch}" disabled>
-      </label>
-      <label class="workspace__label" for="comment-input">
-        Комментарий
-        <input id="comment-input" type="text" class="workspace__input-el" name="comment" value="${this._state.comment}" disabled>
-      </label>
-      <label class="workspace__label" for="address-input">
-        Адрес
-        <input id="address-input" type="text" class="workspace__input-el" name="address" value="${this._state.address}" disabled>
-      </label>
+          <div>
+            <img src="./images/info.png" />
+            Информация о компании
+          </div>
+          <button type="button" class="workspace__client-info-button">
+            <img class="workspace__client-info-image" />
+          </button>
+        </div>
+        <div class="workspace__client-profile">
+          <div class="workspace__section">
+            <label class="workspace__label" for="company-input">
+              Название компании
+              <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s" name="company" value="${this._state.company}" disabled >
+            </label>
+            <label class="workspace__label" for="lpr-input">
+              Имя ЛПР
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" name="lpr" value="${this._state.lpr}" disabled >
+            </label>
+            <label class="workspace__label" for="status-input">
+              Статус
+              <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s" name="status" value="${this._status}" disabled>
+            </label>
+          </div>
+          <div class="workspace__section">
+            <label class="workspace__label" for="branch-input">
+              Отрасль
+              <input id="branch-input" type="text" class="workspace__input-el workspace__input-el_m" name="branch" value="${this._state.branch}" disabled>
+            </label>
+            <label class="workspace__label" for="address-input">
+              Адрес
+              <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m" name="address" value="${this._state.address}" disabled>
+            </label>
+          </div>
+        </div>
+
+        
+        <textarea class="workspace__info workspace__info_size_100" >${this._state.lpr}, здравствуйте. Это [Имя] из компании Яндекс.
+Как и договаривались, звоню Вам сегодня, ...</textarea>
+        
+        <div class="workspace__section">
+            <label class="workspace__label">
+              Имя ЛПР
+              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
+            </label>
+
+            <label class="workspace__label">
+              Должность
+              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.jobTitle}" >
+            </label>
+            
+            <label class="workspace__label">
+              Телефон
+              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.phone}" >
+            </label>
+
+            <label class="workspace__label">
+              E-mail
+              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
+            </label>
+          </div>
+          <div class="workspace__section">
+
+        <div class="workspace__label">
+          Комментарий
+          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment" name="comment" value="${this._state.comment}" ></textarea>
+        </div>
 
       </div>
-        <label class="workspace__label" for="lk-link-input">
-          Ссылка на личный кабинет
-          <input id="lk-link-input" type="link" class="workspace__input-el" name="lk-link" value="${this._state.lkLink}"  disabled >
-        </label>
-        
+      
+      <div class="workspace__label workspace__label_lk" >
+      Ссылка на личный кабинет
+      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+    </div>
         
     </form>`;
 
@@ -44,6 +88,8 @@ class View03 extends View {
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
         <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Категоричный отказ</button>
         <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-06').click()">Возражение</button>
+        <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-04').click()">Не ознакомился</button>
+        <button id="FPB-05" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-07').click()">Согласен</button>
        </section>`;
 
     this._callResultPanelElement = 
@@ -52,7 +98,7 @@ class View03 extends View {
   }
 
   setEventListeners() {
-    this._clientInfoHandler('#client-info-button');
+    this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
   }
 

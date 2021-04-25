@@ -1,0 +1,15 @@
+.workspace__label_lk {
+  margin: 37px 0 0 0;
+  display: flex;
+}
+
+.workspace__label_lk a {
+  display: flex;
+  width: 0;
+  align-items: center;
+  background-color: white;
+  padding: 0 0 0 20px;
+  margin: 0;
+  height: 20px;
+  color: #5390B3;
+}

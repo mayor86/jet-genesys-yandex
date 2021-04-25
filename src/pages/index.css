@@ -27,6 +27,10 @@
 @import url(../blocks/workspace/__input-el/workspace__input-el.css);
 @import url(../blocks/workspace/__label/workspace__label.css);
 @import url(../blocks/workspace/__section/workspace__section.css);
+@import url(../blocks/workspace/__answer/workspace__answer.css);
+@import url(../blocks/workspace/__question/workspace__question.css);
+@import url(../blocks/workspace/__section-questions/workspace__section-questions.css);
+@import url(../blocks/workspace/__info/workspace__info.css);
 @import url(../blocks/call-result-panel/__button/call-result-panel__button.css);
 @import url(../blocks/call-result-panel/__image/call-result-panel__image.css);
 @import url(../blocks/footer-panel/__container/footer-panel__container.css);
@@ -51,9 +55,16 @@
 @import url(../blocks/workspace/__client-info-image/_closed/workspace__client-info-image_closed.css);
 @import url(../blocks/workspace/__input-el/_s/workspace__input-el_s.css);
 @import url(../blocks/workspace/__input-el/_m/workspace__input-el_m.css);
+@import url(../blocks/workspace/__input-el/_comment/workspace__input-el_comment.css);
+@import url(../blocks/workspace/__input-el/_ro/workspace__input-el_ro.css);
+@import url(../blocks/workspace/__input-el/_dropdown/workspace__input-el_dropdown.css);
+@import url(../blocks/workspace/__info/_label/workspace__info_label.css);
+@import url(../blocks/workspace/__info/_size/workspace__info_size.css);
+@import url(../blocks/workspace/__info/_prompt/workspace__info_prompt.css);
 @import url(../blocks/popup/__input-el/_date/popup_input-el_date.css);
 @import url(../blocks/popup/__input-el/_time/popup__input-el_time.css);
 @import url(../blocks/popup/__input-el/_alt-phone/popup__input-el_alt-phone.css);
+@import url(../blocks/workspace/__label/_lk/workspace__label_lk.css);
 @import url(../blocks/button/_s/button_s.css);
 @import url(../blocks/button/_m/button_m.css);
 @import url(../blocks/button/_red/button_red.css);

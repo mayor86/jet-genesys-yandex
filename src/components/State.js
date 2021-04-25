@@ -27,7 +27,10 @@ class State {
       expectedPayDate: '2021-03-29',
       trxSMVP: 'T1235YTYI125000YYTY',
       payDate: '2021-03-30',
-      flaytId: 'flayt-14785225'
+      flaytId: 'flayt-14785225',
+      sentInvoiceFlag: 'Yes',
+      chosenProduct: 'Subscription'
+
     } : {
       activeButton: document.querySelector('#NPB-01'),
       numberToDial: IS_Attr_numbertodial.value,
@@ -43,9 +46,9 @@ class State {
       q3: IS_Attr_Q3.value,
       q4: IS_Attr_Q4.value,
       q5: IS_Attr_Q5.value,
-      phone: '',
-      jobTitle: '',
-      email: '',
+      phone: IS_Attr_contact_phone.value,
+      jobTitle: IS_Attr_contact_position.value,
+      email: IS_Attr_contact_email.value,
       kpDate: '',
       firstCallDate: '',
       price: '',
@@ -55,7 +58,9 @@ class State {
       expectedPayDate: '',
       trxSMVP: '',
       payDate: '',
-      flaytId: ''
+      flaytId: '',
+      sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
+      chosenProduct: IS_Attr_Chosen_product.value
     };
   }
 
