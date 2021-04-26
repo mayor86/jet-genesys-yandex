@@ -5,12 +5,6 @@ class View01 extends View {
 
     this._state = state;
     this._status = this._state.status;
-    this._answers = 
-      `${this._state.q1}
-      ${this._state.q2}
-      ${this._state.q3}
-      ${this._state.q4}
-      ${this._state.q5}`;
     this._workspaceElement =
       `<form class="workspace__container" name="f1" novalidate>
       <div class="workspace__client-profile workspace__client-profile_opened">
@@ -45,7 +39,7 @@ class View01 extends View {
       </div>
       <div class="workspace__label">
         Комментарий
-        <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_ro" name="comment" value="${this._state.comment}" disabled></textarea>
+        <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_ro" disabled>${this._state.comment}</textarea>
       </div>
       <div class="workspace__section-questions">
         Ответы на вопросы
@@ -112,4 +106,5 @@ class View01 extends View {
     this._callResultHandler('#CRPB-03', 'Wrong Party');
     this._callBackButtonHandler('#CRPB-04');
   }
+
 }

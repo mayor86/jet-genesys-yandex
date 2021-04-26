@@ -14,20 +14,23 @@ const footerPanelSection = new Section({}, footerPanelSelector);
 
 function createCallCard() {
   const api = new Api({
-    removeCallCardHandler: removeCallCard
+    removeCallCardHandler: removeCallCard,
+    sendStateHandler: sendStatetoAPI
   });
 
   const popup = new Popup({
     scheduleHandler: schedule
   }, popupSelector);
   popup.setEventListeners();
-  const state = new State();
+  //const state = new State();
   /**
    * Вспомогательные функции. Предназначены для передачи в классы ViewNN
    * sendDisposition - фиксация результата звонка (передача данных в бэкенд);
    * openClientInfo - открытие/закрытие секции Информация о клиенте;
    * goToPreviousView - реализация кнопки Назад (переход на предыдущее представление);
-   * openPopup - открытие popup Перезвонить
+   * openPopup - открытие popup Перезвонить;
+   * schedule - вызов API Genesys;
+   * changeFieldValue - апдейт state после изменения поля
    */
   function sendDisposition(selector, disposition) {
     document.querySelector(selector).addEventListener('click', () => {
@@ -44,7 +47,7 @@ function createCallCard() {
 
   function goToPreviousView(selector) {
     document.querySelector(selector).addEventListener('click', () => {
-      state.getItem('previousButton').click();
+      state.previousButton.click();
     })
   }
 
@@ -58,6 +61,44 @@ function createCallCard() {
     api.schedule(data);
   }
 
+  function changeFieldValue(selector, field) {
+    document.querySelector(selector).addEventListener('change', (evt) => {
+      state[field] = evt.target.value;
+    })
+  }
+
+  function sendStatetoAPI() {
+    
+    IS_Attr_numbertodial.value = state.numberToDial;
+    IS_Attr_COMPANY_NAME.value = state.company;
+    IS_Attr_contactname.value = state.lpr;
+    IS_Attr_contactstate.value = state.status;
+    IS_Attr_Heading.value = state.branch;
+    IS_Attr_comment.value = state.comment;
+    IS_Attr_Address.value = state.address;
+    IS_Attr_Link_to_personal_account.value = state.lkLink
+    IS_Attr_Q1.value = state.q1;
+    IS_Attr_Q2.value = state.q2;
+    IS_Attr_Q3.value = state.q3;
+    IS_Attr_Q4.value = state.q4;
+    IS_Attr_Q5.value = state.q5;
+    IS_Attr_contact_phone.value = state.phone;
+    IS_Attr_contact_position.value = state.jobTitle
+    IS_Attr_contact_email.value = state.email;
+    .value = state.kpDate;
+    .value = state.firstCallDate;
+    .value = state.price;
+    .value = state.period;
+    .value = state.login;
+    .value = state.order;
+    .value = state.expectedPayDate;
+    .value = state.trxSMVP;
+    .value = state.payDate;
+    .value = state.flaytId;
+
+    IS_Attr_tag_sent_invoice.value = state.sentInvoiceFlag;
+    IS_Attr_Chosen_product.value = state.chosenProduct;
+  }
 
   function generateView(view) {
     workspaceSection.addHTMLItem(view.generateWorkspace());
@@ -69,6 +110,7 @@ function createCallCard() {
   /*************************************************************************
    * 
    * ***********************************************************************/
+  /*
   const view01 = new View01({
       sendDispositionHandler: sendDisposition,
       openClientInfoHandler: '',
@@ -86,7 +128,8 @@ function createCallCard() {
   const view03 = new View03({
       sendDispositionHandler: sendDisposition,
       openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
+      goToPreviousViewHandler: goToPreviousView,
+      changeFieldValueHandler: changeFieldValue
     },
     state.getFullState());
 
@@ -166,7 +209,7 @@ function createCallCard() {
       goToPreviousViewHandler: goToPreviousView
     },
     state.getFullState());
-
+*/
   const navigaionSmallPanelSection = new Section({
     items: navigationSmallPanelButtons,
     renderer: (item) => {
@@ -208,7 +251,7 @@ function createCallCard() {
     const largeButtonId = '#NPB-' + smallButtonId.split('-')[1];
     const largeButton = document.querySelector(largeButtonId);
 
-    const previousActiveSmallButtonId = '#NPSB-'+ state.getItem('activeButton').getAttribute('Id').split('-')[1];
+    const previousActiveSmallButtonId = '#NPSB-'+ state.activeButton.getAttribute('Id').split('-')[1];
     const previousActiveSmallButton = document.querySelector(previousActiveSmallButtonId);
 
     // Обработка предыдущей активной кнопки
@@ -229,9 +272,9 @@ function createCallCard() {
     smallButton.setAttribute('disabled', 'true');
 
     // Обработка предыдущей активной кнопки
-    state.getItem('activeButton').removeAttribute('disabled');
-    state.getItem('activeButton').classList.remove('navigation-panel__button_active');
-    const previousActiveSmallButtonId = '#NPSB-'+ state.getItem('activeButton').getAttribute('Id').split('-')[1];
+    state.activeButton.removeAttribute('disabled');
+    state.activeButton.classList.remove('navigation-panel__button_active');
+    const previousActiveSmallButtonId = '#NPSB-'+ state.activeButton.getAttribute('Id').split('-')[1];
     const previousActiveSmallButton = document.querySelector(previousActiveSmallButtonId);
     previousActiveSmallButton.removeAttribute('disabled');
     previousActiveSmallButton.classList.remove('navigation-panel-small__button_active');
@@ -243,53 +286,137 @@ function createCallCard() {
     // Создание новой страницы
     switch (button.getAttribute('Id')) {
       case 'NPB-01':
-        generateView(view01);
+        generateView(new View01({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: '',
+          goToPreviousViewHandler: '',
+          openPopupHandler: openPopup
+        },
+        state));
         break;
       case 'NPB-02':
-        generateView(view02);
+        generateView(new View02({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-03':
-        generateView(view03);
+        generateView(new View03({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-04':
-        generateView(view04);
+        generateView(new View04({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-05':
-        generateView(view05);
+        generateView(new View05({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-06':
-        generateView(view06);
+        generateView(new View06({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-07':
-        generateView(view07);
+        generateView(new View07({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-08':
-        generateView(view08);
+        generateView(new View08({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-09':
-        generateView(view09);
+        generateView(new View09({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-10':
-        generateView(view10);
+        generateView(new View10({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-11':
-        generateView(view11);
+        generateView(new View11({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-12':
-        generateView(view12);
+        generateView(new View12({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-13':
-        generateView(view13);
+        generateView(new View13({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       case 'NPB-14':
-        generateView(view14);
+        generateView(new View14({
+          sendDispositionHandler: sendDisposition,
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          changeFieldValueHandler: changeFieldValue
+        },
+        state));
         break;
       default:
         console.log('Кнопка не найдена.');
     }
     // Внесение изменений в state
-    state.setItem('previousButton', state.getItem('activeButton'));
-    state.setItem('activeButton', button);
+    state.previousButton = state.activeButton;
+    state.activeButton = button;
   }
 
   /**
@@ -305,10 +432,16 @@ function createCallCard() {
   })
 
   // установка активной страницы = Стартовая страница в state
-  state.setItem('activeButton', document.querySelector('#NPB-01'));
+  state.activeButton = document.querySelector('#NPB-01');
 
   // Генерация стартовой страницы
-  generateView(view01); 
+  generateView(new View01({
+    sendDispositionHandler: sendDisposition,
+    openClientInfoHandler: '',
+    goToPreviousViewHandler: '',
+    openPopupHandler: openPopup
+  },
+  state)); 
 
   /*
     state['company'] = 'Голубые Фиалки';

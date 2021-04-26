@@ -18,27 +18,27 @@ class View14 extends View {
         </div>
         <div class="workspace__client-profile">
           <div class="workspace__section">
-            <label class="workspace__label" for="company-input">
+            <label class="workspace__label">
               Название компании
-              <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s" name="company" value="${this._state.company}" disabled >
+              <input type="text" class="workspace__input-el workspace__input-el_ro" value="${this._state.company}" disabled >
             </label>
-            <label class="workspace__label" for="lpr-input">
+            <label class="workspace__label">
               Имя ЛПР
-              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" name="lpr" value="${this._state.lpr}" disabled >
+              <input type="text" class="workspace__input-el workspace__input-el_ro" name="lpr" value="${this._state.lpr}" disabled >
             </label>
-            <label class="workspace__label" for="status-input">
+            <label class="workspace__label">
               Статус
-              <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s" name="status" value="${this._status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
-            <label class="workspace__label" for="branch-input">
+            <label class="workspace__label">
               Отрасль
-              <input id="branch-input" type="text" class="workspace__input-el workspace__input-el_m" name="branch" value="${this._state.branch}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro" name="branch" value="${this._state.branch}" disabled>
             </label>
-            <label class="workspace__label" for="address-input">
+            <label class="workspace__label">
               Адрес
-              <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
