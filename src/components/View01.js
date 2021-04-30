@@ -1,7 +1,7 @@
 // View: Стартовая страница
 class View01 extends View {
   constructor(handler, state) {
-    super(handler, state);
+    super(handler);
 
     this._state = state;
     this._status = this._state.status;
@@ -44,28 +44,43 @@ class View01 extends View {
       <div class="workspace__section-questions">
         Ответы на вопросы
         <div class="workspace__question" >
-          Как вы сейчас продвигаете свою кампанию через наши сервисы?
-          <textarea type="text" class="workspace__answer workspace__input-el_ro" disabled="true">${this._state.q1}</textarea>
+          <div class="workspace__question-area">
+            <img id="img-q1" class="workspace__question-image">
+            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+          </div>
+          <textarea id="q1" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q1}</textarea>
         </div>
 
         <div class="workspace__question" >
-          Как вы сейчас продвигаете свою кампанию через наши сервисы?
-          <textarea type="text" class="workspace__answer workspace__input-el_ro" disabled="true">${this._state.q2}</textarea>
+          <div class="workspace__question-area">
+            <img id="img-q2" class="workspace__question-image">
+            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+          </div>
+          <textarea id="q2" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q2}</textarea>
         </div>
 
         <div class="workspace__question" >
-          Как вы сейчас продвигаете свою кампанию через наши сервисы?
-          <textarea type="text" class="workspace__answer workspace__input-el_ro" disabled="true">${this._state.q3}</textarea>
+          <div class="workspace__question-area">
+            <img id="img-q3" class="workspace__question-image">
+            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+          </div>
+          <textarea id="q3" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q3}</textarea>
         </div>
         
         <div class="workspace__question" >
-          Как вы сейчас продвигаете свою кампанию через наши сервисы?
-          <textarea type="text" class="workspace__answer workspace__input-el_ro" disabled="true">${this._state.q4}</textarea>
+          <div class="workspace__question-area">
+            <img id="img-q4" class="workspace__question-image">
+            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+          </div>
+          <textarea id="q4" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q4}</textarea>
         </div>
 
         <div class="workspace__question" >
-          Как вы сейчас продвигаете свою кампанию через наши сервисы?
-          <textarea type="text" class="workspace__answer workspace__input-el_ro" disabled="true">${this._state.q5}</textarea>
+          <div class="workspace__question-area">
+            <img id="img-q5" class="workspace__question-image">
+            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+          </div>
+          <textarea id="q5" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q5}</textarea>
         </div>
 
       </div>
@@ -78,8 +93,8 @@ class View01 extends View {
     this._footerPanelElement =
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button" onclick="${this._getNavigationPanelButtonForFPB01()}.click()">Скрипт</button>
-        <button id="FPB-02" class="button button_red footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Закрыто и не реализовано</button>
-        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Успешно реализовано</button>
+        <button id="FPB-02" class="button button_red footer-panel__button" type="button" onclick="document.querySelector('#NPB-08').click()">Закрыто и не реализовано</button>
+        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-08').click()">Успешно реализовано</button>
        </section>`;
 
     this._callResultPanelElement =
@@ -95,8 +110,9 @@ class View01 extends View {
       //    return `document.querySelector('#NPB-08')`
       //  }
       return `document.querySelector('#NPB-03')`
+    } else if (this._status === 'Отправить счет') {
+      return `document.querySelector('#NPB-08')`
     }
-
     return `document.querySelector('#NPB-02')`;
   }
 
@@ -105,6 +121,32 @@ class View01 extends View {
     this._callResultHandler('#CRPB-02', 'No Answer');
     this._callResultHandler('#CRPB-03', 'Wrong Party');
     this._callBackButtonHandler('#CRPB-04');
+
+    document.querySelector('#img-q1').addEventListener('click', () => {
+      document.querySelector('#q1').classList.toggle('workspace__answer_opened');
+      document.querySelector('#img-q1').classList.toggle('workspace__question-image_closed');
+    });
+
+    document.querySelector('#img-q2').addEventListener('click', () => {
+      document.querySelector('#q2').classList.toggle('workspace__answer_opened');
+      document.querySelector('#img-q2').classList.toggle('workspace__question-image_closed');
+    });
+
+    document.querySelector('#img-q3').addEventListener('click', () => {
+      document.querySelector('#q3').classList.toggle('workspace__answer_opened');
+      document.querySelector('#img-q3').classList.toggle('workspace__question-image_closed');
+    });
+
+    document.querySelector('#img-q4').addEventListener('click', () => {
+      document.querySelector('#q4').classList.toggle('workspace__answer_opened');
+      document.querySelector('#img-q4').classList.toggle('workspace__question-image_closed');
+    });
+
+    document.querySelector('#img-q5').addEventListener('click', () => {
+      document.querySelector('#q5').classList.toggle('workspace__answer_opened');
+      document.querySelector('#img-q5').classList.toggle('workspace__question-image_closed');
+    });
+
   }
 
 }

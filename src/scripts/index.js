@@ -22,7 +22,7 @@ function createCallCard() {
     scheduleHandler: schedule
   }, popupSelector);
   popup.setEventListeners();
-  //const state = new State();
+  
   /**
    * Вспомогательные функции. Предназначены для передачи в классы ViewNN
    * sendDisposition - фиксация результата звонка (передача данных в бэкенд);
@@ -64,11 +64,16 @@ function createCallCard() {
   function changeFieldValue(selector, field) {
     document.querySelector(selector).addEventListener('change', (evt) => {
       state[field] = evt.target.value;
+      console.log(state);
     })
   }
 
+  function setStateItem(field, value) {
+    state[field] = value;
+    console.log('AB: ' + state);
+  }
+
   function sendStatetoAPI() {
-    
     IS_Attr_numbertodial.value = state.numberToDial;
     IS_Attr_COMPANY_NAME.value = state.company;
     IS_Attr_contactname.value = state.lpr;
@@ -85,17 +90,16 @@ function createCallCard() {
     IS_Attr_contact_phone.value = state.phone;
     IS_Attr_contact_position.value = state.jobTitle
     IS_Attr_contact_email.value = state.email;
-    .value = state.kpDate;
-    .value = state.firstCallDate;
-    .value = state.price;
-    .value = state.period;
-    .value = state.login;
-    .value = state.order;
-    .value = state.expectedPayDate;
-    .value = state.trxSMVP;
-    .value = state.payDate;
-    .value = state.flaytId;
-
+    IS_Attr_presentation_date.value = state.kpDate;
+    IS_Attr_call_date.value = state.firstCallDate;
+    IS_Attr_budget.value = state.price;
+    IS_Attr_distribution_period.value = state.period;
+    IS_Attr_login.value = state.login;
+    //.value = state.order;
+    IS_Attr_pay_date.value = state.expectedPayDate;
+    IS_Attr_SMVP_transaction.value = state.trxSMVP;
+    IS_Attr_Pay_date.value = state.payDate;
+    IS_Attr_id_flight.value = state.flaytId;
     IS_Attr_tag_sent_invoice.value = state.sentInvoiceFlag;
     IS_Attr_Chosen_product.value = state.chosenProduct;
   }
@@ -107,109 +111,7 @@ function createCallCard() {
 
     view.setEventListeners();
   }
-  /*************************************************************************
-   * 
-   * ***********************************************************************/
-  /*
-  const view01 = new View01({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: '',
-      goToPreviousViewHandler: '',
-      openPopupHandler: openPopup
-    },
-    state.getFullState());
-  const view02 = new View02({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view03 = new View03({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView,
-      changeFieldValueHandler: changeFieldValue
-    },
-    state.getFullState());
-
-  const view04 = new View04({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view05 = new View05({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view06 = new View06({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view07 = new View07({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view08 = new View08({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view09 = new View09({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view10 = new View10({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view11 = new View11({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view12 = new View12({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view13 = new View13({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-
-  const view14 = new View14({
-      sendDispositionHandler: sendDisposition,
-      openClientInfoHandler: openClientInfo,
-      goToPreviousViewHandler: goToPreviousView
-    },
-    state.getFullState());
-*/
+  
   const navigaionSmallPanelSection = new Section({
     items: navigationSmallPanelButtons,
     renderer: (item) => {
@@ -288,9 +190,10 @@ function createCallCard() {
       case 'NPB-01':
         generateView(new View01({
           sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: '',
-          goToPreviousViewHandler: '',
-          openPopupHandler: openPopup
+          openClientInfoHandler: openClientInfo,
+          goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
+          changeFieldValueHandler: changeFieldValue
         },
         state));
         break;
@@ -299,6 +202,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -308,6 +212,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -317,6 +222,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -326,6 +232,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -335,6 +242,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -344,6 +252,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -353,7 +262,9 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
-          changeFieldValueHandler: changeFieldValue
+          openPopupHandler: openPopup,
+          changeFieldValueHandler: changeFieldValue,
+          setStateItemHandler: setStateItem
         },
         state));
         break;
@@ -362,6 +273,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -371,6 +283,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -380,6 +293,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -389,6 +303,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -398,6 +313,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -407,6 +323,7 @@ function createCallCard() {
           sendDispositionHandler: sendDisposition,
           openClientInfoHandler: openClientInfo,
           goToPreviousViewHandler: goToPreviousView,
+          openPopupHandler: openPopup,
           changeFieldValueHandler: changeFieldValue
         },
         state));
@@ -443,21 +360,6 @@ function createCallCard() {
   },
   state)); 
 
-  /*
-    state['company'] = 'Голубые Фиалки';
-    workspaceF01.update(state);
-    workspaceSection.removeItem();
-    workspaceSection.addHTMLItem(workspaceF01.generateForm());
-
-
-    document.querySelector('#f1-company-input').addEventListener('change', (evt) => {
-      state.setItem('company', evt.target.value);
-      console.log(state);
-      workspaceF01.update(state.getFullState());
-      workspaceSection.removeItem();
-      workspaceSection.addHTMLItem(workspaceF01.generateForm());
-    })
-    */
 }
 
 function IS_Event_PreviewCallSkipped() {

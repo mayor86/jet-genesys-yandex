@@ -48,17 +48,17 @@ class View09 extends View {
         <div class="workspace__section">
             <label class="workspace__label">
               Дата первого звонка
-              <input type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.firstCallDate}" >
+              <input id="firstCallDate-input" type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.firstCallDate}" >
             </label>
 
             <label class="workspace__label">
               Дата отправки КП
-              <input type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.kpDate}" >
+              <input id="kpDate-input" type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.kpDate}" >
             </label>
             
             <label class="workspace__label">
               Имя ЛПР
-              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
             </label>
 
             
@@ -67,17 +67,17 @@ class View09 extends View {
         <div class="workspace__section">
           <label class="workspace__label">
             Должность
-            <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.jobTitle}" >
+            <input id="jobTitle-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.jobTitle}" >
           </label>
 
             <label class="workspace__label">
               Телефон
-              <input type="date" class="workspace__input-el workspace__input-el_s" value="${this._state.phone}" >
+              <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.phone}" >
             </label>
             
             <label class="workspace__label">
               E-mail
-              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
+              <input id="email-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
             </label>
 
         </div>
@@ -107,6 +107,14 @@ class View09 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
+
+    this._changeFieldValueHandler('#lpr-input', 'lpr');
+    this._changeFieldValueHandler('#firstCallDate-input', 'firstCallDate');
+    this._changeFieldValueHandler('#kpDate-input', 'kpDate');
+    this._changeFieldValueHandler('#jobTitle-input', 'jobTitle');
+    this._changeFieldValueHandler('#phone-input', 'phone');
+    this._changeFieldValueHandler('#email-input', 'email');
+    this._changeFieldValueHandler('#comment-input', 'comment');
   }
 
 

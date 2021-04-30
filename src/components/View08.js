@@ -44,7 +44,7 @@ class View08 extends View {
         </div>
         <label class="workspace__label">
         Причина закрытия
-          <select class="workspace__input-el workspace__input-el_dropdown">
+          <select id="reason" class="workspace__input-el workspace__input-el_dropdown">
           <option selected value></option>
             <option value="bad_load">Брак-Ошибка в заливке-Тест</option>
             <option value="return_money">Возврат средств</option>
@@ -62,15 +62,19 @@ class View08 extends View {
     this._footerPanelElement =
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
-        <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Категоричный отказ</button>
        </section>`;
 
     this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-close-fail.png" />Закрыто и не реализовано</button>`;
   }
 
   setEventListeners() {
+    document.querySelector('#CRPB-01').addEventListener('click', () => {
+      this._setStateItemHandler('status', 'Закрыто и не реализовано')
+    });
+
+    this._callResultHandler('#CRPB-01', 'lead_closed');
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
+    this._changeFieldValueHandler('#reason', 'lossReason');
   }
-
 }

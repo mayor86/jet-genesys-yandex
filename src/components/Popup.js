@@ -39,11 +39,24 @@ class Popup {
       evt.preventDefault();
 
       this._submitFormHandler();
-    })
+    });
 
     this._altPhoneFlg.addEventListener('click', () => {
       this._isAltPhoneToggle();
-    })
+    });
+
+    this._altPhone.addEventListener('focus', () => {
+      if(!this._altPhone.value) {
+        this._altPhone.value = '+7'
+      }
+    });
+
+    this._altPhone.addEventListener('keypress', (evt) => {
+      if(!/\d/.test(evt.key)) {
+        evt.preventDefault();
+      }
+    });
+
   }
 
   _submitFormHandler(evt) {

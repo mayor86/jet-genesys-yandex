@@ -52,29 +52,29 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
               <div class="workspace__section">
                 <label class="workspace__label">
                   Стоимость
-                  <input type="number" class="workspace__input-el" value="${this._state.price}" >
+                  <input id="price-input" type="number" class="workspace__input-el" value="${this._state.price}" >
                 </label>
         
                 <label class="workspace__label">
                   ID Заказа
-                  <input type="text" class="workspace__input-el" value="${this._state.order}" >
+                  <input id="order-input" type="text" class="workspace__input-el" value="${this._state.order}" >
                 </label>
         
                 <label class="workspace__label">
                   Период размещения
-                  <input type="text" class="workspace__input-el" value="${this._state.period}" >
+                  <input id="period-input" type="text" class="workspace__input-el" value="${this._state.period}" >
                 </label>
               </div>
         
               <div class="workspace__section">
                 <label class="workspace__label">
                   Логин
-                  <input type="text" class="workspace__input-el" value="${this._state.login}" >
+                  <input id="login-input" type="text" class="workspace__input-el" value="${this._state.login}" >
                 </label>
         
                 <label class="workspace__label">
                   Ожидаемая дата оплаты
-                  <input type="date" class="workspace__input-el" value="${this._state.expectedPayDate}" >
+                  <input id="expectedPayDate-input" type="date" class="workspace__input-el" value="${this._state.expectedPayDate}" >
                 </label>
               </div>
               
@@ -102,6 +102,12 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
+    this._changeFieldValueHandler('#price-input', 'price');
+    this._changeFieldValueHandler('#order-input', 'order');
+    this._changeFieldValueHandler('#period-input', 'period');
+    this._changeFieldValueHandler('#login-input', 'login');
+    this._changeFieldValueHandler('#expectedPayDate-input', 'expectedPayDate');
+    this._changeFieldValueHandler('#comment-input', 'comment');
   }
 
 

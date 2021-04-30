@@ -1,0 +1,10 @@
+.workspace__question-image {
+  background-image: url('../../../images/answer-close.png');
+  height: 14px;
+  width: 14px;
+  margin: 0 14px 0 0;
+  border: 0;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}

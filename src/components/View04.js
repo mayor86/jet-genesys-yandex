@@ -47,27 +47,27 @@ class View04 extends View {
           Вопросы
           <div class="workspace__question" >
             Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea type="text" class="workspace__answer" >${this._state.q1}</textarea>
+            <textarea id="q1" type="text" class="workspace__answer" >${this._state.q1}</textarea>
           </div>
 
           <div class="workspace__question" >
             Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea type="text" class="workspace__answer" >${this._state.q2}</textarea>
+            <textarea id="q2" type="text" class="workspace__answer" >${this._state.q2}</textarea>
           </div>
 
           <div class="workspace__question" >
             Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea type="text" class="workspace__answer" >${this._state.q3}</textarea>
+            <textarea id="q3" type="text" class="workspace__answer" >${this._state.q3}</textarea>
           </div>
           
           <div class="workspace__question" >
             Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea type="text" class="workspace__answer" >${this._state.q4}</textarea>
+            <textarea id="q4" type="text" class="workspace__answer" >${this._state.q4}</textarea>
           </div>
 
           <div class="workspace__question" >
             Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea type="text" class="workspace__answer" >${this._state.q5}</textarea>
+            <textarea id="q5" type="text" class="workspace__answer" >${this._state.q5}</textarea>
           </div>
 
       </div>
@@ -90,13 +90,17 @@ class View04 extends View {
        </section>`;
 
     this._callResultPanelElement = 
-      `<button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
+      `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
   }
 
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
+    this._callBackButtonHandler('#CRPB-01');
+    this._changeFieldValueHandler('#q1', 'q1');
+    this._changeFieldValueHandler('#q2', 'q2');
+    this._changeFieldValueHandler('#q3', 'q3');
+    this._changeFieldValueHandler('#q4', 'q4');
+    this._changeFieldValueHandler('#q5', 'q5');
   }
-
-
 }

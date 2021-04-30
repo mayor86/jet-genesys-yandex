@@ -6,10 +6,11 @@
   outline: none;
   border-radius: 5px;
   position: absolute;
-  top: -238px;
+  top: 41px;
   right: 24px;
 }
 
 .popup__close-button:hover {
   background: #D5F7E9;
+  cursor: pointer;
 }

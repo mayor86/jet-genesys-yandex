@@ -49,22 +49,22 @@ class View03 extends View {
         <div class="workspace__section">
             <label class="workspace__label">
               Имя ЛПР
-              <input id="" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
             </label>
 
             <label class="workspace__label">
               Должность
-              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.jobTitle}" >
+              <input id="jobTitle-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.jobTitle}" >
             </label>
             
             <label class="workspace__label">
               Телефон
-              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.phone}" >
+              <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.phone}" >
             </label>
 
             <label class="workspace__label">
               E-mail
-              <input type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
+              <input id="email-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
             </label>
           </div>
           <div class="workspace__section">
@@ -86,22 +86,26 @@ class View03 extends View {
     this._footerPanelElement =
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
-        <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-09').click()">Категоричный отказ</button>
-        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-06').click()">Возражение</button>
+        <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-08').click()">Категоричный отказ</button>
+        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-07').click()">Возражение</button>
         <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-04').click()">Не ознакомился</button>
-        <button id="FPB-05" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-07').click()">Согласен</button>
+        <button id="FPB-05" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-10').click()">Согласен</button>
        </section>`;
 
     this._callResultPanelElement = 
       `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-lpr.png" />Вышли на ЛПР</button>
-       <button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
+       <button id="CRPB-02" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
   }
 
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
-    this.changeFieldValueHandler('#comment-input', 'comment');
+    this._callBackButtonHandler('#CRPB-02');
+    this._changeFieldValueHandler('#lpr-input', 'lpr');
+    this._changeFieldValueHandler('#jobTitle-input', 'jobTitle');
+    this._changeFieldValueHandler('#phone-input', 'phone');
+    this._changeFieldValueHandler('#email-input', 'email');
+    this._changeFieldValueHandler('#comment-input', 'comment');
   }
-
 
 }

@@ -46,17 +46,17 @@ class View14 extends View {
         <div class="workspace__section">
                 <label class="workspace__label">
                   Транзакция СМПВ
-                  <input type="text" class="workspace__input-el" value="${this._state.trxSMVP}" >
+                  <input id="trxSMVP-input" type="text" class="workspace__input-el" value="${this._state.trxSMVP}" >
                 </label>
         
                 <label class="workspace__label">
                   ID Флайта
-                  <input type="text" class="workspace__input-el" value="${this._state.flaytId}" >
+                  <input id="flaytId-input" type="text" class="workspace__input-el" value="${this._state.flaytId}" >
                 </label>
         
                 <label class="workspace__label">
                   Дата оплаты
-                  <input type="date" class="workspace__input-el" value="${this._state.payDate}" >
+                  <input id="payDate-input" type="date" class="workspace__input-el" value="${this._state.payDate}" >
                 </label>
               </div>
       
@@ -85,7 +85,9 @@ class View14 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
+    this._changeFieldValueHandler('#trxSMVP-input', 'trxSMVP');
+    this._changeFieldValueHandler('#flaytId-input', 'flaytId');
+    this._changeFieldValueHandler('#payDate-input', 'payDate');
+    this._changeFieldValueHandler('#comment-input', 'comment');
   }
-
-
 }

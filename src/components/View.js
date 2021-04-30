@@ -8,7 +8,8 @@ class View {
     this._clientInfoHandler = handler.openClientInfoHandler;
     this._backButtonHandler = handler.goToPreviousViewHandler;
     this._callBackButtonHandler = handler.openPopupHandler;
-    this.changeFieldValueHandler = handler.changeFieldValueHandler;
+    this._changeFieldValueHandler = handler.changeFieldValueHandler;
+    this._setStateItemHandler = handler.setStateItemHandler;
   }
 
   generateWorkspace() {
