@@ -9,3 +9,8 @@
 .workspace__info_prompt img {
   margin: 0 7px 0 0;
 }
+
+.workspace__info_prompt-subtitle {
+  background: #F4FAF6;
+  margin: 10px 0 0 0;
+}

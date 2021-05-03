@@ -28,7 +28,7 @@ class View11 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,17 +38,20 @@ class View11 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
 
         
-        <textarea class="workspace__info workspace__info_size_200" >В таком случае мне понадобятся..
-Ваша компания ${this._state.company}
-с видом деятельности ${this._state.branch}
-предоставляет услуги по адресу ${this._state.address}
-${this._state.lpr}, когда ждать поступления?</textarea>
+<textarea class="workspace__info workspace__info_size_300" disabled>В таком случае, мне понадобятся только ваши ФИО и логин на Яндексе. Продиктуйте, пожалуйста. Записал/
+Я подготовлю ссылку для оплаты и отправлю ее на Вашу почту. На какую почту могу написать? Ссылка придет в течение 10 минут.
+А пока давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс / Рекламного размещения на Яндекс Картах, все верно?
+
+${this._state.lpr}, когда ждать поступления?
+
+Через 5-7 дней после старта рекламной кампании с Вами свяжется наш аккаунт-менеджер. Он будет помогать Вам на всем периоде размещения по Рекламной Подписке.
+</textarea>
       
       <div class="workspace__section">
         <label class="workspace__label">
@@ -63,7 +66,7 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
 
         <label class="workspace__label">
           Период размещения
-          <input id="period-input" type="text" class="workspace__input-el" value="${this._state.period}" >
+          <input id="period-input" type="text" class="workspace__input-el workspace__input-el_last-el" value="${this._state.period}" >
         </label>
       </div>
 
@@ -75,13 +78,13 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
 
         <label class="workspace__label">
           Ожидаемая дата оплаты
-          <input id="expectedPayDate-input" type="date" class="workspace__input-el" value="${this._state.expectedPayDate}" >
+          <input id="expectedPayDate-input" type="date" class="workspace__input-el workspace__input-el_last-el" value="${this._state.expectedPayDate}" >
         </label>
       </div>
       
       <div class="workspace__label">
           Комментарий
-          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment" name="comment" value="${this._state.comment}" ></textarea>
+          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_last-el" name="comment" value="${this._state.comment}" ></textarea>
       </div>
 
       </div>
@@ -101,6 +104,11 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
   }
 
   setEventListeners() {
+    document.querySelector('#CRPB-01').addEventListener('click', () => {
+      this._setStateItemHandler('status', 'Получить оплату');
+    });
+
+    this._callResultHandler('#CRPB-01', 'get_paid');
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
     this._changeFieldValueHandler('#price-input', 'price');

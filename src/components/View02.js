@@ -27,7 +27,7 @@ class View02 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -37,17 +37,18 @@ class View02 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
 
-        <textarea class="workspace__info workspace__info_size_25" disabled>Здравствуйте. Это [Имя] из компании Яндекс. Соедините, пожалуйста, с директором или маркетологом.</textarea>
+<textarea class="workspace__info workspace__info_size_25" disabled>Здравствуйте . Это ______ из компании Яндекс . Соедините, пожалуйста , с директором или маркетологом.</textarea>
 
         <div class="workspace__info_label">Если спросили про причину
-          <textarea class="workspace__info workspace__info_size_200" disabled>Пример 1. Я звоню..
+<textarea class="workspace__info workspace__info_size_150" disabled>Пример 1. Я звоню , чтобы уточнить данные , размещенные о Вашей компании в Яндекс . Обычно этим занимается руководитель или маркетолог. Соедините с кем то из них .
 
-Пример 2. Я звоню по вопросу...</textarea>
+Пример 2. Я звоню по вопросу данных о Вашей компании и безопасности контактов . Обычно этим занимается руководитель или маркетолог . Кто из них на месте сейчас
+</textarea>
         </div>
           
         

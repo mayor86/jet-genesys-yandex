@@ -3,11 +3,10 @@ class View06 extends View {
   constructor(handler, state) {
     super(handler);
 
-    
     this._state = state;
-    this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? 'Второй абзац' : 'Первый абзац';
-    this._workspaceElement = 
-    `<form class="workspace__container" name="f1" novalidate>
+    this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? `По стоимости есть несколько вариантов на 180 дней , он будет стоить _____ рублей, это со скидкой 12.5 %, и вариант на 360 дней, он стоит ____ рублей , со скидкой 25 %. Какой вариант для Вас оптимальнее?` : `По цене, самый выгодный вариант на год . Он стоит ____ руб. Как вам такой вариант?`;
+    this._workspaceElement =
+      `<form class="workspace__container" name="f1" novalidate>
       <div class="workspace__client-info">
         <div>
           <img src="./images/info.png" />
@@ -29,7 +28,7 @@ class View06 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -39,13 +38,19 @@ class View06 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
 
-      <textarea class="workspace__info" >Хочу рассказать вам про возможности рекламного формата</textarea>
-      <textarea class="workspace__info" >${this._adapt_text}</textarea>
+<textarea class="workspace__info workspace__info_size_300" disabled >Хочу рассказать Вам про возможности рекламного формата на Яндекс Картах, с помощью которого:
+
+Во первых, ваша компания будет показана на верхних позициях поисковой выдачи в Яндекс Картах и в мобильном приложении при рубричных запросах. Эти позиции собирают наибольшее количество внимания теплых и близких клиентов. Они уже ищут где купить ваш товар получить услугу и смогут быстро до вас дойти/доехать
+
+Во вторых, ваша компания будет отмечена не обычной синей, а заметной большой зеленой меткой. Такие метки кликают намного чаще. Соответственно, и шансы того, что клиент выберет именно вашу компанию , существенно растут.
+
+И в третьих , сможете больше информации о себе заполнить, акции, витрину товаров и услуг, что привлечёт больше целевых клиентов, которые уже ознакомились с Вашими предложениями и расценками.</textarea>
+      <textarea class="workspace__info" disabled>${this._adapt_text}</textarea>
       
     </div>
     <div class="workspace__label workspace__label_lk" >

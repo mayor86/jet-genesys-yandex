@@ -28,7 +28,7 @@ class View08 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,7 +38,7 @@ class View08 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
@@ -49,6 +49,21 @@ class View08 extends View {
             <option value="bad_load">Брак-Ошибка в заливке-Тест</option>
             <option value="return_money">Возврат средств</option>
             <option value="expensive">Дорого</option>
+            <option value="other">Другое</option>
+            <option value="duplicate">Дубль</option>
+            <option value="closed">Компания закрыта</option>
+            <option value="no_faith">Не верю в эффективность</option>
+            <option value="cant_call_lpr">Не вышли на ЛПР</option>
+            <option value="sprav_incorrect">Не корректная работа Справочника</option>
+            <option value="no_season">Не сезон</option>
+            <option value="no_format">Не формат Справочника</option>
+            <option value="format_unclear">Неочевидность формата</option>
+            <option value="no_effect">Неэффективная рекламная компания</option>
+            <option value="reject_talk">Отказ от разговора</option>
+            <option value="reject_budget">Отказ по бюджету</option>
+            <option value="move_to_corp">Передано корп. менеджерам</option>
+            <option value="blacklist">Черный список / geo spam</option>
+            <option value="autoclose">автозакрытие</option>
           </select>
         </label>
       </div>

@@ -28,7 +28,7 @@ class View04 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,7 +38,7 @@ class View04 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
@@ -46,34 +46,41 @@ class View04 extends View {
         <div class="workspace__section-questions">
           Вопросы
           <div class="workspace__question" >
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea id="q1" type="text" class="workspace__answer" >${this._state.q1}</textarea>
+            1. Как вы сейчас продвигаете свою кампанию через наши сервисы?
+<textarea class="workspace__info workspace__info_size_50" disabled>(Директ, РСЯ, Яндекс.Услуги? Что понравилось в рекламном инструменте Директа? Какой бюджет сейчас тратите на эту рекламу? А эта сумма с учетом затрат на маркетолога)</textarea>
+            <textarea id="q1" type="text" class="workspace__answer workspace__answer_opened workspace__input-el_w" >${this._state.q1}</textarea>
           </div>
 
           <div class="workspace__question" >
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea id="q2" type="text" class="workspace__answer" >${this._state.q2}</textarea>
+            2. Кто управляет и настраивает рекламные кампании?
+            <textarea id="q2" type="text" class="workspace__answer workspace__answer_opened workspace__input-el_w" >${this._state.q2}</textarea>
           </div>
 
           <div class="workspace__question" >
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea id="q3" type="text" class="workspace__answer" >${this._state.q3}</textarea>
+            3. Как именно хотите получать клиентов: звонки, заявки, записи?
+            <textarea id="q3" type="text" class="workspace__answer workspace__answer_opened workspace__input-el_w" >${this._state.q3}</textarea>
           </div>
           
           <div class="workspace__question" >
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea id="q4" type="text" class="workspace__answer" >${this._state.q4}</textarea>
+            4. Какой бюджет примерно выделяете на продвижение в месяц?
+            <textarea id="q4" type="text" class="workspace__answer workspace__answer_opened workspace__input-el_w" >${this._state.q4}</textarea>
           </div>
 
           <div class="workspace__question" >
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
-            <textarea id="q5" type="text" class="workspace__answer" >${this._state.q5}</textarea>
+            5. Что для вас самое важное в рекламе?
+            <textarea id="q5" type="text" class="workspace__answer workspace__answer_opened workspace__input-el_w" >${this._state.q5}</textarea>
           </div>
 
       </div>
 
+<textarea class="workspace__info workspace__info_size_100" disabled>${this._state.lpr}, если я правильно Вас понял, то Вы (кратко перечисляем то, что сказал клиент).
+
+Например: продвигаетесь только через Директ в Поиске, не увидели ожидаемого результата, настраивать рекламную кампанию помогал ваш сотрудник, и без учета его работы вы тратите до 15000 в месяц. Все так?</textarea>
+
       <div class="workspace__info_label workspace__info_prompt"><img src="./images/prompt.png">Подсказка
-          <textarea class="workspace__info workspace__info_prompt" >Если клиент не пользуется..</textarea>
+<textarea class="workspace__info workspace__info_prompt-subtitle workspace__info_size_75" disabled>Если клиент не пользуется Директом или бюджет на рекламу превышает макс. трафик на 5000 рублей - предлагаем Подписку.
+
+Если клиент уже пользуется Директом и бюджет на рекламу превышает макс. трафик на 5000 рублей - предлагаем рекламу в Яндекс.Картах</textarea>
         </div>
 
       </div>

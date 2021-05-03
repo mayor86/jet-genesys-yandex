@@ -28,7 +28,7 @@ class View09 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,12 +38,12 @@ class View09 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
         
-        <textarea class="workspace__info workspace__info_size_100" >${this._state.lpr}, конечно подумайте.</textarea>
+<textarea class="workspace__info workspace__info_size_150" disabled>${this._state.lpr}, конечно, подумайте. Принимая решение, обратите внимание, что у Вас появится возможность расширенного заполнения карточки компании, где сможете указать актуальные акции, товары и услуги, благодаря чему клиенты смогут быстро сориентироваться по цене и прийти за конкретным товаром услугой в Ваш бизнес. Я отправлю всю актуальную информацию на почту. Подскажите, на какую почту могу направить предложение? Хорошо, в течение 15 минут письмо будет у Вас на почте. Я могу позвонить Вам для продолжения диалога во вторник или в четверг в этот четверг или следующий вторник). Когда будет удобнее?</textarea>
 
         <div class="workspace__section">
             <label class="workspace__label">
@@ -58,7 +58,7 @@ class View09 extends View {
             
             <label class="workspace__label">
               Имя ЛПР
-              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_last-el" value="${this._state.lpr}" >
             </label>
 
             
@@ -77,14 +77,14 @@ class View09 extends View {
             
             <label class="workspace__label">
               E-mail
-              <input id="email-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
+              <input id="email-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_last-el" value="${this._state.email}" >
             </label>
 
         </div>
 
         <div class="workspace__label">
           Комментарий
-          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment" name="comment" value="${this._state.comment}" ></textarea>
+          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_last-el" name="comment" value="${this._state.comment}" ></textarea>
         </div>
           
 
@@ -105,6 +105,11 @@ class View09 extends View {
   }
 
   setEventListeners() {
+    document.querySelector('#CRPB-01').addEventListener('click', () => {
+      this._setStateItemHandler('status', 'Отправить счет');
+    });
+
+    this._callResultHandler('#CRPB-01', 'send_invoice');
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
 

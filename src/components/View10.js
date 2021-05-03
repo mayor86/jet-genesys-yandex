@@ -28,7 +28,7 @@ class View10 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,13 +38,14 @@ class View10 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
         
-        <textarea class="workspace__info workspace__info_size_100" >${this._state.lpr}, хороший выбор</textarea>
+<textarea class="workspace__info workspace__info_size_100" disabled>${this._state.lpr}, хороший выбор. Для оформления необходимых документов мне понадобятся Ваши данные. Подскажите, Вам как удобнее оплачивать: через реквизиты, как юр.лицо или как физ.лицо с банковской карты?
 
+В случае оплаты по реквизитам продиктуйте, пожалуйста, ИНН компании, со счета которой планируете оплату.</textarea>
       </div>
       <div class="workspace__label workspace__label_lk" >
         Ссылка на личный кабинет
@@ -57,8 +58,8 @@ class View10 extends View {
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
         <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-11').click()">Как Физ. лицо</button>
-        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-12').click()">Как Юр. лицо</button>
-        <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-13').click()">Как Юр. лицо (не предоставил реквизиты)</button>
+        <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-13').click()">Как Юр. лицо</button>
+        <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-12').click()">Как Юр. лицо (не предоставил реквизиты)</button>
        </section>`;
 
     this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
@@ -67,6 +68,7 @@ class View10 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
+    this._callBackButtonHandler('#CRPB-01');
   }
 
 

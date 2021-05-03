@@ -1,0 +1,7 @@
+.call-result-panel__error {
+  color: #F2324B;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 0.9375rem;
+  line-height: 1;
+}

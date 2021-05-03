@@ -5,7 +5,7 @@ class View07 extends View {
 
     
     this._state = state;
-    this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? 'Второй абзац' : 'Первый абзац';
+    this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? `Для Вас есть еще возможность размещения на 90 дней по стоимости _____, и на 180 дней по стоимости ____ рублей. Какой вариант оптимален для Вас и Вашей компании?` : `Как смотрите на то , чтобы размещаться на год?`;
     this._alreadyUse = this._state.chosenProduct === 'Subscription' ? 'со всего Яндекса' : 'Безусловно..';
     this._noMoney = this._state.chosenProduct === 'Subscription' ? 'со всего Яндекса' : 'Безусловно..'
     this._workspaceElement = 
@@ -31,7 +31,7 @@ class View07 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -41,32 +41,32 @@ class View07 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
 
-      <div class="workspace__info_label">Дорого
-        <textarea class="workspace__info" >Да, это стоит..</textarea>
+      <div class="workspace__info_label">Это дорого
+<textarea class="workspace__info workspace__info_size_50" disabled>Да, это стоит достойных денег, поскольку приводит целевых клиентов, которые уже хотят купить Ваш товар услугу со всего Яндекса. К тому же именно поэтому мы предлагаем выгодный годовой вариант, с которым Вы экономите 25% своего бюджета.</textarea>
       </div>
 
       <div class="workspace__info_label">Не сейчас
-        <textarea class="workspace__info" >Да, конечно, важно...</textarea>
+<textarea class="workspace__info workspace__info_size_75" disabled>Да, конечно, важно принять взвешенное решение. Просто, чем раньше Вы его примете и оплатите счет, тем быстрее клиенты начнут приходить обращаться к Вам, и реклама уже будет окупаться . К тому же, выгодно запустить рекламу именно сейчас, так как сезон/высокий/спрос/много конкурентов.</textarea>
       </div>
       
       <div class="workspace__info_label">Уже пользуется другой рекламой и все устраивает
-        <textarea class="workspace__info" >${this._alreadyUse}</textarea>
+        <textarea class="workspace__info" disabled>${this._alreadyUse}</textarea>
       </div>
 
       <div class="workspace__info_label">Уже пользовались похожей рекламой и не понравилось
-        <textarea class="workspace__info" >Да, конечно, важно...</textarea>
+<textarea class="workspace__info workspace__info_size_75" disabled>Это правильно, что Вы тестируете различные рекламные источники. Результат любой рекламы может быть как положительным, так и отрицательным. Попробуйте Рекламную подписку на Яндекс / Рекламное размещение на Яндекс Картах, так как здесь большая вероятность, что теплые и близкие клиенты увидят Вас и позвонят/придут/приедут.</textarea>
       </div>
 
       <div class="workspace__info_label">Нет денег
-        <textarea class="workspace__info" >${this._noMoney}</textarea>
+        <textarea class="workspace__info" disabled>${this._noMoney}</textarea>
       </div>
 
-      <textarea class="workspace__info" >${this._adapt_text}</textarea>
+      <textarea class="workspace__info" disabled>${this._adapt_text}</textarea>
 
     </div>
     <div class="workspace__label workspace__label_lk" >

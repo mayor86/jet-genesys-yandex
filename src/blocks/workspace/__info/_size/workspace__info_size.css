@@ -6,8 +6,28 @@
   height: 50px;
 }
 
+.workspace__info_size_75 {
+  height: 75px;
+}
+
 .workspace__info_size_100 {
   height: 100px;
+}
+
+.workspace__info_size_105 {
+  height: 105px;
+}
+
+.workspace__info_size_110 {
+  height: 110px;
+}
+
+.workspace__info_size_115 {
+  height: 115px;
+}
+
+.workspace__info_size_120 {
+  height: 120px;
 }
 
 .workspace__info_size_150 {
@@ -24,4 +44,8 @@
 
 .workspace__info_size_300 {
   height: 300px;
+}
+
+.workspace__info_size_600 {
+  height: 600px;
 }

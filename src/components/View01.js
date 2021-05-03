@@ -23,7 +23,7 @@ class View01 extends View {
           </label>
           <label class="workspace__label" for="status-input">
             Статус
-            <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro" name="status" value="${this._status}" disabled>
+            <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._status}" disabled>
           </label>
         </div>
         <div class="workspace__section">
@@ -33,20 +33,20 @@ class View01 extends View {
           </label>
           <label class="workspace__label" for="address-input">
             Адрес
-            <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m workspace__input-el_ro" name="address workspace__input-el_ro" value="${this._state.address}" disabled>
+            <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m workspace__input-el_ro workspace__input-el_last-el" name="address workspace__input-el_ro" value="${this._state.address}" disabled>
           </label>
         </div>
       </div>
       <div class="workspace__label">
         Комментарий
-        <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_ro" disabled>${this._state.comment}</textarea>
+        <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_ro workspace__input-el_last-el" disabled>${this._state.comment}</textarea>
       </div>
       <div class="workspace__section-questions">
         Ответы на вопросы
         <div class="workspace__question" >
           <div class="workspace__question-area">
             <img id="img-q1" class="workspace__question-image">
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+            1. Как вы сейчас продвигаете свою кампанию через наши сервисы?
           </div>
           <textarea id="q1" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q1}</textarea>
         </div>
@@ -54,7 +54,7 @@ class View01 extends View {
         <div class="workspace__question" >
           <div class="workspace__question-area">
             <img id="img-q2" class="workspace__question-image">
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+            2. Кто управляет и настраивает рекламные кампании?
           </div>
           <textarea id="q2" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q2}</textarea>
         </div>
@@ -62,7 +62,7 @@ class View01 extends View {
         <div class="workspace__question" >
           <div class="workspace__question-area">
             <img id="img-q3" class="workspace__question-image">
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+            3. Как именно хотите получать клиентов: звонки, заявки, записи?
           </div>
           <textarea id="q3" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q3}</textarea>
         </div>
@@ -70,7 +70,7 @@ class View01 extends View {
         <div class="workspace__question" >
           <div class="workspace__question-area">
             <img id="img-q4" class="workspace__question-image">
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+            4. Какой бюджет примерно выделяете на продвижение в месяц?
           </div>
           <textarea id="q4" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q4}</textarea>
         </div>
@@ -78,7 +78,7 @@ class View01 extends View {
         <div class="workspace__question" >
           <div class="workspace__question-area">
             <img id="img-q5" class="workspace__question-image">
-            Как вы сейчас продвигаете свою кампанию через наши сервисы?
+            5. Что для вас самое важное в рекламе?
           </div>
           <textarea id="q5" type="text" class="workspace__answer workspace__answer_opened" disabled="true">${this._state.q5}</textarea>
         </div>
@@ -101,7 +101,8 @@ class View01 extends View {
       `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-busy.png" />Занято</button>
       <button id="CRPB-02" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-no-answer.png" />Не отвечает</button>
       <button id="CRPB-03" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-wrong-number.png" />Неправильный номер</button>
-      <button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
+      <button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
+      <div class="call-result-panel__error"></div>`;
   }
 
   _getNavigationPanelButtonForFPB01() {

@@ -28,7 +28,7 @@ class View14 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,7 +38,7 @@ class View14 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
@@ -51,19 +51,19 @@ class View14 extends View {
         
                 <label class="workspace__label">
                   ID Флайта
-                  <input id="flaytId-input" type="text" class="workspace__input-el" value="${this._state.flaytId}" >
+                  <input id="flaytId-input" type="text" class="workspace__input-el " value="${this._state.flaytId}" >
                 </label>
         
                 <label class="workspace__label">
                   Дата оплаты
-                  <input id="payDate-input" type="date" class="workspace__input-el" value="${this._state.payDate}" >
+                  <input id="payDate-input" type="date" class="workspace__input-el workspace__input-el_last-el" value="${this._state.payDate}" >
                 </label>
               </div>
       
               
               <div class="workspace__label">
                   Комментарий
-                  <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment" name="comment" value="${this._state.comment}" ></textarea>
+                  <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_last-el" name="comment" value="${this._state.comment}" ></textarea>
               </div>
         
       </div>
@@ -83,6 +83,11 @@ class View14 extends View {
   }
 
   setEventListeners() {
+    document.querySelector('#CRPB-01').addEventListener('click', () => {
+      this._setStateItemHandler('status', 'Успешно реализовано');
+    });
+
+    this._callResultHandler('#CRPB-01', 'lead_closed_successfull_finally');
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
     this._changeFieldValueHandler('#trxSMVP-input', 'trxSMVP');

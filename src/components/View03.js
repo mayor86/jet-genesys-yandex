@@ -27,7 +27,7 @@ class View03 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -37,14 +37,12 @@ class View03 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
 
-        
-        <textarea class="workspace__info workspace__info_size_100" >${this._state.lpr}, здравствуйте. Это [Имя] из компании Яндекс.
-Как и договаривались, звоню Вам сегодня, ...</textarea>
+<textarea class="workspace__info workspace__info_size_100" disabled>Добрый день . Меня зовут ______, я из компании Яндекс . Как я могу к Вам обращаться? ${this._state.lpr}, я верно понимаю, что вы являетесь руководителем компании? ${this._state.lpr}, очень приятно с Вами познакомиться, я являюсь Вашим персональным менеджером, с вопросами по размещению Вашей компании на Картах/в Справочнике - можете обращаться ко мне. Также хотелось бы задать Вам несколько вопросов касающихся Вашего бизнеса, будет сейчас 2-3 минуты для разговора?</textarea>
         
         <div class="workspace__section">
             <label class="workspace__label">

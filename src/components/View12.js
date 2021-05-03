@@ -28,7 +28,7 @@ class View12 extends View {
             </label>
             <label class="workspace__label">
               Статус
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="status" value="${this._state.status}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
             </label>
           </div>
           <div class="workspace__section">
@@ -38,16 +38,15 @@ class View12 extends View {
             </label>
             <label class="workspace__label">
               Адрес
-              <input type="text" class="workspace__input-el workspace__input-el_ro" name="address" value="${this._state.address}" disabled>
+              <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
             </label>
           </div>
         </div>
 
-        <textarea class="workspace__info workspace__info_size_200" >В таком случае мне понадобятся..
-Ваша компания ${this._state.company}
-с видом деятельности ${this._state.branch}
-предоставляет услуги по адресу ${this._state.address}
-${this._state.lpr}, когда ждать поступления?</textarea>
+<textarea class="workspace__info workspace__info_size_200" disabled>В таком случае, я отправлю письмо на Вашу почту, в ответ на которое нужно
+будет прислать реквизиты. На какую почту могу написать? Сейчас отправлю письмо на данную почту. ${this._state.lpr}, проверьте, пожалуйста, мое письмо доставлено?
+А пока давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс / Рекламного размещения на Яндекс Картах, все верно?
+Отлично, сегодня до какого времени сможете отправить реквизиты?</textarea>
 
         <div class="workspace__section">
             <label class="workspace__label">
@@ -62,7 +61,7 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
             
             <label class="workspace__label">
               Имя ЛПР
-              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.lpr}" >
+              <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_last-el" value="${this._state.lpr}" >
             </label>
         </div>
         
@@ -79,14 +78,14 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
             
             <label class="workspace__label">
               E-mail
-              <input id="email-input" type="text" class="workspace__input-el workspace__input-el_s" value="${this._state.email}" >
+              <input id="email-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_last-el" value="${this._state.email}" >
             </label>
 
         </div>
 
         <div class="workspace__label">
           Комментарий
-          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment" name="comment" value="${this._state.comment}" ></textarea>
+          <textarea id="comment-input" type="text" class="workspace__input-el workspace__input-el_comment workspace__input-el_last-el" name="comment" value="${this._state.comment}" ></textarea>
         </div>
           
 
@@ -108,6 +107,11 @@ ${this._state.lpr}, когда ждать поступления?</textarea>
   }
 
   setEventListeners() {
+    document.querySelector('#CRPB-01').addEventListener('click', () => {
+      this._setStateItemHandler('status', 'Получить оплату');
+    });
+
+    this._callResultHandler('#CRPB-01', 'get_paid');
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
     this._changeFieldValueHandler('#firstCallDate-input', 'firstCallDate');

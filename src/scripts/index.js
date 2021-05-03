@@ -22,7 +22,7 @@ function createCallCard() {
     scheduleHandler: schedule
   }, popupSelector);
   popup.setEventListeners();
-  
+
   /**
    * Вспомогательные функции. Предназначены для передачи в классы ViewNN
    * sendDisposition - фиксация результата звонка (передача данных в бэкенд);
@@ -34,7 +34,12 @@ function createCallCard() {
    */
   function sendDisposition(selector, disposition) {
     document.querySelector(selector).addEventListener('click', () => {
-      api.sendDisposition(disposition);
+      try {
+        document.querySelector('.call-result-panel__error').innerHTML = '';
+        api.sendDisposition(disposition);
+      } catch (e) {
+        document.querySelector('.call-result-panel__error').innerHTML = 'Ошибка при выполнении функции sendDisposition ' + e;
+      }
     });
   }
 
@@ -70,7 +75,6 @@ function createCallCard() {
 
   function setStateItem(field, value) {
     state[field] = value;
-    console.log('AB: ' + state);
   }
 
   function sendStatetoAPI() {
@@ -111,7 +115,7 @@ function createCallCard() {
 
     view.setEventListeners();
   }
-  
+
   const navigaionSmallPanelSection = new Section({
     items: navigationSmallPanelButtons,
     renderer: (item) => {
@@ -153,7 +157,7 @@ function createCallCard() {
     const largeButtonId = '#NPB-' + smallButtonId.split('-')[1];
     const largeButton = document.querySelector(largeButtonId);
 
-    const previousActiveSmallButtonId = '#NPSB-'+ state.activeButton.getAttribute('Id').split('-')[1];
+    const previousActiveSmallButtonId = '#NPSB-' + state.activeButton.getAttribute('Id').split('-')[1];
     const previousActiveSmallButton = document.querySelector(previousActiveSmallButtonId);
 
     // Обработка предыдущей активной кнопки
@@ -176,7 +180,7 @@ function createCallCard() {
     // Обработка предыдущей активной кнопки
     state.activeButton.removeAttribute('disabled');
     state.activeButton.classList.remove('navigation-panel__button_active');
-    const previousActiveSmallButtonId = '#NPSB-'+ state.activeButton.getAttribute('Id').split('-')[1];
+    const previousActiveSmallButtonId = '#NPSB-' + state.activeButton.getAttribute('Id').split('-')[1];
     const previousActiveSmallButton = document.querySelector(previousActiveSmallButtonId);
     previousActiveSmallButton.removeAttribute('disabled');
     previousActiveSmallButton.classList.remove('navigation-panel-small__button_active');
@@ -189,144 +193,157 @@ function createCallCard() {
     switch (button.getAttribute('Id')) {
       case 'NPB-01':
         generateView(new View01({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-02':
         generateView(new View02({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-03':
         generateView(new View03({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-04':
         generateView(new View04({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-05':
         generateView(new View05({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-06':
         generateView(new View06({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-07':
         generateView(new View07({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-08':
         generateView(new View08({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue,
-          setStateItemHandler: setStateItem
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-09':
         generateView(new View09({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-10':
         generateView(new View10({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-11':
         generateView(new View11({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-12':
         generateView(new View12({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-13':
         generateView(new View13({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       case 'NPB-14':
         generateView(new View14({
-          sendDispositionHandler: sendDisposition,
-          openClientInfoHandler: openClientInfo,
-          goToPreviousViewHandler: goToPreviousView,
-          openPopupHandler: openPopup,
-          changeFieldValueHandler: changeFieldValue
-        },
-        state));
+            sendDispositionHandler: sendDisposition,
+            openClientInfoHandler: openClientInfo,
+            goToPreviousViewHandler: goToPreviousView,
+            openPopupHandler: openPopup,
+            changeFieldValueHandler: changeFieldValue,
+            setStateItemHandler: setStateItem
+          },
+          state));
         break;
       default:
         console.log('Кнопка не найдена.');
@@ -340,7 +357,7 @@ function createCallCard() {
    * Инициализация Стартовой страницы
    */
   // инициализация кнопок навигационной панели
-  navigaionSmallPanelSection.renderItems(); 
+  navigaionSmallPanelSection.renderItems();
   navigaionPanelSection.renderItems();
   navigaionSmallPanelSection.addHTMLItem('<button class="navigation-panel-small__close-button" type="button"></button>');
   document.querySelector('.navigation-panel-small__close-button').addEventListener('click', () => {
@@ -353,12 +370,14 @@ function createCallCard() {
 
   // Генерация стартовой страницы
   generateView(new View01({
-    sendDispositionHandler: sendDisposition,
-    openClientInfoHandler: '',
-    goToPreviousViewHandler: '',
-    openPopupHandler: openPopup
-  },
-  state)); 
+      sendDispositionHandler: sendDisposition,
+      openClientInfoHandler: '',
+      goToPreviousViewHandler: '',
+      openPopupHandler: openPopup,
+      changeFieldValueHandler: changeFieldValue,
+      setStateItemHandler: setStateItem
+    },
+    state));
 
 }
 

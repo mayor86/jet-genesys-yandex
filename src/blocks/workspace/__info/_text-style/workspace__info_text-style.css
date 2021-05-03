@@ -1,0 +1,27 @@
+.workspace__info_text-style_title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.0625rem;
+  color: #2E2F36;
+  margin: 0 0 10px 0;
+}
+
+.workspace__info_text-style_subtitle {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 2.0;
+  color: #2E2F36;
+}
+
+.workspace__info_text-style_highlight{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #20D489;
+}
+
+.workspace__info_text-style_left{
+  text-align: left;
+}
