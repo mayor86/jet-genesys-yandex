@@ -97,7 +97,8 @@ class View04 extends View {
        </section>`;
 
     this._callResultPanelElement = 
-      `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>`;
+      `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
+      <div class="call-result-panel__error"></div>`;
   }
 
   setEventListeners() {

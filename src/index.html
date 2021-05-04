@@ -16,13 +16,13 @@
   <meta name="IS_System_AgentID">
   <meta name="IS_Attr_CampaignId">
   <meta name="IS_Attr_COMPANY_NAME">
-  <meta name="IS_Attr_contactname">
+  <meta name="IS_Attr_contact_name">
   <meta name="IS_Attr_PERMALINK">
   <meta name="IS_Attr_Address">
   <meta name="IS_Attr_Heading">
-  <meta name="IS_Attr_contactstate">
+  <meta name="IS_Attr_contact_state">
   <meta name="IS_Attr_comment">
-  <meta name="IS_Attr_numbertodial">
+  <meta name="IS_Attr_Contact_Number1">
   <meta name="IS_Attr_Link_to_personal_account">
   <meta name="IS_Attr_Q1">
   <meta name="IS_Attr_Q2">
@@ -31,6 +31,20 @@
   <meta name="IS_Attr_Q5">
   <meta name="IS_ATTR_SchedPhone">
   <meta name="IS_ATTR_loss_reason_id">
+  <meta name="IS_Attr_Chosen_product">
+  <meta name="IS_Attr_contact_position">
+  <meta name="IS_Attr_contact_email">
+  <meta name="IS_Attr_presentation_date">
+  <meta name="IS_Attr_call_date">
+  <meta name="IS_Attr_budget">
+  <meta name="IS_Attr_distribution_period">
+  <meta name="IS_Attr_login">
+  <meta name="IS_Attr_pay_date">
+  <meta name="IS_Attr_id_flight">
+  <meta name="IS_Attr_tag_sent_invoice">
+  <meta name="IS_Attr_SMVP_transaction">
+  <meta name="IS_Attr_tag_waiting_requisites">
+
 
   <title>Карточка скрипта</title>
   <link rel="stylesheet" type="text/css" href="./pages/index.css" />
@@ -39,12 +53,13 @@
 <body class="root">
   <div class="page">
     <main class="content">
-      <section class="navigation-panel-small">
-      </section>
-      <section class="navigation-panel">
-      </section>
+      <div class="navigation-panel-area">
+        <section class="navigation-panel-small">
+        </section>
+        <section class="navigation-panel">
+        </section>
+      </div>
       <section class="workspace">
-        
       </section>
       <section class="actions">
         <section class="call-result-panel">
@@ -70,7 +85,8 @@
         <div class="popup__alt-phone-area">
           <input id="use-alt-phone-flg-input" type="checkbox" class="popup__input-el" name="use-alt-phone-flg">
           <label class="popup__label" for="use-alt-phone-flg-input">Использовать альтернативный номер</label>
-          <input id="alt-phone-input" type="phone" class="popup__input-el popup__input-el_alt-phone" name="alt-phone" maxlength="12">
+          <input id="alt-phone-input" type="phone" class="popup__input-el popup__input-el_alt-phone" name="alt-phone"
+            maxlength="12">
         </div>
         <div class="popup__error"></div>
         <div class="popup__button-area">
@@ -85,7 +101,7 @@
 
 
   <template id="navigation-panel-button">
-    <button id="" class="navigation-panel__button" type="button" ></button>
+    <button id="" class="navigation-panel__button" type="button"></button>
   </template>
 
   <template id="navigation-panel-small-button">
@@ -96,7 +112,6 @@
   <script src="./utils/metadata/navigationPanelButtons.js"></script>
   <script src="./components/Section.js"></script>
   <script src="./components/Button.js"></script>
-  <script src="./utils/state.js"></script>
   <script src="./components/Popup.js"></script>
   <script src="./utils/api.js"></script>
   <script src="./components/View.js"></script>

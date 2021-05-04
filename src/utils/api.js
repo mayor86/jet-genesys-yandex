@@ -76,7 +76,7 @@ class Api {
     this._removeCallCard();
   }
 
-  sendLPRData(lprData) {
+  sendLPRData() {
     try {
       scripter.dialer.subscribeToCustomHandlerNotification([{
         objectId: IS_System_AgentID.value,
@@ -84,13 +84,13 @@ class Api {
       }], (objectId, eventId, res) => {
         res[0] === 'successed' ? document.getElementById("lprUpdateResult").innerHTML = 'Данные об ЛПР успешно обновлены в AMOCRM' : document.getElementById("lprUpdateResult").innerHTML = 'Ошибка при обновлении данных в AMOCRM, обрнатитесь к системному администратору';
       });
-      scripter.dialer.sendCustomHandlerNotification(IS_System_AgentID.value, 'sendLprData', lprData);
+      scripter.dialer.sendCustomHandlerNotification(IS_System_AgentID.value, 'sendLprData');
     } catch (e) {
       console.log('Ошибка при выполнении функции sendLPRData ' + e);
     }
   }
 
-  setWaitReqStatus(lprData) {
+  setWaitReqStatus() {
     try {
       scripter.dialer.subscribeToCustomHandlerNotification([{
         objectId: IS_System_AgentID.value,
@@ -98,7 +98,7 @@ class Api {
       }], (objectId, eventId, res) => {
         res[0] === 'successed' ? document.getElementById("waitReqRes").innerHTML = 'Данные об ЛПР успешно обновлены в AMOCRM' : document.getElementById("waitReqRes").innerHTML = 'Ошибка при обновлении данных в AMOCRM, обратитесь к системному администратору';
       });
-      scripter.dialer.sendCustomHandlerNotification(IS_System_AgentID.value, 'waitReq', lprData);
+      scripter.dialer.sendCustomHandlerNotification(IS_System_AgentID.value, 'waitReq');
     } catch (e) {
       console.log('Ошибка при выполнении функции sendLPRData ' + e);
     }

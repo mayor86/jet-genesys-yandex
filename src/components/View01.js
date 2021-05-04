@@ -11,7 +11,7 @@ class View01 extends View {
         <div class="workspace__section">
           <label class="workspace__label" for="phone-input">
             Номер для набора
-            <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" name="phone" value="${this._state.numberToDial}" >
+            <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" name="phone" value="${this._state.phone}" >
           </label>
           <label class="workspace__label" for="company-input">
             Название компании

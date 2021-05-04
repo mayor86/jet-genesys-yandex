@@ -100,7 +100,8 @@ ${this._state.lpr}, когда ждать поступления?
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
        </section>`;
 
-    this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-get-pay.png" />Получить оплату</button>`;
+    this._callResultPanelElement = `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-get-pay.png" />Получить оплату</button>
+    <div class="call-result-panel__error"></div>`;
   }
 
   setEventListeners() {

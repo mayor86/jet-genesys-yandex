@@ -7,6 +7,7 @@
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/content/content.css);
+@import url(../blocks/navigation-panel-area/navigation-panel-area.css);
 @import url(../blocks/navigation-panel/navigation-panel.css);
 @import url(../blocks/navigation-panel-small/navigation-panel-small.css);
 @import url(../blocks/workspace/workspace.css);

@@ -13,6 +13,41 @@ const callResultPanelSection = new Section({}, callResultPanelSelector);
 const footerPanelSection = new Section({}, footerPanelSelector);
 
 function createCallCard() {
+  
+  const state = {
+      activeButton: document.querySelector('#NPB-01'),
+      company: IS_Attr_COMPANY_NAME.value,
+      
+      lpr: IS_Attr_contactname.value,
+      status: IS_Attr_contactstate.value,
+      branch: IS_Attr_Heading.value,
+      comment: IS_Attr_comment.value,
+      address: IS_Attr_Address.value,
+      lkLink: IS_Attr_Link_to_personal_account.value,
+      q1: IS_Attr_Q1.value,
+      q2: IS_Attr_Q2.value,
+      q3: IS_Attr_Q3.value,
+      q4: IS_Attr_Q4.value,
+      q5: IS_Attr_Q5.value,
+      phone: IS_Attr_Contact_Number1.value,
+      jobTitle: IS_Attr_contact_position.value,
+      email: IS_Attr_contact_email.value,
+      lossReason: IS_Attr_loss_reason_id.value,
+      kpDate: IS_Attr_presentation_date.value,
+      firstCallDate: IS_Attr_call_date.value,
+      price: IS_Attr_budget.value,
+      period: IS_Attr_distribution_period.value,
+      login: IS_Attr_login.value,
+      //  order: '1-TDYH0000',
+      expectedPayDate: IS_Attr_pay_date.value,
+      trxSMVP: IS_Attr_SMVP_transaction.value,
+      payDate: IS_Attr_Pay_date.value,
+      flaytId: IS_Attr_id_flight.value,
+      sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
+      chosenProduct: IS_Attr_Chosen_product.value,
+      tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value
+  } 
+    
   const api = new Api({
     removeCallCardHandler: removeCallCard,
     sendStateHandler: sendStatetoAPI
@@ -78,7 +113,8 @@ function createCallCard() {
   }
 
   function sendStatetoAPI() {
-    IS_Attr_numbertodial.value = state.numberToDial;
+  //  IS_Attr_Contact_Number1.value = state.phone;
+  
     IS_Attr_COMPANY_NAME.value = state.company;
     IS_Attr_contactname.value = state.lpr;
     IS_Attr_contactstate.value = state.status;
@@ -106,6 +142,7 @@ function createCallCard() {
     IS_Attr_id_flight.value = state.flaytId;
     IS_Attr_tag_sent_invoice.value = state.sentInvoiceFlag;
     IS_Attr_Chosen_product.value = state.chosenProduct;
+    IS_Attr_tag_waiting_requisites.value = state.tagWaitingRequisites;
   }
 
   function generateView(view) {
@@ -369,6 +406,7 @@ function createCallCard() {
   state.activeButton = document.querySelector('#NPB-01');
 
   // Генерация стартовой страницы
+  workspaceSection.removeItem();
   generateView(new View01({
       sendDispositionHandler: sendDisposition,
       openClientInfoHandler: '',
@@ -390,12 +428,13 @@ function IS_Event_PreviewCallSkipped() {
 
 function removeCallCard() {
   navigationPanelSection.removeItem();
+  navigationSmallPanelSection.removeItem();
   workspaceSection.removeItem();
   callResultPanelSection.removeItem();
   footerPanelSection.removeItem();
 
   workspaceSection.removeItem();
-  workspaceSection.addHTMLItem('<h1>Ожидание следующей карточки звонка...</h1>');
+  workspaceSection.addHTMLItem('<h1>Ожидание звонка...</h1>');
 }
 
 createCallCard();
