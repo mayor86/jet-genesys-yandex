@@ -3,7 +3,12 @@ class View08 extends View {
   constructor(handler, state) {
     super(handler);
 
-    
+    this._reason = {
+      product: ['1', '2'],
+      price: ['3', '4'],
+      other: ['5', '6']
+    };
+
     this._state = state;
     this._workspaceElement = 
       `<form class="workspace__container" name="f1" novalidate>
@@ -42,6 +47,15 @@ class View08 extends View {
             </label>
           </div>
         </div>
+        <label class="workspace__label">
+        Категория
+          <select id="reason-category" class="workspace__input-el workspace__input-el_dropdown">
+          <option selected value></option>
+            <option value="product">Продукт_эффективность</option>
+            <option value="price">Цена</option>
+            <option value="other">Другое</option>
+          </select>
+        </label>
         <label class="workspace__label">
         Причина закрытия
           <select id="reason" class="workspace__input-el workspace__input-el_dropdown">
@@ -92,5 +106,24 @@ class View08 extends View {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
     this._changeFieldValueHandler('#reason', 'lossReason');
+
+    this._changeReasonCategoryHandler();
+  }
+
+  _changeReasonCategoryHandler() {
+    const category = document.querySelector('#reason-category');
+    const reason = document.querySelector('#reason');
+    const categoryLength = Object.keys(this._reason).length;
+    console.log(categoryLength);
+    category.addEventListener('change', () => {
+    reason.innerHTML = '';
+    
+      
+      for(let i = 0; i < categoryLength; i++) {
+        
+        reason.add(new Option(this._reason[category.value][i],i,false,false));
+      }
+
+    })
   }
 }

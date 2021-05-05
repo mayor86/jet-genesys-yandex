@@ -4,7 +4,56 @@ class View03 extends View {
     super(handler);
 
     this._state = state;
-    this._workspaceElement = 
+    this._workspaceElement = this._state.status === 'Отправить счёт' ? 
+    `<form class="workspace__container" name="f1" novalidate>
+    <div class="workspace__client-info">
+      <div>
+        <img src="./images/info.png" />
+        Информация о компании
+      </div>
+      <button type="button" class="workspace__client-info-button">
+        <img class="workspace__client-info-image" />
+      </button>
+    </div>
+    <div class="workspace__client-profile">
+      <div class="workspace__section">
+        <label class="workspace__label">
+          Название компании
+          <input type="text" class="workspace__input-el workspace__input-el_ro" value="${this._state.company}" disabled >
+        </label>
+        <label class="workspace__label">
+          Имя ЛПР
+          <input type="text" class="workspace__input-el workspace__input-el_ro" name="lpr" value="${this._state.lpr}" disabled >
+        </label>
+        <label class="workspace__label">
+          Статус
+          <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._state.status}" disabled>
+        </label>
+      </div>
+      <div class="workspace__section">
+        <label class="workspace__label">
+          Отрасль
+          <input type="text" class="workspace__input-el workspace__input-el_ro" name="branch" value="${this._state.branch}" disabled>
+        </label>
+        <label class="workspace__label">
+          Адрес
+          <input type="text" class="workspace__input-el workspace__input-el_ro workspace__input-el_last-el" name="address" value="${this._state.address}" disabled>
+        </label>
+      </div>
+    </div>
+
+<textarea class="workspace__info workspace__info_size_150" disabled>${this._state.lpr}, здравствуйте! Это ${this._state.agentId} из компании Яндекс. Как и договаривались, звоню Вам сегодня, чтобы уточнить детали по высланному предложению и обсудить дальнейшие шаги. Будет 2-3 минуты для разговора?
+
+Готовы начать привлекать клиентов уже сегодня? (если да - формируем счет).
+Как вам возможности рекламного размещения на Яндекс.Картах? Какие Вы плюсы для себя отметили?
+</textarea>
+
+<div class="workspace__label workspace__label_lk" >
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
+      </div>`
+    :
       `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
           <div>
@@ -42,7 +91,7 @@ class View03 extends View {
           </div>
         </div>
 
-<textarea class="workspace__info workspace__info_size_100" disabled>Добрый день . Меня зовут ______, я из компании Яндекс . Как я могу к Вам обращаться? ${this._state.lpr}, я верно понимаю, что вы являетесь руководителем компании? ${this._state.lpr}, очень приятно с Вами познакомиться, я являюсь Вашим персональным менеджером, с вопросами по размещению Вашей компании на Картах/в Справочнике - можете обращаться ко мне. Также хотелось бы задать Вам несколько вопросов касающихся Вашего бизнеса, будет сейчас 2-3 минуты для разговора?</textarea>
+<textarea class="workspace__info workspace__info_size_100" disabled>Добрый день . Меня зовут ${this._state.agentId}, я из компании Яндекс . Как я могу к Вам обращаться? ${this._state.lpr}, я верно понимаю, что вы являетесь руководителем компании? ${this._state.lpr}, очень приятно с Вами познакомиться, я являюсь Вашим персональным менеджером, с вопросами по размещению Вашей компании на Картах/в Справочнике - можете обращаться ко мне. Также хотелось бы задать Вам несколько вопросов касающихся Вашего бизнеса, будет сейчас 2-3 минуты для разговора?</textarea>
         
         <div class="workspace__section">
             <label class="workspace__label">
@@ -75,23 +124,33 @@ class View03 extends View {
       </div>
       
       <div class="workspace__label workspace__label_lk" >
-      Ссылка на личный кабинет
-      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
-    </div>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
+      </div>
         
     </form>`;
 
-    this._footerPanelElement =
+    this._footerPanelElement = this._state.status === 'Отправить счёт' ?
       `<section class="footer-panel__container">
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
         <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-08').click()">Категоричный отказ</button>
         <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-07').click()">Возражение</button>
         <button id="FPB-04" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-04').click()">Не ознакомился</button>
         <button id="FPB-05" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-10').click()">Согласен</button>
-       </section>`;
+       </section>`
+       :
+       `<section class="footer-panel__container">
+       <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
+       <button id="FPB-02" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-08').click()">Категоричный отказ</button>
+       <button id="FPB-06" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-04').click()">Выявление потребности</button>
+      </section>` ;
 
-    this._callResultPanelElement = 
-      `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-lpr.png" />Вышли на ЛПР</button>
+    this._callResultPanelElement = this._state.status === 'Отправить счёт' ?
+      `<button id="CRPB-02" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
+       <div class="call-result-panel__error"></div>`
+       :
+       `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-lpr.png" />Вышли на ЛПР</button>
        <button id="CRPB-02" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
        <div class="call-result-panel__error"></div>`;
   }

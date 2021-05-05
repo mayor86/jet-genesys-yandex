@@ -11,7 +11,7 @@ class View01 extends View {
         <div class="workspace__section">
           <label class="workspace__label" for="phone-input">
             Номер для набора
-            <select id="phone-input" class="workspace__input-el workspace__input-el_dropdown">
+            <select id="phone-input" class="workspace__input-el">
               <option selected value="${this._state.phone}">${this._state.phone}</option>
             </select>
           </label>
@@ -19,13 +19,14 @@ class View01 extends View {
             Название компании
             <input id="company-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro" name="company" value="${this._state.company}" disabled >
           </label>
-          <label class="workspace__label" for="lpr-input">
-            Имя ЛПР
-            <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro" name="lpr" value="${this._state.lpr}" disabled >
-          </label>
+          
           <label class="workspace__label" for="status-input">
             Статус
-            <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro workspace__input-el_last-el" name="status" value="${this._status}" disabled>
+            <input id="status-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro" name="status" value="${this._status}" disabled>
+          </label>
+          <label class="workspace__label" for="last-call-input">
+            Дата последнего звонка
+            <input id="last-call-input" type="date" class="workspace__input-el workspace__input-el_s workspace__input-el_ro workspace__input-el_last-el" name="last-call" value="${this._state.lpr}" disabled >
           </label>
         </div>
         <div class="workspace__section">
@@ -33,6 +34,21 @@ class View01 extends View {
             Отрасль
             <input id="branch-input" type="text" class="workspace__input-el workspace__input-el_m workspace__input-el_ro" name="branch" value="${this._state.branch}" disabled>
           </label>
+          <label class="workspace__label" for="lpr-input">
+            Имя ЛПР
+            <input id="lpr-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro" name="lpr" value="${this._state.lpr}" disabled >
+          </label>
+          <label class="workspace__label" for="manager-input">
+            Менеджер
+            <input id="manager-input" type="text" class="workspace__input-el workspace__input-el_s workspace__input-el_ro" name="manager" value="${this._state.lpr}" disabled >
+          </label>
+          <label class="workspace__label" for="address-input">
+            Адрес
+            <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m workspace__input-el_ro workspace__input-el_last-el" name="address workspace__input-el_ro" value="${this._state.address}" disabled>
+          </label>
+        </div>
+
+        <div class="workspace__section">
           <label class="workspace__label" for="address-input">
             Адрес
             <input id="address-input" type="text" class="workspace__input-el workspace__input-el_m workspace__input-el_ro workspace__input-el_last-el" name="address workspace__input-el_ro" value="${this._state.address}" disabled>
@@ -87,8 +103,9 @@ class View01 extends View {
 
       </div>
       <div class="workspace__label workspace__label_lk" >
-        Ссылка на личный кабинет
-        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
       </div>
     </form>`;
 

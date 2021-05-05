@@ -42,10 +42,10 @@ class View02 extends View {
           </div>
         </div>
 
-<textarea class="workspace__info workspace__info_size_25" disabled>Здравствуйте . Это ______ из компании Яндекс . Соедините, пожалуйста , с директором или маркетологом.</textarea>
+<textarea class="workspace__info workspace__info_size_25" disabled>Здравствуйте. Это ${this._state.agentId} из компании Яндекс. Соедините, пожалуйста, с директором или маркетологом.</textarea>
 
         <div class="workspace__info_label">Если спросили про причину
-<textarea class="workspace__info workspace__info_size_150" disabled>Пример 1. Я звоню , чтобы уточнить данные , размещенные о Вашей компании в Яндекс . Обычно этим занимается руководитель или маркетолог. Соедините с кем то из них .
+<textarea class="workspace__info workspace__info_size_150" disabled>Пример 1. Я звоню, чтобы уточнить данные , размещенные о Вашей компании в Яндекс . Обычно этим занимается руководитель или маркетолог. Соедините с кем то из них .
 
 Пример 2. Я звоню по вопросу данных о Вашей компании и безопасности контактов . Обычно этим занимается руководитель или маркетолог . Кто из них на месте сейчас
 </textarea>
@@ -54,9 +54,10 @@ class View02 extends View {
         
       </div>
       <div class="workspace__label workspace__label_lk" >
-      Ссылка на личный кабинет
-      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
-    </div>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
+      </div>
         
     </form>`;
 

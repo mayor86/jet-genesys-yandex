@@ -16,7 +16,8 @@ function createCallCard() {
   
   const state = {
       activeButton: document.querySelector('#NPB-01'),
-      status: 'Отправить счет',
+      status: 'Отправить счёт1',
+      chosenProduct: 'maps',
 /*
       company: IS_Attr_COMPANY_NAME.value,
       lpr: IS_Attr_contactname.value,
@@ -46,7 +47,8 @@ function createCallCard() {
       flaytId: IS_Attr_id_flight.value,
       sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
       chosenProduct: IS_Attr_Chosen_product.value,
-      tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value
+      tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value,
+      agentId: IS_System_AgentID.value
   */
   } 
     
