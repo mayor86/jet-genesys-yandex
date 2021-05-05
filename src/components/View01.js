@@ -5,13 +5,15 @@ class View01 extends View {
 
     this._state = state;
     this._status = this._state.status;
-    this._workspaceElement =
+    this._workspaceElement = 
       `<form class="workspace__container" name="f1" novalidate>
       <div class="workspace__client-profile workspace__client-profile_opened">
         <div class="workspace__section">
           <label class="workspace__label" for="phone-input">
             Номер для набора
-            <input id="phone-input" type="text" class="workspace__input-el workspace__input-el_s" name="phone" value="${this._state.phone}" >
+            <select id="phone-input" class="workspace__input-el workspace__input-el_dropdown">
+              <option selected value="${this._state.phone}">${this._state.phone}</option>
+            </select>
           </label>
           <label class="workspace__label" for="company-input">
             Название компании
@@ -97,23 +99,25 @@ class View01 extends View {
         <button id="FPB-03" class="button footer-panel__button" type="button" onclick="document.querySelector('#NPB-08').click()">Успешно реализовано</button>
        </section>`;
 
-    this._callResultPanelElement =
+       this._callResultPanelElement = this._status !== 'Ожидаем реквизиты' ?
       `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-busy.png" />Занято</button>
       <button id="CRPB-02" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-no-answer.png" />Не отвечает</button>
       <button id="CRPB-03" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-wrong-number.png" />Неправильный номер</button>
       <button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
+      <button id="CRPB-05" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Повторный набор</button>
+      <div class="call-result-panel__error"></div>` 
+      :
+
+      `<button id="CRPB-04" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
+      <button id="CRPB-05" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Повторный набор</button>
       <div class="call-result-panel__error"></div>`;
   }
 
   _getNavigationPanelButtonForFPB01() {
     if (this._status === 'Отправить счет') {
-      //  if ('ПРИЗНАК ОЖИДАЕМ РЕКВИЗИТ' === 'Y') {
-      //    return `document.querySelector('#NPB-08')`
-      //  }
       return `document.querySelector('#NPB-03')`
-    } else if (this._status === 'Отправить счет') {
-      return `document.querySelector('#NPB-08')`
-    }
+    } 
+
     return `document.querySelector('#NPB-02')`;
   }
 
@@ -148,6 +152,11 @@ class View01 extends View {
       document.querySelector('#img-q5').classList.toggle('workspace__question-image_closed');
     });
 
+    this._setPhones();
   }
 
+  _setPhones() {
+    const stateKeys = Object.keys(this._state);
+    console.log(stateKeys);
+  }
 }

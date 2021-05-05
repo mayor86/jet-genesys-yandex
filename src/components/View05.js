@@ -5,7 +5,7 @@ class View05 extends View {
 
     this._state = state;
     this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? `По стоимости есть несколько вариантов по оптимальному бюджету: на 180 дней Рекламной подписки , он будет стоить _____ рублей, это со скидкой 12.5%, и вариант на 360 дней , он стоит ____ рублей , со скидкой 25%. Какой вариант для Вас оптимальнее?` : `По стоимости есть выгодный вариант на 360 дней Рекламной подписки, он будет со скидкой 25 %. Туда включены сразу несколько масштабных площадок: основной Поиск Яндекса, рекламная сеть , а также Карты и Услуги. Этот вариант стоит __.
-    Как Вам такой вариант?`;
+Как Вам такой вариант?`;
     this._workspaceElement = 
     `<form class="workspace__container" name="f1" novalidate>
       <div class="workspace__client-info">
@@ -65,7 +65,7 @@ class View05 extends View {
 
 Сориентировать Вас по стоимости?
 </textarea>
-      <textarea class="workspace__info" disabled>${this._adapt_text}</textarea>
+      <textarea class="workspace__info workspace__info_size_100" disabled>${this._adapt_text}</textarea>
       
     </div>
     <div class="workspace__label workspace__label_lk" >

@@ -16,8 +16,9 @@ function createCallCard() {
   
   const state = {
       activeButton: document.querySelector('#NPB-01'),
+      status: 'Отправить счет',
+/*
       company: IS_Attr_COMPANY_NAME.value,
-      
       lpr: IS_Attr_contactname.value,
       status: IS_Attr_contactstate.value,
       branch: IS_Attr_Heading.value,
@@ -46,6 +47,7 @@ function createCallCard() {
       sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
       chosenProduct: IS_Attr_Chosen_product.value,
       tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value
+  */
   } 
     
   const api = new Api({
