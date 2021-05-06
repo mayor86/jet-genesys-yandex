@@ -4,13 +4,41 @@ class View08 extends View {
     super(handler);
 
     this._reason = {
-      product: ['1', '2'],
-      price: ['3', '4'],
-      other: ['5', '6']
+      product: [
+        ['efficiency_bad_stat', 'Плохая статистика'],
+        ['efficiency_few_clients', 'Статистика хорошая, мало клиентов'],
+        ['efficiency_nontarget_clients', 'Клиенты есть, но они нецелевые'],
+        ['efficiency_other_better', 'Другая реклама эффективнее'],
+        ['efficiency_no_season', 'Не сезон'],
+        ['efficiency_direct', 'Все нравится в Директе'],
+        ['efficiency_disbelieve', 'Не верит в эффективность автоматики'],
+        ['efficiency_low_freq', 'Узкая рубрика/низкочастотные запросы'],
+        ['efficiency_not_trust', 'Не доверяет Яндексу/директ, геопродукт'],
+        ['efficiency_no_pauses', 'Нет паузы в открутках'],
+        ['efficiency_difficult_settings', 'Сложности с отображением/настройкой продукта'],
+        ['efficiency_difficult_tech', 'Технические сложности']
+      ],
+      price: [
+        ['price_high', 'Высокая стоимость привлеченного клиента'],
+        ['price_large_onetime_payment', '"Большой разовый платеж'],
+        ['price_financial_difficulties', 'Финансовые трудности'],
+        ['price_no_money', 'Нет денег на рекламу'],
+        ['price_waiting_discount', 'Жду прежнюю стоимость/скидку']
+      ],
+      other: [
+        ['other_placement_error', 'Ошибка в размещении'],
+        ['other_talk_reject', 'Отказ от разговора'],
+        ['other_no_decision_maker', 'Не вышли на ЛПР'],
+        ['other_company_closed', 'Компания закрылась (по Алтаю)'],
+        ['other_to_corp', 'Передано корп.менеджерам'],
+        ['other_to_agency', 'Передано в агентский канал'],
+        ['other_no_ads_needed', 'Не нужна реклама, большой поток заказов'],
+        ['"other_big_balance_in_direct', 'Большой баланс в Директе, хочет докрутить']
+      ]
     };
 
     this._state = state;
-    this._workspaceElement = 
+    this._workspaceElement =
       `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
           <div>
@@ -82,8 +110,9 @@ class View08 extends View {
         </label>
       </div>
       <div class="workspace__label workspace__label_lk" >
-        Ссылка на личный кабинет
-        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
       </div>
         
     </form>`;
@@ -113,17 +142,16 @@ class View08 extends View {
   _changeReasonCategoryHandler() {
     const category = document.querySelector('#reason-category');
     const reason = document.querySelector('#reason');
-    const categoryLength = Object.keys(this._reason).length;
-    console.log(categoryLength);
-    category.addEventListener('change', () => {
-    reason.innerHTML = '';
-    
-      
-      for(let i = 0; i < categoryLength; i++) {
-        
-        reason.add(new Option(this._reason[category.value][i],i,false,false));
-      }
 
+    category.addEventListener('change', () => {
+      reason.innerHTML = '';
+
+      reason.add(new Option('', '', true, false));
+      if (typeof this._reason[category.value] !== 'undefined') {
+        this._reason[category.value].forEach(element => {
+          reason.add(new Option(element[1], element[0], false, false));
+        });
+      }
     })
   }
 }

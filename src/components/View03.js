@@ -158,12 +158,14 @@ class View03 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
-    this._callBackButtonHandler('#CRPB-02');
+    this._callBackButtonHandler('#CRPB-02', 'Scheduled');
     this._changeFieldValueHandler('#lpr-input', 'lpr');
     this._changeFieldValueHandler('#jobTitle-input', 'jobTitle');
     this._changeFieldValueHandler('#phone-input', 'phone');
     this._changeFieldValueHandler('#email-input', 'email');
     this._changeFieldValueHandler('#comment-input', 'comment');
+    this._sendLPRDataHandler('#CRPB-01');
+    
   }
 
 }

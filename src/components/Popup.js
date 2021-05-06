@@ -1,5 +1,5 @@
 class Popup {
-  constructor(handler, popupSelector) {
+  constructor(handler, popupSelector, status) {
     this._popup = document.querySelector(popupSelector);
     this._closeButton = this._popup.querySelector('.popup__close-button');
     this._cancelButton = this._popup.querySelector('.popup__cancel-button');
@@ -11,7 +11,7 @@ class Popup {
     this._plannedHours = this._popup.querySelector('#planned-hours-input');
     this._plannedMinutes = this._popup.querySelector('#planned-minutes-input');
     this._error = this._popup.querySelector('.popup__error');
-
+    this._status = status;
     this._scheduleHandler = handler.scheduleHandler;
   }
 
@@ -59,6 +59,11 @@ class Popup {
 
   }
 
+  setStatus(status) {
+    this._status = status;
+    console.log(status);
+  }
+
   _submitFormHandler(evt) {
     try {
       this._scheduleHandler({
@@ -68,7 +73,8 @@ class Popup {
         day: this._plannedDate.value.split('-')[2],
         year: this._plannedDate.value.split('-')[0],
         hour: this._plannedHours.value,
-        minute: this._plannedMinutes.value
+        minute: this._plannedMinutes.value,
+        status: this._status
       });
 
       this.close();

@@ -83,11 +83,11 @@ class View04 extends View {
 Если клиент уже пользуется Директом и бюджет на рекламу превышает макс. трафик на 5000 рублей - предлагаем рекламу в Яндекс.Картах</textarea>
         </div>
 
-      </div>
       <div class="workspace__label workspace__label_lk" >
-      Ссылка на личный кабинет
-      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
-    </div>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
+      </div>
         
     </form>`;
 
@@ -104,7 +104,7 @@ class View04 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
-    this._callBackButtonHandler('#CRPB-01');
+    this._callBackButtonHandler('#CRPB-01', 'Scheduled');
     this._changeFieldValueHandler('#q1', 'q1');
     this._changeFieldValueHandler('#q2', 'q2');
     this._changeFieldValueHandler('#q3', 'q3');

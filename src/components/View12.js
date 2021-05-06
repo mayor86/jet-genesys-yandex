@@ -3,8 +3,15 @@ class View12 extends View {
   constructor(handler, state) {
     super(handler);
 
-    
     this._state = state;
+    this._adaptText = this._state.chosenProduct === 'Subscription' ? `В таком случае, я отправлю письмо на Вашу почту, в ответ на которое нужно будет прислать реквизиты. На какую почту могу написать? Сейчас отправлю письмо на данную почту. ${this._state.lpr}, проверьте, пожалуйста, мое письмо доставлено?
+А пока давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс, все верно? Отлично, сегодня до какого времени сможете отправить реквизиты?` : this._state.chosenProduct === 'maps' ? `В таком случае, я отправлю письмо на Вашу почту, в ответ на которое нужно будет прислать реквизиты. На какую почту могу написать? Сейчас отправлю письмо на данную почту. ${this._state.lpr}, проверьте, пожалуйста, мое письмо доставлено?
+А пока давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламного размещения на Яндекс.Картах, все верно?
+Отлично, сегодня до какого времени сможете отправить реквизиты?`
+    : 
+    `В таком случае, я отправлю письмо на Вашу почту, в ответ на которое нужно будет прислать реквизиты. На какую почту могу написать? Сейчас отправлю письмо на данную почту. ${this._state.lpr}, проверьте, пожалуйста, мое письмо доставлено?
+А пока давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс / Рекламного размещения на Яндекс.Картах, все верно?
+Отлично, сегодня до какого времени сможете отправить реквизиты?`;
     this._workspaceElement = 
       `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
@@ -43,10 +50,7 @@ class View12 extends View {
           </div>
         </div>
 
-<textarea class="workspace__info workspace__info_size_200" disabled>В таком случае, я отправлю письмо на Вашу почту, в ответ на которое нужно
-будет прислать реквизиты. На какую почту могу написать? Сейчас отправлю письмо на данную почту. ${this._state.lpr}, проверьте, пожалуйста, мое письмо доставлено?
-А пока давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс / Рекламного размещения на Яндекс Картах, все верно?
-Отлично, сегодня до какого времени сможете отправить реквизиты?</textarea>
+<textarea class="workspace__info workspace__info_size_200" disabled>${this._adaptText}</textarea>
 
         <div class="workspace__section">
             <label class="workspace__label">
@@ -92,8 +96,9 @@ class View12 extends View {
         
       </div>
       <div class="workspace__label workspace__label_lk" >
-        Ссылка на личный кабинет
-        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
       </div>
         
     </form>`;
@@ -112,7 +117,8 @@ class View12 extends View {
       this._setStateItemHandler('status', 'Получить оплату');
     });
 
-    this._callResultHandler('#CRPB-01', 'get_paid');
+    this._callBackButtonHandler('#CRPB-01', 'get_paid');
+
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
     this._changeFieldValueHandler('#firstCallDate-input', 'firstCallDate');

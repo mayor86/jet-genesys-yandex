@@ -37,6 +37,7 @@ class Api {
     const year = data.year;
     const hour = data.hour;
     const minute = data.minute;
+    const status = data.status;
 
     // Set up the Scheduled Phone attribute, if selected
     // This sends the scheduled call to a custom phone number, rather than what's in the contact list
@@ -55,7 +56,7 @@ class Api {
     IS_Action_CallComplete.Minute = minute;
 
     // Set the wrapup code to "Scheduled"
-    IS_Action_CallComplete.WrapupCode = "Scheduled";
+    IS_Action_CallComplete.WrapupCode = status;
     IS_Action_CallComplete.abandoned = false;
 
     // After the CallComplete action completes, go to Available and load index.html
@@ -77,17 +78,13 @@ class Api {
   }
 
   sendLPRData() {
-    try {
-      scripter.dialer.subscribeToCustomHandlerNotification([{
-        objectId: IS_System_AgentID.value,
-        eventId: "resLprData"
-      }], (objectId, eventId, res) => {
-        res[0] === 'successed' ? document.getElementById("lprUpdateResult").innerHTML = 'Данные об ЛПР успешно обновлены в AMOCRM' : document.getElementById("lprUpdateResult").innerHTML = 'Ошибка при обновлении данных в AMOCRM, обрнатитесь к системному администратору';
-      });
-      scripter.dialer.sendCustomHandlerNotification(IS_System_AgentID.value, 'sendLprData');
-    } catch (e) {
-      console.log('Ошибка при выполнении функции sendLPRData ' + e);
-    }
+    scripter.dialer.subscribeToCustomHandlerNotification([{
+      objectId: IS_System_AgentID.value,
+      eventId: "resLprData"
+    }], (objectId, eventId, res) => {
+      return res[0];
+    });
+    scripter.dialer.sendCustomHandlerNotification(IS_System_AgentID.value, 'sendLprData');
   }
 
   setWaitReqStatus() {
@@ -102,5 +99,14 @@ class Api {
     } catch (e) {
       console.log('Ошибка при выполнении функции sendLPRData ' + e);
     }
+  }
+
+  place(pNumber) {
+    IS_Attr_NumberToDial.value = pNumber;
+    setTimeout(this._placePreviewCallExt, 5000);
+  }
+
+  _placePreviewCallExt() {
+    IS_Action_PlacePreviewCall.click();
   }
 }

@@ -13,45 +13,70 @@ const callResultPanelSection = new Section({}, callResultPanelSelector);
 const footerPanelSection = new Section({}, footerPanelSelector);
 
 function createCallCard() {
-  
+
   const state = {
-      activeButton: document.querySelector('#NPB-01'),
-      status: 'Отправить счёт1',
-      chosenProduct: 'maps',
-/*
-      company: IS_Attr_COMPANY_NAME.value,
-      lpr: IS_Attr_contactname.value,
-      status: IS_Attr_contactstate.value,
-      branch: IS_Attr_Heading.value,
-      comment: IS_Attr_comment.value,
-      address: IS_Attr_Address.value,
-      lkLink: IS_Attr_Link_to_personal_account.value,
-      q1: IS_Attr_Q1.value,
-      q2: IS_Attr_Q2.value,
-      q3: IS_Attr_Q3.value,
-      q4: IS_Attr_Q4.value,
-      q5: IS_Attr_Q5.value,
-      phone: IS_Attr_Contact_Number1.value,
-      jobTitle: IS_Attr_contact_position.value,
-      email: IS_Attr_contact_email.value,
-      lossReason: IS_Attr_loss_reason_id.value,
-      kpDate: IS_Attr_presentation_date.value,
-      firstCallDate: IS_Attr_call_date.value,
-      price: IS_Attr_budget.value,
-      period: IS_Attr_distribution_period.value,
-      login: IS_Attr_login.value,
-      //  order: '1-TDYH0000',
-      expectedPayDate: IS_Attr_pay_date.value,
-      trxSMVP: IS_Attr_SMVP_transaction.value,
-      payDate: IS_Attr_Pay_date.value,
-      flaytId: IS_Attr_id_flight.value,
-      sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
-      chosenProduct: IS_Attr_Chosen_product.value,
-      tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value,
-      agentId: IS_System_AgentID.value
-  */
-  } 
-    
+    activeButton: document.querySelector('#NPB-01'),
+    status: 'Отправить счёт',
+    phone1: '+79165640001',
+    phone2: '+79165640002',
+    phone3: '+79165640003',
+    phone4: '+79165640004',
+    chosenProduct: 'maps',
+    numberToDial: '+79165640000'
+    /*
+          company: IS_Attr_COMPANY_NAME.value,
+          lpr: IS_Attr_contactname.value,
+          status: IS_Attr_contactstate.value,
+          branch: IS_Attr_Heading.value,
+          comment: IS_Attr_comment.value,
+          address: IS_Attr_Address.value,
+          lkLink: IS_Attr_Link_to_personal_account.value,
+          q1: IS_Attr_Q1.value,
+          q2: IS_Attr_Q2.value,
+          q3: IS_Attr_Q3.value,
+          q4: IS_Attr_Q4.value,
+          q5: IS_Attr_Q5.value,
+          phone1: IS_Attr_phone_number1.value,
+          phone2: IS_Attr_phone_number2.value,
+          phone3: IS_Attr_phone_number3.value,
+          phone4: IS_Attr_phone_number4.value,
+          phone5: IS_Attr_phone_number5.value,
+          phone6: IS_Attr_phone_number6.value,
+          phone7: IS_Attr_phone_number7.value,
+          phone8: IS_Attr_phone_number8.value,
+          phone9: IS_Attr_phone_number9.value,
+          phone10: IS_Attr_phone_number10.value,
+          phone11: IS_Attr_phone_number11.value,
+          phone12: IS_Attr_phone_number12.value,
+          phone13: IS_Attr_phone_number13.value,
+          phone14: IS_Attr_phone_number14.value,
+          phone15: IS_Attr_phone_number15.value,
+          phone16: IS_Attr_phone_number16.value,
+          phone17: IS_Attr_phone_number17.value,
+          phone18: IS_Attr_phone_number18.value,
+          phone19: IS_Attr_phone_number19.value,
+          phone20: IS_Attr_phone_number20.value,
+          jobTitle: IS_Attr_contact_position.value,
+          email: IS_Attr_contact_email.value,
+          lossReason: IS_Attr_loss_reason_id.value,
+          kpDate: IS_Attr_presentation_date.value,
+          firstCallDate: IS_Attr_call_one_date.value,
+          price: IS_Attr_budget.value,
+          period: IS_Attr_distribution_period.value,
+          login: IS_Attr_login.value,
+          //  order: '1-TDYH0000',
+          expectedPayDate: IS_Attr_pay_date.value,
+          trxSMVP: IS_Attr_SMVP_transaction.value,
+          payDate: IS_Attr_Pay_date.value,
+          flaytId: IS_Attr_id_flight.value,
+          sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
+          chosenProduct: IS_Attr_Chosen_product.value,
+          tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value,
+          agentId: IS_System_AgentID.value,
+          numberToDial: IS_Attr_NumberToDial.value
+      */
+  }
+
   const api = new Api({
     removeCallCardHandler: removeCallCard,
     sendStateHandler: sendStatetoAPI
@@ -59,7 +84,7 @@ function createCallCard() {
 
   const popup = new Popup({
     scheduleHandler: schedule
-  }, popupSelector);
+  }, popupSelector, 'Scheduled');
   popup.setEventListeners();
 
   /**
@@ -70,6 +95,8 @@ function createCallCard() {
    * openPopup - открытие popup Перезвонить;
    * schedule - вызов API Genesys;
    * changeFieldValue - апдейт state после изменения поля
+   * sendLPRData - отправка данных об ЛПР (передача данных в бэкенд);
+   * place - повторный набор
    */
   function sendDisposition(selector, disposition) {
     document.querySelector(selector).addEventListener('click', () => {
@@ -95,8 +122,9 @@ function createCallCard() {
     })
   }
 
-  function openPopup(selector) {
+  function openPopup(selector, status) {
     document.querySelector(selector).addEventListener('click', () => {
+      popup.setStatus(status);
       popup.open();
     })
   }
@@ -105,20 +133,43 @@ function createCallCard() {
     api.schedule(data);
   }
 
+  function sendLPRData(selector) {
+    document.querySelector(selector).addEventListener('click', () => {
+      try {
+        document.querySelector('.call-result-panel__error').innerHTML = '';
+        const resSendLPRData = api.sendLPRData();
+        resSendLPRData === 'successed' ? document.querySelector('.call-result-panel__error').innerHTML = 'Данные об ЛПР успешно обновлены в AMOCRM' : document.querySelector('.call-result-panel__error').innerHTML = 'Ошибка отправки данных об ЛПР в AMOCRM';
+      } catch (e) {
+        document.querySelector('.call-result-panel__error').innerHTML = 'Ошибка при выполнении функции sendLPRData ' + e;
+      }
+    })
+  }
+
   function changeFieldValue(selector, field) {
     document.querySelector(selector).addEventListener('change', (evt) => {
       state[field] = evt.target.value;
       console.log(state);
-    })
+    });
   }
 
   function setStateItem(field, value) {
     state[field] = value;
   }
 
+  function place(selector) {
+    document.querySelector(selector).addEventListener('click', () => {
+      try {
+        document.querySelector('.call-result-panel__error').innerHTML = '';
+        api.place(state.numberToDial);
+      } catch (e) {
+        document.querySelector('.call-result-panel__error').innerHTML = 'Ошибка при выполнении функции place ' + e;
+      }
+    });
+  }
+
   function sendStatetoAPI() {
-  //  IS_Attr_Contact_Number1.value = state.phone;
-  
+    //  IS_Attr_Contact_Number1.value = state.phone;
+
     IS_Attr_COMPANY_NAME.value = state.company;
     IS_Attr_contactname.value = state.lpr;
     IS_Attr_contactstate.value = state.status;
@@ -131,11 +182,30 @@ function createCallCard() {
     IS_Attr_Q3.value = state.q3;
     IS_Attr_Q4.value = state.q4;
     IS_Attr_Q5.value = state.q5;
-    IS_Attr_contact_phone.value = state.phone;
+    IS_Attr_phone_number1.value = state.phone1;
+    IS_Attr_phone_number2.value = state.phone2;
+    IS_Attr_phone_number3.value = state.phone3;
+    IS_Attr_phone_number4.value = state.phone4;
+    IS_Attr_phone_number5.value = state.phone5;
+    IS_Attr_phone_number6.value = state.phone6;
+    IS_Attr_phone_number7.value = state.phone7;
+    IS_Attr_phone_number8.value = state.phone8;
+    IS_Attr_phone_number9.value = state.phone9;
+    IS_Attr_phone_number10.value = state.phone10;
+    IS_Attr_phone_number11.value = state.phone11;
+    IS_Attr_phone_number12.value = state.phone12;
+    IS_Attr_phone_number13.value = state.phone13;
+    IS_Attr_phone_number14.value = state.phone14;
+    IS_Attr_phone_number15.value = state.phone15;
+    IS_Attr_phone_number16.value = state.phone16;
+    IS_Attr_phone_number17.value = state.phone17;
+    IS_Attr_phone_number18.value = state.phone18;
+    IS_Attr_phone_number19.value = state.phone19;
+    IS_Attr_phone_number20.value = state.phone20;
     IS_Attr_contact_position.value = state.jobTitle
     IS_Attr_contact_email.value = state.email;
     IS_Attr_presentation_date.value = state.kpDate;
-    IS_Attr_call_date.value = state.firstCallDate;
+    IS_Attr_call_one_date.value = state.firstCallDate;
     IS_Attr_budget.value = state.price;
     IS_Attr_distribution_period.value = state.period;
     IS_Attr_login.value = state.login;
@@ -147,6 +217,7 @@ function createCallCard() {
     IS_Attr_tag_sent_invoice.value = state.sentInvoiceFlag;
     IS_Attr_Chosen_product.value = state.chosenProduct;
     IS_Attr_tag_waiting_requisites.value = state.tagWaitingRequisites;
+    IS_Attr_NumberToDial.value = state.numberToDial;
   }
 
   function generateView(view) {
@@ -239,7 +310,9 @@ function createCallCard() {
             goToPreviousViewHandler: goToPreviousView,
             openPopupHandler: openPopup,
             changeFieldValueHandler: changeFieldValue,
-            setStateItemHandler: setStateItem
+            setStateItemHandler: setStateItem,
+            sendLPRDataHandler: sendLPRData,
+            placeHandler: place
           },
           state));
         break;
@@ -261,7 +334,8 @@ function createCallCard() {
             goToPreviousViewHandler: goToPreviousView,
             openPopupHandler: openPopup,
             changeFieldValueHandler: changeFieldValue,
-            setStateItemHandler: setStateItem
+            setStateItemHandler: setStateItem,
+            sendLPRDataHandler: sendLPRData
           },
           state));
         break;
@@ -417,7 +491,9 @@ function createCallCard() {
       goToPreviousViewHandler: '',
       openPopupHandler: openPopup,
       changeFieldValueHandler: changeFieldValue,
-      setStateItemHandler: setStateItem
+      setStateItemHandler: setStateItem,
+      sendLPRDataHandler: sendLPRData,
+      placeHandler: place
     },
     state));
 

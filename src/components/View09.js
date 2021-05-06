@@ -90,8 +90,9 @@ class View09 extends View {
 
       </div>
       <div class="workspace__label workspace__label_lk" >
-        Ссылка на личный кабинет
-        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
       </div>
         
     </form>`;
@@ -110,7 +111,7 @@ class View09 extends View {
       this._setStateItemHandler('status', 'Отправить счет');
     });
 
-    this._callResultHandler('#CRPB-01', 'send_invoice');
+    this._callBackButtonHandler('#CRPB-01', 'send_invoice');
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
 

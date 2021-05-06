@@ -10,6 +10,8 @@ class View {
     this._callBackButtonHandler = handler.openPopupHandler;
     this._changeFieldValueHandler = handler.changeFieldValueHandler;
     this._setStateItemHandler = handler.setStateItemHandler;
+    this._sendLPRDataHandler = handler.sendLPRDataHandler;
+    this._placeHandler = handler.placeHandler;
   }
 
   generateWorkspace() {

@@ -74,7 +74,7 @@ class View02 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
-    this._callBackButtonHandler('#CRPB-01');
+    this._callBackButtonHandler('#CRPB-01', 'Scheduled');
   }
 
 }

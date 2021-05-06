@@ -68,8 +68,9 @@ class View14 extends View {
         
       </div>
       <div class="workspace__label workspace__label_lk" >
-        Ссылка на личный кабинет
-        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
       </div>
         
     </form>`;

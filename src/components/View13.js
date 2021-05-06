@@ -3,8 +3,16 @@ class View13 extends View {
   constructor(handler, state) {
     super(handler);
 
-    
     this._state = state;
+    this._adaptText = this._state.chosenProduct === 'Subscription' ? `А сейчас давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс, все верно?
+Счет направлю Вам в течение 5 минут. Подскажите, Вам когда удобнее оплатить: сегодня или завтра?
+Через 5-7 дней после старта рекламной кампании с Вами свяжется наш аккаунт-менеджер. Он будет помогать Вам на всем периоде размещения.` : this._state.chosenProduct === 'maps' ? `А сейчас давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламного размещения на Яндекс.Картах, все верно? 
+Счет направлю Вам в течение 5 минут. Подскажите, Вам когда удобнее оплатить: сегодня или завтра?
+Через 5-7 дней после старта рекламной кампании с Вами свяжется наш аккаунт-менеджер. Он будет помогать Вам на всем периоде размещения.`
+    : 
+    `А сейчас давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс / Рекламного размещения на Яндекс.Картах, все верно?
+Счет направлю Вам в течение 5 минут. Подскажите, Вам когда удобнее оплатить: сегодня или завтра?
+Через 5-7 дней после старта рекламной кампании с Вами свяжется наш аккаунт-менеджер. Он будет помогать Вам на всем периоде размещения`;
     this._workspaceElement = 
       `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
@@ -43,9 +51,7 @@ class View13 extends View {
           </div>
         </div>
         
-<textarea class="workspace__info workspace__info_size_150" disabled>А сейчас давайте резюмируем наш диалог: Ваша компания ${this._state.company}, с видом деятельности ${this._state.branch}, предоставляет услуги по адресу ${this._state.address}, будет продвигаться с помощью Рекламной подписки на Яндекс / Рекламного размещения на Яндекс Картах, все верно?
-Счет направлю Вам в течение 5 минут. Подскажите, Вам когда удобнее оплатить: сегодня или завтра?
-Через 5-7 дней после старта рекламной кампании с Вами свяжется наш аккаунт-менеджер. Он будет помогать Вам на всем периоде размещения</textarea>
+<textarea class="workspace__info workspace__info_size_150" disabled>${this._adaptText}</textarea>
               
               <div class="workspace__section">
                 <label class="workspace__label">
@@ -83,8 +89,9 @@ class View13 extends View {
 
       </div>
       <div class="workspace__label workspace__label_lk" >
-        Ссылка на личный кабинет
-        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
       </div>
         
     </form>`;
@@ -99,9 +106,14 @@ class View13 extends View {
   }
 
   setEventListeners() {
+    document.querySelector('#CRPB-01').addEventListener('click', () => {
+      this._setStateItemHandler('status', 'Получить оплату');
+    });
+
+    this._callBackButtonHandler('#CRPB-01', 'get_paid');
+    
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
-    this._callBackButtonHandler('#CRPB-01');
     this._changeFieldValueHandler('#price-input', 'price');
     this._changeFieldValueHandler('#order-input', 'order');
     this._changeFieldValueHandler('#period-input', 'period');

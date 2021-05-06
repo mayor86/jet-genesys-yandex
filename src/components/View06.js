@@ -4,7 +4,7 @@ class View06 extends View {
     super(handler);
 
     this._state = state;
-    this._adapt_text = this._state.sentInvoiceFlag === 'Yes' ? `По стоимости есть несколько вариантов на 180 дней , он будет стоить _____ рублей, это со скидкой 12.5 %, и вариант на 360 дней, он стоит ____ рублей , со скидкой 25 %. Какой вариант для Вас оптимальнее?` : `По цене, самый выгодный вариант на год . Он стоит ____ руб. Как вам такой вариант?`;
+    this._adaptText = this._state.sentInvoiceFlag === 'Yes' ? `По стоимости есть несколько вариантов на 180 дней , он будет стоить _____ рублей, это со скидкой 12.5 %, и вариант на 360 дней, он стоит ____ рублей , со скидкой 25 %. Какой вариант для Вас оптимальнее?` : `По цене, самый выгодный вариант на год . Он стоит ____ руб. Как вам такой вариант?`;
     this._workspaceElement =
       `<form class="workspace__container" name="f1" novalidate>
       <div class="workspace__client-info">
@@ -50,13 +50,14 @@ class View06 extends View {
 Во вторых, ваша компания будет отмечена не обычной синей, а заметной большой зеленой меткой. Такие метки кликают намного чаще. Соответственно, и шансы того, что клиент выберет именно вашу компанию , существенно растут.
 
 И в третьих , сможете больше информации о себе заполнить, акции, витрину товаров и услуг, что привлечёт больше целевых клиентов, которые уже ознакомились с Вашими предложениями и расценками.</textarea>
-      <textarea class="workspace__info" disabled>${this._adapt_text}</textarea>
+      <textarea class="workspace__info" disabled>${this._adaptText}</textarea>
       
     </div>
     <div class="workspace__label workspace__label_lk" >
-      Ссылка на личный кабинет
-      <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">${this._state.lkLink}</a>
-   </div>
+        Ссылки
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Справочник</a>
+        <a href="${this._state.lkLink}" class="workspace__input-el" target="_blank">Я.Бизнес</a>
+      </div>
       
   </form>`;
 
@@ -77,7 +78,7 @@ class View06 extends View {
   setEventListeners() {
     this._clientInfoHandler('.workspace__client-info-button');
     this._backButtonHandler('#FPB-01');
-    this._callBackButtonHandler('#CRPB-01');
+    this._callBackButtonHandler('#CRPB-01', 'Scheduled');
   }
 
 }
