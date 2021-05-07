@@ -51,7 +51,7 @@ class View14 extends View {
         
                 <label class="workspace__label">
                   ID Флайта
-                  <input id="flaytId-input" type="text" class="workspace__input-el " value="${this._state.flaytId}" >
+                  <input id="flaytId-input" type="text" class="workspace__input-el " value="${this._state.flight}" >
                 </label>
         
                 <label class="workspace__label">

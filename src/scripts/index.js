@@ -68,7 +68,7 @@ function createCallCard() {
           expectedPayDate: IS_Attr_pay_date.value,
           trxSMVP: IS_Attr_SMVP_transaction.value,
           payDate: IS_Attr_Pay_date.value,
-          flaytId: IS_Attr_id_flight.value,
+          flightId: IS_Attr_id_flight.value,
           sentInvoiceFlag: IS_Attr_tag_sent_invoice.value,
           chosenProduct: IS_Attr_Chosen_product.value,
           tagWaitingRequisites: IS_Attr_tag_waiting_requisites.value,
@@ -96,7 +96,7 @@ function createCallCard() {
    * schedule - вызов API Genesys;
    * changeFieldValue - апдейт state после изменения поля
    * sendLPRData - отправка данных об ЛПР (передача данных в бэкенд);
-   * place - повторный набор
+   * place - повторный набор (передача данных в бэкенд);
    */
   function sendDisposition(selector, disposition) {
     document.querySelector(selector).addEventListener('click', () => {
@@ -154,6 +154,7 @@ function createCallCard() {
 
   function setStateItem(field, value) {
     state[field] = value;
+    console.log(state);
   }
 
   function place(selector) {
@@ -213,7 +214,7 @@ function createCallCard() {
     IS_Attr_pay_date.value = state.expectedPayDate;
     IS_Attr_SMVP_transaction.value = state.trxSMVP;
     IS_Attr_Pay_date.value = state.payDate;
-    IS_Attr_id_flight.value = state.flaytId;
+    IS_Attr_id_flight.value = state.flightId;
     IS_Attr_tag_sent_invoice.value = state.sentInvoiceFlag;
     IS_Attr_Chosen_product.value = state.chosenProduct;
     IS_Attr_tag_waiting_requisites.value = state.tagWaitingRequisites;

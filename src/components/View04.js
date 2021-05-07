@@ -3,9 +3,9 @@ class View04 extends View {
   constructor(handler, state) {
     super(handler);
 
-    
+
     this._state = state;
-    this._workspaceElement = 
+    this._workspaceElement =
       `<form class="workspace__container" name="f1" novalidate>
         <div class="workspace__client-info">
           <div>
@@ -82,6 +82,17 @@ class View04 extends View {
 
 Если клиент уже пользуется Директом и бюджет на рекламу превышает макс. трафик на 5000 рублей - предлагаем рекламу в Яндекс.Картах</textarea>
         </div>
+        <div class="workspace__section-radio">
+          <div>
+            <input type="radio" id="subscription-radio" name="product" value="subscription">
+            <label class="workspace__radio-item" for="subscription-radio">Рекламная подписка</label>
+          </div>
+          <div>
+            <input type="radio" id="maps-radio" name="product" value="maps">
+            <label class="workspace__radio-item" for="maps-radio">Реклама в Яндекс. Картах</label>
+          </div>
+
+        </div>
 
       <div class="workspace__label workspace__label_lk" >
         Ссылки
@@ -96,7 +107,7 @@ class View04 extends View {
         <button id="FPB-01" class="button footer-panel__button button_yellow" type="button">Назад</button>
        </section>`;
 
-    this._callResultPanelElement = 
+    this._callResultPanelElement =
       `<button id="CRPB-01" class="call-result-panel__button" type="button"><img class="call-result-panel__image" src="./images/call-result-callback.png" />Перезвонить</button>
       <div class="call-result-panel__error"></div>`;
   }
@@ -110,5 +121,30 @@ class View04 extends View {
     this._changeFieldValueHandler('#q3', 'q3');
     this._changeFieldValueHandler('#q4', 'q4');
     this._changeFieldValueHandler('#q5', 'q5');
+
+    const mapsRadio = document.querySelector('#maps-radio');
+    const subscriptionRadio = document.querySelector('#subscription-radio');
+
+    mapsRadio.addEventListener('change', (evt) => {
+      this._setStateItemHandler('chosenProduct', 'maps');
+    })
+
+    subscriptionRadio.addEventListener('change', (evt) => {
+      this._setStateItemHandler('chosenProduct', 'Subscription');
+    })
+
+    this._checkProduct();
+  }
+
+  _checkProduct() {
+    const mapsRadio = document.querySelector('#maps-radio');
+    const subscriptionRadio = document.querySelector('#subscription-radio');
+    if (this._state.chosenProduct === 'Subscription') {
+      subscriptionRadio.setAttribute('checked', true);
+    } else if (this._state.chosenProduct === 'maps') {
+      mapsRadio.setAttribute('checked', true);
+    } else {
+
+    }
   }
 }

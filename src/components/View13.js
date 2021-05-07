@@ -61,7 +61,7 @@ class View13 extends View {
         
                 <label class="workspace__label">
                   ID Заказа
-                  <input id="order-input" type="text" class="workspace__input-el" value="${this._state.order}" >
+                  <input id="order-input" type="text" class="workspace__input-el" value="${this._state.flight}" >
                 </label>
         
                 <label class="workspace__label">

@@ -31,6 +31,8 @@
 @import url(../blocks/workspace/__answer/workspace__answer.css);
 @import url(../blocks/workspace/__question/workspace__question.css);
 @import url(../blocks/workspace/__section-questions/workspace__section-questions.css);
+@import url(../blocks/workspace/__section-radio/workspace__section-radio.css);
+@import url(../blocks/workspace/__radio-item/workspace__radio-item.css);
 @import url(../blocks/workspace/__info/workspace__info.css);
 @import url(../blocks/workspace/__question-image/workspace__question-image.css);
 @import url(../blocks/workspace/__question-area/workspace__question-area.css);
